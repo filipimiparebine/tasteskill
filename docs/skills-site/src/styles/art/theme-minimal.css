@@ -1,2 +1,185 @@
-/* minimal skin — stub, authored next */
-.theme-minimal { }
+/* SKIN: minimalist-ui. Clean editorial minimalism for the Vizibil gallery.
+   Warm off-white paper, near-black warm ink, single muted clay accent used
+   sparingly. Flat bento grids, hairline borders, no gradients, no shadows.
+   Fraunces display + Newsreader editorial serif vs Inter body + JetBrains meta.
+   Scoped under .theme-minimal. Mirrors the theme-dtf selector contract 1:1. */
+
+.theme-minimal {
+  --paper: #f6f4ef; --card: #fbfaf6; --ink: #1c1a16; --soft: #625c51; --faint: #948d7f;
+  --line: #e4dfd4; --accent: #9d6a4f; --accent-deep: #7a4d36; --accent-soft: #ece1d7;
+  --wc-paper: #ece6d9; --wrap: 1120px;
+  --disp: "Fraunces", Georgia, serif; --hand: "Newsreader", Georgia, serif;
+  --body: "Inter", system-ui, sans-serif; --meta: "JetBrains Mono", ui-monospace, monospace;
+  background: var(--paper);
+  color: var(--ink); font-family: var(--body); line-height: 1.6;
+}
+.theme-minimal .aq-btn { font-weight: 500; font-size: 14px; padding: 11px 20px; border-radius: 5px; transition: background .14s, color .14s, border-color .14s; }
+.theme-minimal .aq-btn-primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+.theme-minimal .aq-btn-primary:hover { background: #333029; border-color: #333029; }
+.theme-minimal .aq-btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.theme-minimal .aq-btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+.theme-minimal .aq-nav { max-width: var(--wrap); margin: 0 auto; padding: 26px 30px; display: flex; align-items: center; gap: 26px; border-bottom: 1px solid var(--line); }
+.theme-minimal .aq-brand { display: inline-flex; align-items: center; gap: 11px; margin-right: auto; }
+.theme-minimal .aq-brand-mark { width: 26px; height: 26px; border-radius: 3px; background: var(--ink); }
+.theme-minimal .aq-brand-name { font-family: var(--disp); font-size: 24px; font-weight: 500; line-height: 1; letter-spacing: -0.02em; }
+.theme-minimal .aq-navlinks { display: flex; gap: 24px; }
+.theme-minimal .aq-navlinks a { font-size: 14px; color: var(--soft); font-weight: 500; }
+.theme-minimal .aq-navlinks a:hover, .theme-minimal .aq-navlinks a[aria-current="page"] { color: var(--ink); }
+.theme-minimal .aq-navcta { padding: 9px 18px; font-size: 13.5px; }
+
+.theme-minimal .aq-section { max-width: var(--wrap); margin: 0 auto; padding: 48px 30px; }
+.theme-minimal .aq-shead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 8px 0 26px; }
+.theme-minimal .aq-stitle { font-family: var(--disp); font-weight: 400; font-size: clamp(24px, 3vw, 33px); letter-spacing: -0.02em; }
+.theme-minimal .aq-slink { color: var(--accent-deep); font-size: 13.5px; font-weight: 500; }
+.theme-minimal .aq-kicker { font-family: var(--meta); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; font-weight: 500; color: var(--accent-deep); }
+
+.theme-minimal .aq-hero { max-width: var(--wrap); margin: 0 auto; padding: 60px 30px 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.theme-minimal .aq-hero-title { font-family: var(--disp); font-weight: 400; font-size: clamp(40px, 5.4vw, 62px); line-height: 1.04; letter-spacing: -0.035em; margin: 16px 0 0; }
+.theme-minimal .aq-hero-sub { margin-top: 20px; font-size: 17px; color: var(--soft); max-width: 44ch; }
+.theme-minimal .aq-hero-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+.theme-minimal .aq-hero-collage { position: relative; min-height: 380px; }
+.theme-minimal .aq-hero-piece { position: absolute; border-radius: 4px; border: 1px solid var(--line); aspect-ratio: 4/5; }
+.theme-minimal .aq-hero-piece.p0 { top: 0; left: 2%; width: 54%; transform: none; z-index: 2; }
+.theme-minimal .aq-hero-piece.p1 { top: 14%; right: 0; width: 46%; transform: none; z-index: 1; }
+.theme-minimal .aq-hero-piece.p2 { bottom: 0; left: 30%; width: 40%; aspect-ratio: 1/1; transform: none; z-index: 3; }
+
+.theme-minimal .aq-spot { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 14px; }
+.theme-minimal .aq-spot-art { border-radius: 6px; border: 1px solid var(--line); aspect-ratio: 4/5; }
+.theme-minimal .aq-spot-artist { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.theme-minimal .aq-spot-artist b { font-weight: 600; } .theme-minimal .aq-spot-artist em { display: block; font-style: normal; font-size: 13px; color: var(--faint); }
+.theme-minimal .aq-spot-title { font-family: var(--disp); font-weight: 400; font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -0.02em; margin-bottom: 12px; }
+.theme-minimal .aq-spot-bio { color: var(--soft); margin-bottom: 22px; max-width: 46ch; }
+
+.theme-minimal .aq-impact-title { text-align: center; }
+.theme-minimal .aq-impact-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 28px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.theme-minimal .aq-impact-item { text-align: center; padding: 28px 20px; background: var(--card); border-radius: 0; }
+.theme-minimal .aq-impact-item strong { display: block; font-family: var(--disp); font-size: 42px; font-weight: 400; color: var(--ink); letter-spacing: -0.03em; }
+.theme-minimal .aq-impact-item span { font-family: var(--meta); text-transform: uppercase; letter-spacing: .1em; font-size: 11px; color: var(--soft); }
+
+.theme-minimal .aq-aboutstrip-inner { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 40px; }
+.theme-minimal .aq-aboutstrip-body { color: var(--soft); font-size: 16px; margin: 14px 0 22px; }
+.theme-minimal .aq-aboutstrip-mark { aspect-ratio: 3/2; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+
+.theme-minimal .aq-rows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.theme-minimal .aq-card-art { border-radius: 6px; border: 1px solid var(--line); }
+.theme-minimal .aq-card:hover .aq-card-art { border-color: var(--accent); }
+.theme-minimal .aq-card-hover { padding: 14px; background: rgba(20,16,10,.72); color: #fff; }
+.theme-minimal .aq-card-title { font-family: var(--disp); font-size: 18px; font-weight: 400; color: #fff; }
+.theme-minimal .aq-card-price { font-family: var(--meta); font-size: 12px; color: #efe8dd; }
+.theme-minimal .aq-card-artist span { font-family: var(--hand); font-style: italic; font-size: 17px; color: #fff; }
+.theme-minimal .aq-card-sold { background: var(--ink); color: #fff; font-family: var(--meta); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+.theme-minimal .aq-avatar em { color: var(--ink); font-size: .8em; }
+
+.theme-minimal .aq-gal-head { padding-top: 8px; }
+.theme-minimal .aq-page-title { font-family: var(--disp); font-weight: 400; font-size: clamp(32px, 4.4vw, 46px); letter-spacing: -0.03em; }
+.theme-minimal .aq-page-sub { color: var(--soft); margin-top: 10px; }
+.theme-minimal .aq-filters { display: flex; flex-direction: column; gap: 12px; margin: 28px 0 32px; }
+.theme-minimal .aq-filter-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.theme-minimal .aq-filter-label { font-family: var(--meta); font-size: 10.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--faint); width: 92px; }
+.theme-minimal .aq-filter { font: inherit; font-size: 13px; padding: 6px 14px; border-radius: 999px; cursor: pointer; background: transparent; color: var(--soft); border: 1px solid var(--line); transition: all .12s; }
+.theme-minimal .aq-filter:hover { border-color: var(--ink); color: var(--ink); }
+.theme-minimal .aq-filter.is-on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.theme-minimal .aq-empty { text-align: center; color: var(--faint); padding: 44px 0; font-family: var(--disp); font-style: italic; }
+.theme-minimal .aq-back { display: inline-block; color: var(--soft); font-size: 14px; margin-bottom: 20px; }
+.theme-minimal .aq-back:hover { color: var(--ink); }
+
+.theme-minimal .aq-artist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+.theme-minimal .aq-artist-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 28px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; transition: border-color .15s; }
+.theme-minimal .aq-artist-card:hover { border-color: var(--ink); }
+.theme-minimal .aq-artist-card b { font-family: var(--disp); font-size: 18px; font-weight: 400; margin-top: 6px; }
+.theme-minimal .aq-artist-card-alias { font-family: var(--hand); font-style: italic; font-size: 18px; color: var(--accent-deep); }
+.theme-minimal .aq-artist-card-media { font-family: var(--meta); font-size: 11px; letter-spacing: .04em; color: var(--faint); }
+.theme-minimal .aq-artist-card-count { font-size: 12px; color: var(--soft); margin-top: 6px; }
+
+.theme-minimal .aq-artist-banner { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+.theme-minimal .aq-artist-name { font-family: var(--disp); font-weight: 400; font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -0.02em; }
+.theme-minimal .aq-artist-alias { font-family: var(--hand); font-style: italic; font-size: 21px; color: var(--accent-deep); }
+.theme-minimal .aq-artist-about-inner { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 34px; }
+.theme-minimal .aq-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+.theme-minimal .aq-tag { display: inline-block; font-family: var(--meta); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-deep); background: var(--accent-soft); padding: 4px 11px; border-radius: 999px; font-weight: 500; }
+.theme-minimal .aq-artist-bio { color: var(--soft); }
+.theme-minimal .aq-support { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+.theme-minimal .aq-support h3 { font-family: var(--disp); font-weight: 400; font-size: 20px; margin-bottom: 4px; }
+
+.theme-minimal .aq-art-stage { display: grid; grid-template-columns: 1.25fr 1fr; gap: 44px; align-items: start; }
+.theme-minimal .aq-art-canvas { border-radius: 6px; border: 1px solid var(--line); }
+.theme-minimal .aq-art-sold { background: var(--ink); color: #fff; font-family: var(--meta); text-transform: uppercase; letter-spacing: .1em; font-size: 11px; padding: 6px 12px; border-radius: 3px; }
+.theme-minimal .aq-art-panel { position: sticky; top: 70px; }
+.theme-minimal .aq-art-title { font-family: var(--disp); font-weight: 400; font-size: clamp(28px, 3.6vw, 42px); letter-spacing: -0.03em; margin: 8px 0 14px; }
+.theme-minimal .aq-art-artist { display: inline-flex; align-items: center; gap: 10px; padding: 6px 0; }
+.theme-minimal .aq-art-artist b { font-weight: 600; } .theme-minimal .aq-art-artist em { display: block; font-style: normal; font-size: 13px; color: var(--faint); }
+.theme-minimal .aq-art-artist:hover b { color: var(--accent-deep); }
+.theme-minimal .aq-art-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin: 22px 0; }
+.theme-minimal .aq-art-specs div { background: var(--card); padding: 14px 16px; }
+.theme-minimal .aq-art-specs dt { font-family: var(--meta); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); }
+.theme-minimal .aq-art-specs dd { margin: 4px 0 0; font-size: 14.5px; }
+.theme-minimal .aq-art-buy { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+.theme-minimal .aq-art-price { display: block; font-family: var(--disp); font-size: 32px; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 16px; }
+.theme-minimal .aq-art-price-sold { color: var(--faint); }
+.theme-minimal .aq-art-actions { display: flex; flex-direction: column; gap: 10px; }
+.theme-minimal .aq-buy { font-size: 15px; padding: 14px; }
+.theme-minimal .aq-art-note { font-size: 12.5px; color: var(--faint); margin-top: 14px; text-align: center; }
+
+.theme-minimal .aq-events-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 12px; }
+.theme-minimal .aq-eventbig { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; transition: border-color .15s; }
+.theme-minimal .aq-eventbig:hover { border-color: var(--ink); }
+.theme-minimal .aq-eventbig-thumb { aspect-ratio: 16/9; }
+.theme-minimal .aq-eventbig-body { padding: 22px; }
+.theme-minimal .aq-eventbig-body h3 { font-family: var(--disp); font-weight: 400; font-size: 22px; letter-spacing: -0.02em; margin: 12px 0 8px; }
+.theme-minimal .aq-eventbig-body p { color: var(--soft); font-size: 14.5px; }
+.theme-minimal .aq-post-meta { display: flex; align-items: center; gap: 12px; }
+.theme-minimal .aq-post-meta time { font-family: var(--meta); font-size: 11.5px; letter-spacing: .04em; color: var(--faint); }
+.theme-minimal .aq-posts { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+.theme-minimal .aq-post { display: grid; grid-template-columns: 200px 1fr; gap: 28px; background: transparent; border: none; border-bottom: 1px solid var(--line); border-radius: 0; overflow: hidden; padding: 26px 0; align-items: center; }
+.theme-minimal .aq-post:hover { transform: none; }
+.theme-minimal .aq-post-thumb { aspect-ratio: 3/2; border-radius: 6px; border: 1px solid var(--line); }
+.theme-minimal .aq-post-title { font-family: var(--disp); font-weight: 400; font-size: 23px; letter-spacing: -0.02em; margin: 10px 0 8px; }
+.theme-minimal .aq-post-title a:hover { color: var(--accent-deep); }
+.theme-minimal .aq-post-excerpt { color: var(--soft); font-size: 14.5px; }
+.theme-minimal .aq-post-more { display: inline-block; margin-top: 12px; color: var(--accent-deep); font-weight: 500; font-size: 14px; }
+
+.theme-minimal .aq-about-hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; }
+.theme-minimal .aq-about-lead { font-family: var(--disp); font-size: clamp(19px, 2.3vw, 25px); font-weight: 400; line-height: 1.45; letter-spacing: -0.01em; color: var(--soft); margin-top: 16px; }
+.theme-minimal .aq-about-mark { aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.theme-minimal .aq-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.theme-minimal .aq-step { padding: 30px; background: var(--card); border-radius: 0; }
+.theme-minimal .aq-step-n { font-family: var(--meta); font-size: 13px; letter-spacing: .1em; color: var(--accent-deep); font-weight: 500; }
+.theme-minimal .aq-step h3 { font-family: var(--disp); font-weight: 400; font-size: 20px; margin: 12px 0 8px; }
+.theme-minimal .aq-step p { color: var(--soft); font-size: 14.5px; }
+.theme-minimal .aq-about-cta { display: flex; gap: 12px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+
+.theme-minimal .aq-donate { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
+.theme-minimal .aq-donate-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 40px; }
+.theme-minimal .aq-donate-copy .aq-page-sub { margin-top: 12px; }
+.theme-minimal .aq-donate-form { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+.theme-minimal .aq-donate-freq { display: inline-flex; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 4px; width: fit-content; }
+.theme-minimal .aq-freq { font: inherit; font-size: 14px; padding: 8px 18px; border-radius: 5px; border: none; background: transparent; color: var(--soft); cursor: pointer; }
+.theme-minimal .aq-freq.is-on { background: var(--ink); color: var(--paper); }
+.theme-minimal .aq-donate-amts { display: flex; gap: 10px; flex-wrap: wrap; }
+.theme-minimal .aq-amt { font: inherit; font-size: 15px; padding: 12px 18px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; transition: all .12s; }
+.theme-minimal .aq-amt:hover { border-color: var(--ink); }
+.theme-minimal .aq-amt.is-on { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-deep); font-weight: 600; }
+.theme-minimal .aq-donate-go { margin-top: 6px; padding: 14px; font-size: 15px; }
+.theme-minimal .aq-donate-thanks { color: var(--accent-deep); font-weight: 600; text-align: center; }
+.theme-minimal .aq-donate-mark { aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+
+.theme-minimal .aq-footer { margin-top: 56px; border-top: 1px solid var(--line); background: var(--paper); }
+.theme-minimal .aq-footer-bottom { max-width: var(--wrap); margin: 0 auto; padding: 44px 30px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.theme-minimal .aq-footer-bottom .aq-brand-name { font-family: var(--disp); font-size: 26px; }
+.theme-minimal .aq-footer-tag { font-family: var(--hand); font-style: italic; font-size: 19px; color: var(--accent-deep); }
+.theme-minimal .aq-footer-bottom p { font-family: var(--meta); font-size: 11.5px; letter-spacing: .04em; color: var(--faint); }
+
+@media (max-width: 860px) {
+  .theme-minimal .aq-hero, .theme-minimal .aq-spot, .theme-minimal .aq-aboutstrip-inner, .theme-minimal .aq-art-stage,
+  .theme-minimal .aq-artist-about-inner, .theme-minimal .aq-about-hero, .theme-minimal .aq-donate { grid-template-columns: 1fr; }
+  .theme-minimal .aq-navlinks { display: none; }
+  .theme-minimal .aq-hero-collage { min-height: 320px; }
+  .theme-minimal .aq-rows { grid-template-columns: 1fr 1fr; }
+  .theme-minimal .aq-impact-row { grid-template-columns: 1fr 1fr; }
+  .theme-minimal .aq-events-feature { grid-template-columns: 1fr; }
+  .theme-minimal .aq-steps { grid-template-columns: 1fr; }
+  .theme-minimal .aq-art-panel { position: static; }
+  .theme-minimal .aq-post { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) { .theme-minimal .aq-rows { grid-template-columns: 1fr; } .theme-minimal .aq-impact-row { grid-template-columns: 1fr; } }
