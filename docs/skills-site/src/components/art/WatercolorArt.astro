@@ -39,7 +39,7 @@ const gid = `wg-${seed}`;
       <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0" />
     </filter>
   </defs>
-  <rect width="100" height="125" fill="var(--wc-paper, #f4efe3)" />
+  <rect width="100" height="125" fill="#f2ecdf" />
   <g filter={`url(#${fid})`} style="mix-blend-mode:multiply">
     {shapes.map((b) => (
       <ellipse cx={b.cx} cy={b.cy} rx={b.rx} ry={b.ry} fill={b.fill} opacity={b.op}
