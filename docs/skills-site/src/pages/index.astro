@@ -23,6 +23,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <span class="showcase-cta-go">Open showcase</span>
     </a>
 
+    <a class="showcase-cta" href={`${base}/vizibil/`}>
+      <div>
+        <p class="showcase-cta-k">Featured</p>
+        <h2>Vizibil — art collective, 8 ways →</h2>
+        <p class="showcase-cta-sub">A multi-page gallery site (home, gallery with filters, artists, artwork, journal, about, donate) with generated art and RO/EN/HU — re-skinned across all 8 design-system skills.</p>
+      </div>
+      <span class="showcase-cta-go">Open gallery</span>
+    </a>
+
     {families.map((fam) => (
       <section class="fam-block" style={`--fam: var(--fam-${fam.id})`}>
         <div class="fam-head">

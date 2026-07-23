@@ -1,0 +1,29 @@
+---
+import WatercolorArt from "./WatercolorArt.astro";
+import Avatar from "./Avatar.astro";
+import Tr from "./Tr.astro";
+import { getArtist, priceBandOf, type Artwork } from "../../data/art";
+interface Props { work: Artwork }
+const { work } = Astro.props;
+const artist = getArtist(work.artist);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const sold = work.status === "sold";
+---
+<article class="aq-card" data-artist={work.artist} data-technique={work.medium}
+         data-category={work.themes.join("|")} data-price={priceBandOf(work.priceRON)}
+         data-status={work.status}>
+  <div class="aq-card-art">
+    <a class="aq-card-hit" href={`${base}/vizibil/art/${work.slug}/`} aria-label={work.title}>
+      <WatercolorArt seed={work.seed} palette={work.palette} />
+    </a>
+    {sold && <span class="aq-card-sold"><Tr k="status.sold" /></span>}
+    <div class="aq-card-hover">
+      <a class="aq-card-title" href={`${base}/vizibil/art/${work.slug}/`}>{work.title}</a>
+      <span class="aq-card-price">{work.priceRON} lei</span>
+      <a class="aq-card-artist" href={`${base}/vizibil/artist/${artist.slug}/`}>
+        <Avatar initials={artist.initials} palette={artist.palette} seed={work.seed} size={26} />
+        <span>{artist.alias}</span>
+      </a>
+    </div>
+  </div>
+</article>

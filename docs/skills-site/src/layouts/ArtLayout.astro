@@ -1,0 +1,142 @@
+---
+import "../styles/art/base-art.css";
+import "../styles/art/theme-dtf.css";
+import "../styles/art/theme-dtf1.css";
+import "../styles/art/theme-highend.css";
+import "../styles/art/theme-minimal.css";
+import "../styles/art/theme-brutalist.css";
+import "../styles/art/theme-gpt.css";
+import "../styles/art/theme-stitch.css";
+import "../styles/art/theme-redesign.css";
+import Tr from "../components/art/Tr.astro";
+import { skins, org } from "../data/art";
+import { t, langs } from "../data/i18n";
+const { title, current } = Astro.props as { title: string; current?: string };
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const nav = [
+  { id: "acasa", k: "nav.home", href: `${base}/vizibil/` },
+  { id: "galerie", k: "nav.gallery", href: `${base}/vizibil/gallery/` },
+  { id: "artisti", k: "nav.artists", href: `${base}/vizibil/artists/` },
+  { id: "jurnal", k: "nav.journal", href: `${base}/vizibil/blog/` },
+  { id: "despre", k: "nav.about", href: `${base}/vizibil/about/` },
+];
+---
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content="Vizibil — colectiv de artă din Cluj-Napoca. Prototip de design, re-skinabil în 8 stiluri." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+    <style>
+      body { margin: 0; background: #16130f; }
+      .vzbar { position: sticky; top: 0; z-index: 60; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        padding: 8px 16px; background: rgba(22,19,15,.93); backdrop-filter: blur(8px); border-bottom: 1px solid #38322a; color: #efe7db; font-family: "Inter", sans-serif; }
+      .vzbar a.vzbar-home { color: #b7ab99; font-size: 13px; text-decoration: none; }
+      .vzbar a.vzbar-home:hover { color: #fff; }
+      .vzbar .vzbar-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: .12em; color: #7d7261; }
+      .vzbar-skins { display: flex; gap: 5px; flex-wrap: wrap; }
+      .vzbar-skins button { font: inherit; font-size: 12px; padding: 4px 10px; border-radius: 999px; cursor: pointer; background: transparent; color: #d8cdbb; border: 1px solid #453f34; }
+      .vzbar-skins button:hover { border-color: #6b6151; color: #fff; }
+      .vzbar-skins button[aria-pressed="true"] { background: #efe7db; color: #16130f; border-color: #efe7db; font-weight: 600; }
+      .vzbar-langs { display: flex; gap: 4px; margin-left: auto; }
+      .vzbar-langs button { font: inherit; font-size: 12px; padding: 4px 9px; border-radius: 6px; cursor: pointer; background: transparent; color: #b7ab99; border: 1px solid #453f34; }
+      .vzbar-langs button[aria-pressed="true"] { background: #c98a5a; color: #16130f; border-color: #c98a5a; font-weight: 700; }
+      .vzbar-skinhint { flex-basis: 100%; font-size: 11px; color: #7d7261; font-style: italic; }
+      @media (max-width: 760px) { .vzbar-skinhint { display: none; } }
+      .vz-skip { position: absolute; left: -9999px; }
+      .vz-skip:focus { left: 8px; top: 8px; z-index: 100; background: #fff; color: #000; padding: 8px 12px; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <a href="#vz-main" class="vz-skip">Sari la conținut</a>
+    <div class="vzbar">
+      <a class="vzbar-home" href={`${base}/`}>← Skills Atlas</a>
+      <span class="vzbar-label">Skin</span>
+      <div class="vzbar-skins" id="vz-skins" role="group" aria-label="Design skin">
+        {skins.map((s, i) => <button data-skin={s.id} aria-pressed={i === 0 ? "true" : "false"} title={s.blurb}>{s.name}</button>)}
+      </div>
+      <div class="vzbar-langs" id="vz-langs" role="group" aria-label="Limbă / Language">
+        {langs.map((l, i) => <button data-lang={l.id} aria-pressed={i === 0 ? "true" : "false"}>{l.label}</button>)}
+      </div>
+      <span class="vzbar-skinhint" id="vz-skinhint">{skins[0].blurb}</span>
+    </div>
+
+    <div class="aquarela theme-dtf" id="vz-root">
+      <header class="aq-nav">
+        <a class="aq-brand" href={`${base}/vizibil/`}>
+          <span class="aq-brand-mark" aria-hidden="true"></span>
+          <span class="aq-brand-name">{org.name}</span>
+        </a>
+        <nav class="aq-navlinks" aria-label="Principal">
+          {nav.map((n) => <a href={n.href} aria-current={current === n.id ? "page" : undefined}><Tr k={n.k} /></a>)}
+        </nav>
+        <a class="aq-btn aq-btn-primary aq-navcta" href={`${base}/vizibil/donate/`}><Tr k="nav.donate" /></a>
+      </header>
+
+      <main id="vz-main"><slot /></main>
+
+      <footer class="aq-footer">
+        <div class="aq-footer-bottom">
+          <span class="aq-brand-name">{org.name}</span>
+          <p class="aq-footer-tag"><Tr k="footer.tagline" /></p>
+          <p>© 2026 {org.name} · <Tr k="footer.rights" /></p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="vz-toast" id="vz-toast" role="status" aria-live="polite" hidden></div>
+
+    <script is:inline define:vars={{ skins, t, langs }}>
+      // ---- skin switch (persist + deep-link ?skin=) ----
+      const root = document.getElementById("vz-root");
+      const shint = document.getElementById("vz-skinhint");
+      const sbtns = [...document.querySelectorAll("#vz-skins button")];
+      const blurbs = Object.fromEntries(skins.map((s) => [s.id, s.blurb]));
+      function applySkin(id, push) {
+        root.className = "aquarela theme-" + id;
+        sbtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.skin === id)));
+        if (shint) shint.textContent = blurbs[id] || "";
+        try { localStorage.setItem("vz-skin", id); } catch (e) {}
+        if (push) { const u = new URL(location.href); u.searchParams.set("skin", id); history.replaceState(null, "", u); }
+      }
+      sbtns.forEach((b) => b.addEventListener("click", () => applySkin(b.dataset.skin, true)));
+      let sk = null; try { sk = new URLSearchParams(location.search).get("skin"); } catch (e) {}
+      if (!blurbs[sk]) { try { sk = localStorage.getItem("vz-skin"); } catch (e) {} }
+      if (blurbs[sk]) applySkin(sk, false);
+
+      // ---- language switch (RO/EN/HU) ----
+      const lbtns = [...document.querySelectorAll("#vz-langs button")];
+      const nodes = [...document.querySelectorAll("[data-i18n]")];
+      const valid = new Set(langs.map((l) => l.id));
+      function applyLang(lang, push) {
+        nodes.forEach((n) => { const e = t[n.getAttribute("data-i18n")]; if (e && e[lang]) n.textContent = e[lang]; });
+        lbtns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+        document.documentElement.lang = lang;
+        try { localStorage.setItem("vz-lang", lang); } catch (e) {}
+        if (push) { const u = new URL(location.href); u.searchParams.set("lang", lang); history.replaceState(null, "", u); }
+      }
+      lbtns.forEach((b) => b.addEventListener("click", () => applyLang(b.dataset.lang, true)));
+      let lg = null; try { lg = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+      if (!valid.has(lg)) { try { lg = localStorage.getItem("vz-lang"); } catch (e) {} }
+      if (valid.has(lg) && lg !== "ro") applyLang(lg, false);
+
+      // ---- mocked actions (buy / support / commission / read) → toast ----
+      const toast = document.getElementById("vz-toast");
+      let toastT = null;
+      function curLang() { const p = lbtns.find((b) => b.getAttribute("aria-pressed") === "true"); return p ? p.dataset.lang : "ro"; }
+      document.addEventListener("click", (e) => {
+        const el = e.target.closest("[data-mock]");
+        if (!el) return;
+        e.preventDefault();
+        if (!toast) return;
+        toast.textContent = t["donate.thanks"][curLang()] || t["donate.thanks"].ro;
+        toast.hidden = false; toast.classList.add("on");
+        if (toastT) clearTimeout(toastT);
+        toastT = setTimeout(() => { toast.classList.remove("on"); toast.hidden = true; }, 2600);
+      });
+    </script>
+  </body>
+</html>

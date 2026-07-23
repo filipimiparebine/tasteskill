@@ -12,6 +12,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     ★ SaaS showcase
     <em>one landing page, every skin</em>
   </a>
+  <a class="nav-feature" href={`${base}/vizibil/`}>
+    ★ Vizibil art collective
+    <em>multi-page gallery, 8 design-skill skins</em>
+  </a>
   {families.map((fam) => (
     <div class="nav-group" style={`--fam: var(--fam-${fam.id})`}>
       <h3>{fam.name}</h3>

@@ -1,0 +1,75 @@
+---
+import ArtLayout from "../../layouts/ArtLayout.astro";
+import WatercolorArt from "../../components/art/WatercolorArt.astro";
+import Avatar from "../../components/art/Avatar.astro";
+import Tr from "../../components/art/Tr.astro";
+import { org, artworks, spotlight, impact, getArtist, getArtwork } from "../../data/art";
+import { tr } from "../../data/i18n";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const heroArt = artworks.slice(0, 3);
+const spArtist = getArtist(spotlight.artist);
+const spWork = getArtwork(spotlight.work);
+---
+<ArtLayout title={`${org.name} — colectiv de artă din Cluj`} current="acasa">
+  <section class="aq-hero">
+    <div class="aq-hero-copy">
+      <p class="aq-kicker">{org.kicker}</p>
+      <h1 class="aq-hero-title"><Tr k="hero.title" /></h1>
+      <p class="aq-hero-sub"><Tr k="hero.sub" /></p>
+      <div class="aq-hero-actions">
+        <a class="aq-btn aq-btn-primary" href={`${base}/vizibil/gallery/`}><Tr k="cta.discover" /></a>
+        <a class="aq-btn aq-btn-ghost" href={`${base}/vizibil/donate/`}><Tr k="cta.support_org" /></a>
+      </div>
+    </div>
+    <div class="aq-hero-collage">
+      {heroArt.map((w, i) => (
+        <a class={`aq-hero-piece p${i}`} href={`${base}/vizibil/art/${w.slug}/`} aria-label={w.title}>
+          <WatercolorArt seed={w.seed} palette={w.palette} />
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="aq-section aq-spotlight">
+    <p class="aq-kicker"><Tr k="spotlight.label" /></p>
+    <div class="aq-spot">
+      <a class="aq-spot-art" href={`${base}/vizibil/art/${spWork.slug}/`} aria-label={spWork.title}>
+        <WatercolorArt seed={spWork.seed} palette={spWork.palette} blobs={7} />
+      </a>
+      <div class="aq-spot-info">
+        <div class="aq-spot-artist">
+          <Avatar initials={spArtist.initials} palette={spArtist.palette} seed={7} size={54} />
+          <div><b>{spArtist.name}</b><em>{spArtist.city}</em></div>
+        </div>
+        <h2 class="aq-spot-title">{spWork.title}</h2>
+        <p class="aq-spot-bio">{spArtist.bio}</p>
+        <a class="aq-btn aq-btn-primary" href={`${base}/vizibil/artist/${spArtist.slug}/`}><Tr k="spotlight.cta" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="aq-section aq-impact">
+    <h2 class="aq-stitle aq-impact-title"><Tr k="impact.title" /></h2>
+    <div class="aq-impact-row">
+      {impact.map((s) => (
+        <div class="aq-impact-item">
+          <strong>{s.value}</strong>
+          <span><Tr k={s.key} /></span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="aq-section aq-aboutstrip">
+    <div class="aq-aboutstrip-inner">
+      <div>
+        <h2 class="aq-stitle"><Tr k="about.title" /></h2>
+        <p class="aq-aboutstrip-body"><Tr k="about.body" /></p>
+        <a class="aq-btn aq-btn-ghost" href={`${base}/vizibil/about/`}><Tr k="about.cta" /></a>
+      </div>
+      <div class="aq-aboutstrip-mark" aria-hidden="true">
+        <WatercolorArt seed={222} palette={["#c98a5a", "#a9c5a0", "#8695c4"]} blobs={5} />
+      </div>
+    </div>
+  </section>
+</ArtLayout>

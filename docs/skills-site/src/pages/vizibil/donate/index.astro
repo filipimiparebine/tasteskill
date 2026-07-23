@@ -1,0 +1,48 @@
+---
+import ArtLayout from "../../../layouts/ArtLayout.astro";
+import WatercolorArt from "../../../components/art/WatercolorArt.astro";
+import Tr from "../../../components/art/Tr.astro";
+import { tr } from "../../../data/i18n";
+const amounts = [50, 100, 250, 500];
+---
+<ArtLayout title="Donează — Vizibil" current="despre">
+  <section class="aq-section aq-donate">
+    <div class="aq-donate-card">
+      <div class="aq-donate-copy">
+        <h1 class="aq-page-title"><Tr k="donate.title" /></h1>
+        <p class="aq-page-sub"><Tr k="donate.sub" /></p>
+      </div>
+      <form class="aq-donate-form" id="aq-donate" onsubmit="return false">
+        <div class="aq-donate-freq" role="group" aria-label="Frecvență">
+          <button type="button" class="aq-freq is-on" data-freq="monthly"><Tr k="donate.monthly" /></button>
+          <button type="button" class="aq-freq" data-freq="once"><Tr k="donate.once" /></button>
+        </div>
+        <div class="aq-donate-amts" role="group" aria-label="Sumă">
+          {amounts.map((a, i) => (
+            <button type="button" class={`aq-amt${i === 1 ? " is-on" : ""}`} data-amt={a}>{a} lei</button>
+          ))}
+        </div>
+        <button type="submit" class="aq-btn aq-btn-primary aq-donate-go"><Tr k="donate.give" /></button>
+        <p class="aq-donate-thanks" id="aq-thanks" hidden><Tr k="donate.thanks" /></p>
+      </form>
+    </div>
+    <div class="aq-donate-mark" aria-hidden="true"><WatercolorArt seed={404} palette={["#c98a5a", "#d98072", "#e6c46b"]} blobs={6} /></div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const form = document.getElementById("aq-donate");
+      if (!form) return;
+      form.querySelectorAll(".aq-freq, .aq-amt").forEach((b) => {
+        b.addEventListener("click", () => {
+          b.parentElement.querySelectorAll("button").forEach((x) => x.classList.remove("is-on"));
+          b.classList.add("is-on");
+        });
+      });
+      form.addEventListener("submit", () => {
+        const th = document.getElementById("aq-thanks");
+        if (th) th.hidden = false;
+      });
+    })();
+  </script>
+</ArtLayout>

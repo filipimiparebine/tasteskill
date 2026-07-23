@@ -1,0 +1,187 @@
+/* SKIN: industrial-brutalist-ui. Tactical-telemetry gallery chrome.
+   Near-black ground, off-white phosphor text, ONE amber/safety-orange accent.
+   Square corners, hard 1px dividers, mono labels, extreme type-scale contrast.
+   Space Grotesk display + JetBrains Mono data. Scoped under .theme-brutalist.
+   Selector list mirrors theme-dtf 1:1. Generated paintings left untouched. */
+
+.theme-brutalist {
+  --paper: #0e0e0d; --card: #16150f; --ink: #ededea; --soft: #a8a49a; --faint: #726d61;
+  --line: #2b2921; --accent: #ffb000; --accent-deep: #ffc63d; --accent-soft: #211a08;
+  --wc-paper: #131209; --wrap: 1180px;
+  --disp: "Space Grotesk", "Inter", sans-serif; --hand: "JetBrains Mono", monospace; --body: "Inter", system-ui, sans-serif;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.16) 3px, rgba(0,0,0,.16) 4px),
+    var(--paper);
+  color: var(--ink); font-family: var(--body); line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+}
+.theme-brutalist .aq-btn { font-family: var(--hand); font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: .09em; padding: 12px 22px; border-radius: 0; transition: background .12s, color .12s, box-shadow .12s; }
+.theme-brutalist .aq-btn-primary { background: var(--accent); color: #0e0e0d; box-shadow: none; border: 1px solid var(--accent); }
+.theme-brutalist .aq-btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+.theme-brutalist .aq-btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.theme-brutalist .aq-btn-ghost:hover { box-shadow: inset 0 0 0 1px var(--accent); color: var(--accent); }
+
+.theme-brutalist .aq-nav { max-width: var(--wrap); margin: 0 auto; padding: 20px 30px; display: flex; align-items: center; gap: 26px; border-bottom: 1px solid var(--line); }
+.theme-brutalist .aq-brand { display: inline-flex; align-items: center; gap: 11px; margin-right: auto; }
+.theme-brutalist .aq-brand-mark { width: 28px; height: 28px; border-radius: 0; background: var(--accent); }
+.theme-brutalist .aq-brand-name { font-family: var(--disp); font-size: 22px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: -.01em; }
+.theme-brutalist .aq-navlinks { display: flex; gap: 22px; }
+.theme-brutalist .aq-navlinks a { font-family: var(--hand); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--soft); font-weight: 500; }
+.theme-brutalist .aq-navlinks a:hover, .theme-brutalist .aq-navlinks a[aria-current="page"] { color: var(--accent); }
+.theme-brutalist .aq-navcta { padding: 10px 18px; font-size: 12px; }
+
+.theme-brutalist .aq-section { max-width: var(--wrap); margin: 0 auto; padding: 40px 30px; }
+.theme-brutalist .aq-shead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 8px 0 22px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.theme-brutalist .aq-stitle { font-family: var(--disp); font-weight: 700; font-size: clamp(24px, 3.4vw, 36px); letter-spacing: -0.02em; text-transform: uppercase; line-height: .95; }
+.theme-brutalist .aq-slink { font-family: var(--hand); color: var(--accent); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.theme-brutalist .aq-kicker { font-family: var(--hand); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; font-weight: 600; color: var(--accent); }
+
+.theme-brutalist .aq-hero { max-width: var(--wrap); margin: 0 auto; padding: 48px 30px 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+.theme-brutalist .aq-hero-title { font-family: var(--disp); font-weight: 700; font-size: clamp(42px, 6.4vw, 78px); line-height: .9; letter-spacing: -0.04em; text-transform: uppercase; margin: 16px 0 0; }
+.theme-brutalist .aq-hero-sub { margin-top: 20px; font-size: 16px; color: var(--soft); max-width: 44ch; }
+.theme-brutalist .aq-hero-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+.theme-brutalist .aq-hero-collage { position: relative; min-height: 380px; }
+.theme-brutalist .aq-hero-piece { position: absolute; border-radius: 0; box-shadow: none; border: 1px solid var(--line); aspect-ratio: 4/5; }
+.theme-brutalist .aq-hero-piece.p0 { top: 0; left: 4%; width: 52%; transform: none; z-index: 2; }
+.theme-brutalist .aq-hero-piece.p1 { top: 16%; right: 2%; width: 46%; transform: none; z-index: 1; }
+.theme-brutalist .aq-hero-piece.p2 { bottom: 0; left: 28%; width: 40%; aspect-ratio: 1/1; transform: none; z-index: 3; border-color: var(--accent); }
+
+.theme-brutalist .aq-spot { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: center; margin-top: 14px; }
+.theme-brutalist .aq-spot-art { border-radius: 0; border: 1px solid var(--line); box-shadow: none; aspect-ratio: 4/5; }
+.theme-brutalist .aq-spot-artist { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.theme-brutalist .aq-spot-artist b { font-family: var(--hand); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; font-size: 13px; } .theme-brutalist .aq-spot-artist em { display: block; font-style: normal; font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--faint); }
+.theme-brutalist .aq-spot-title { font-family: var(--disp); font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); text-transform: uppercase; letter-spacing: -0.02em; line-height: .95; margin-bottom: 14px; }
+.theme-brutalist .aq-spot-bio { color: var(--soft); margin-bottom: 20px; max-width: 46ch; }
+
+.theme-brutalist .aq-impact-title { text-align: center; }
+.theme-brutalist .aq-impact-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 24px; background: var(--line); border: 1px solid var(--line); }
+.theme-brutalist .aq-impact-item { text-align: center; padding: 26px 20px; background: var(--card); border-radius: 0; }
+.theme-brutalist .aq-impact-item strong { display: block; font-family: var(--disp); font-size: 46px; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.theme-brutalist .aq-impact-item span { font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--soft); }
+
+.theme-brutalist .aq-aboutstrip-inner { display: grid; grid-template-columns: 1.4fr 1fr; gap: 34px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 0; padding: 34px; }
+.theme-brutalist .aq-aboutstrip-body { color: var(--soft); font-size: 15px; margin: 12px 0 20px; }
+.theme-brutalist .aq-aboutstrip-mark { aspect-ratio: 3/2; border-radius: 0; overflow: hidden; border: 1px solid var(--line); }
+
+.theme-brutalist .aq-rows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.theme-brutalist .aq-card-art { border-radius: 0; box-shadow: none; border: none; }
+.theme-brutalist .aq-card:hover .aq-card-art { box-shadow: none; }
+.theme-brutalist .aq-card-hover { padding: 14px; background: linear-gradient(to top, rgba(8,8,6,.9), rgba(8,8,6,0)); color: #fff; }
+.theme-brutalist .aq-card-title { font-family: var(--disp); font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: -.01em; color: #fff; }
+.theme-brutalist .aq-card-price { font-family: var(--hand); font-size: 12px; letter-spacing: .05em; color: var(--accent); }
+.theme-brutalist .aq-card-artist span { font-family: var(--hand); font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: #fff; }
+.theme-brutalist .aq-card-sold { background: var(--accent); color: #0e0e0d; font-family: var(--hand); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 0; }
+.theme-brutalist .aq-avatar em { color: var(--ink); font-size: .8em; }
+
+.theme-brutalist .aq-gal-head { padding-top: 8px; }
+.theme-brutalist .aq-page-title { font-family: var(--disp); font-weight: 700; font-size: clamp(36px, 5.4vw, 58px); letter-spacing: -0.03em; text-transform: uppercase; line-height: .92; }
+.theme-brutalist .aq-page-sub { color: var(--soft); margin-top: 10px; }
+.theme-brutalist .aq-filters { display: flex; flex-direction: column; gap: 10px; margin: 24px 0 28px; }
+.theme-brutalist .aq-filter-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.theme-brutalist .aq-filter-label { font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); width: 92px; }
+.theme-brutalist .aq-filter { font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .07em; padding: 7px 14px; border-radius: 0; cursor: pointer; background: transparent; color: var(--soft); border: 1px solid var(--line); transition: all .12s; }
+.theme-brutalist .aq-filter:hover { border-color: var(--accent); color: var(--accent); }
+.theme-brutalist .aq-filter.is-on { background: var(--accent); color: #0e0e0d; border-color: var(--accent); }
+.theme-brutalist .aq-empty { text-align: center; color: var(--faint); padding: 40px 0; font-family: var(--hand); text-transform: uppercase; letter-spacing: .08em; font-size: 12px; }
+.theme-brutalist .aq-back { display: inline-block; font-family: var(--hand); text-transform: uppercase; letter-spacing: .08em; color: var(--soft); font-size: 12px; margin-bottom: 18px; }
+.theme-brutalist .aq-back:hover { color: var(--accent); }
+
+.theme-brutalist .aq-artist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.theme-brutalist .aq-artist-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 28px 16px; background: var(--card); border: none; border-radius: 0; transition: background .15s; }
+.theme-brutalist .aq-artist-card:hover { transform: none; box-shadow: none; background: var(--accent-soft); }
+.theme-brutalist .aq-artist-card b { font-family: var(--disp); font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: -.01em; margin-top: 6px; }
+.theme-brutalist .aq-artist-card-alias { font-family: var(--hand); font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); }
+.theme-brutalist .aq-artist-card-media { font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); }
+.theme-brutalist .aq-artist-card-count { font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--soft); margin-top: 6px; }
+
+.theme-brutalist .aq-artist-banner { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.theme-brutalist .aq-artist-name { font-family: var(--disp); font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); text-transform: uppercase; letter-spacing: -0.02em; line-height: .95; }
+.theme-brutalist .aq-artist-alias { font-family: var(--hand); font-size: 14px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); }
+.theme-brutalist .aq-artist-about-inner { display: grid; grid-template-columns: 1.6fr 1fr; gap: 34px; background: var(--card); border: 1px solid var(--line); border-radius: 0; padding: 30px; }
+.theme-brutalist .aq-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+.theme-brutalist .aq-tag { display: inline-block; font-family: var(--hand); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); background: transparent; border: 1px solid var(--accent); padding: 3px 10px; border-radius: 0; font-weight: 600; }
+.theme-brutalist .aq-artist-bio { color: var(--soft); }
+.theme-brutalist .aq-support { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+.theme-brutalist .aq-support h3 { font-family: var(--disp); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 4px; }
+
+.theme-brutalist .aq-art-stage { display: grid; grid-template-columns: 1.25fr 1fr; gap: 38px; align-items: start; }
+.theme-brutalist .aq-art-canvas { border-radius: 0; border: 1px solid var(--line); box-shadow: none; }
+.theme-brutalist .aq-art-sold { background: var(--accent); color: #0e0e0d; font-family: var(--hand); text-transform: uppercase; letter-spacing: .09em; font-size: 11px; font-weight: 600; padding: 6px 12px; border-radius: 0; }
+.theme-brutalist .aq-art-panel { position: sticky; top: 70px; }
+.theme-brutalist .aq-art-title { font-family: var(--disp); font-weight: 700; font-size: clamp(30px, 3.8vw, 48px); letter-spacing: -0.03em; text-transform: uppercase; line-height: .92; margin: 8px 0 14px; }
+.theme-brutalist .aq-art-artist { display: inline-flex; align-items: center; gap: 10px; padding: 6px 0; }
+.theme-brutalist .aq-art-artist b { font-family: var(--hand); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; font-size: 13px; } .theme-brutalist .aq-art-artist em { display: block; font-style: normal; font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--faint); }
+.theme-brutalist .aq-art-artist:hover b { color: var(--accent); }
+.theme-brutalist .aq-art-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 0; overflow: hidden; margin: 20px 0; }
+.theme-brutalist .aq-art-specs div { background: var(--card); padding: 14px 14px; }
+.theme-brutalist .aq-art-specs dt { font-family: var(--hand); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); }
+.theme-brutalist .aq-art-specs dd { margin: 4px 0 0; font-family: var(--hand); font-size: 13px; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.theme-brutalist .aq-art-buy { background: var(--card); border: 1px solid var(--line); border-radius: 0; padding: 22px; }
+.theme-brutalist .aq-art-price { display: block; font-family: var(--disp); font-size: 34px; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; margin-bottom: 14px; }
+.theme-brutalist .aq-art-price-sold { color: var(--faint); }
+.theme-brutalist .aq-art-actions { display: flex; flex-direction: column; gap: 10px; }
+.theme-brutalist .aq-buy { font-size: 13px; padding: 15px; }
+.theme-brutalist .aq-art-note { font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin-top: 12px; text-align: center; }
+
+.theme-brutalist .aq-events-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-bottom: 12px; background: var(--line); border: 1px solid var(--line); }
+.theme-brutalist .aq-eventbig { display: block; background: var(--card); border: none; border-radius: 0; overflow: hidden; transition: background .15s; }
+.theme-brutalist .aq-eventbig:hover { transform: none; box-shadow: none; background: var(--accent-soft); }
+.theme-brutalist .aq-eventbig-thumb { aspect-ratio: 16/9; }
+.theme-brutalist .aq-eventbig-body { padding: 18px; }
+.theme-brutalist .aq-eventbig-body h3 { font-family: var(--disp); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: -.01em; line-height: 1; margin: 10px 0 8px; }
+.theme-brutalist .aq-eventbig-body p { color: var(--soft); font-size: 14px; }
+.theme-brutalist .aq-post-meta { display: flex; align-items: center; gap: 12px; }
+.theme-brutalist .aq-post-meta time { font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--faint); }
+.theme-brutalist .aq-posts { display: flex; flex-direction: column; gap: 1px; margin-top: 8px; background: var(--line); border: 1px solid var(--line); }
+.theme-brutalist .aq-post { display: grid; grid-template-columns: 200px 1fr; gap: 24px; background: var(--card); border: none; border-radius: 0; overflow: hidden; padding: 18px; align-items: center; transition: background .15s; }
+.theme-brutalist .aq-post:hover { transform: none; background: var(--accent-soft); }
+.theme-brutalist .aq-post-thumb { aspect-ratio: 3/2; border-radius: 0; border: 1px solid var(--line); }
+.theme-brutalist .aq-post-title { font-family: var(--disp); font-weight: 700; font-size: 21px; text-transform: uppercase; letter-spacing: -.01em; line-height: 1; margin: 10px 0 8px; }
+.theme-brutalist .aq-post-title a:hover { color: var(--accent); }
+.theme-brutalist .aq-post-excerpt { color: var(--soft); font-size: 14px; }
+.theme-brutalist .aq-post-more { display: inline-block; margin-top: 10px; font-family: var(--hand); color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; font-size: 12px; }
+
+.theme-brutalist .aq-about-hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 34px; align-items: center; }
+.theme-brutalist .aq-about-lead { font-family: var(--disp); font-weight: 500; font-size: clamp(19px, 2.3vw, 26px); line-height: 1.25; text-transform: uppercase; letter-spacing: -.01em; color: var(--ink); margin-top: 14px; }
+.theme-brutalist .aq-about-mark { aspect-ratio: 4/3; border-radius: 0; overflow: hidden; border: 1px solid var(--line); box-shadow: none; }
+.theme-brutalist .aq-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.theme-brutalist .aq-step { padding: 26px; background: var(--card); border: none; border-radius: 0; }
+.theme-brutalist .aq-step-n { font-family: var(--disp); font-size: 26px; color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+.theme-brutalist .aq-step h3 { font-family: var(--disp); font-weight: 700; font-size: 19px; text-transform: uppercase; letter-spacing: -.01em; margin: 10px 0 8px; }
+.theme-brutalist .aq-step p { color: var(--soft); font-size: 14px; }
+.theme-brutalist .aq-about-cta { display: flex; gap: 12px; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
+
+.theme-brutalist .aq-donate { display: grid; grid-template-columns: 1.3fr 1fr; gap: 34px; align-items: center; }
+.theme-brutalist .aq-donate-card { background: var(--card); border: 1px solid var(--line); border-radius: 0; padding: 34px; }
+.theme-brutalist .aq-donate-copy .aq-page-sub { margin-top: 10px; }
+.theme-brutalist .aq-donate-form { margin-top: 22px; display: flex; flex-direction: column; gap: 14px; }
+.theme-brutalist .aq-donate-freq { display: inline-flex; background: transparent; border: 1px solid var(--line); border-radius: 0; padding: 0; width: fit-content; }
+.theme-brutalist .aq-freq { font-family: var(--hand); font-size: 12px; text-transform: uppercase; letter-spacing: .07em; padding: 9px 18px; border-radius: 0; border: none; background: transparent; color: var(--soft); cursor: pointer; }
+.theme-brutalist .aq-freq.is-on { background: var(--accent); color: #0e0e0d; }
+.theme-brutalist .aq-donate-amts { display: flex; gap: 10px; flex-wrap: wrap; }
+.theme-brutalist .aq-amt { font-family: var(--hand); font-size: 14px; letter-spacing: .03em; font-variant-numeric: tabular-nums; padding: 12px 18px; border-radius: 0; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; transition: all .12s; }
+.theme-brutalist .aq-amt:hover { border-color: var(--accent); }
+.theme-brutalist .aq-amt.is-on { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.theme-brutalist .aq-donate-go { margin-top: 6px; padding: 15px; font-size: 13px; }
+.theme-brutalist .aq-donate-thanks { font-family: var(--hand); color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; text-align: center; }
+.theme-brutalist .aq-donate-mark { aspect-ratio: 4/5; border-radius: 0; overflow: hidden; border: 1px solid var(--line); box-shadow: none; }
+
+.theme-brutalist .aq-footer { margin-top: 40px; border-top: 1px solid var(--accent); background: var(--paper); }
+.theme-brutalist .aq-footer-bottom { max-width: var(--wrap); margin: 0 auto; padding: 34px 30px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.theme-brutalist .aq-footer-bottom .aq-brand-name { font-family: var(--disp); font-size: 26px; text-transform: uppercase; letter-spacing: -.01em; }
+.theme-brutalist .aq-footer-tag { font-family: var(--hand); font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--accent); }
+.theme-brutalist .aq-footer-bottom p { font-family: var(--hand); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); }
+
+@media (max-width: 860px) {
+  .theme-brutalist .aq-hero, .theme-brutalist .aq-spot, .theme-brutalist .aq-aboutstrip-inner, .theme-brutalist .aq-art-stage,
+  .theme-brutalist .aq-artist-about-inner, .theme-brutalist .aq-about-hero, .theme-brutalist .aq-donate { grid-template-columns: 1fr; }
+  .theme-brutalist .aq-navlinks { display: none; }
+  .theme-brutalist .aq-hero-collage { min-height: 320px; }
+  .theme-brutalist .aq-rows { grid-template-columns: 1fr 1fr; }
+  .theme-brutalist .aq-impact-row { grid-template-columns: 1fr 1fr; }
+  .theme-brutalist .aq-events-feature { grid-template-columns: 1fr; }
+  .theme-brutalist .aq-steps { grid-template-columns: 1fr; }
+  .theme-brutalist .aq-art-panel { position: static; }
+  .theme-brutalist .aq-post { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) { .theme-brutalist .aq-rows { grid-template-columns: 1fr; } .theme-brutalist .aq-impact-row { grid-template-columns: 1fr; } }

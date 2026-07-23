@@ -1,0 +1,45 @@
+---
+import ArtLayout from "../../../layouts/ArtLayout.astro";
+import WatercolorArt from "../../../components/art/WatercolorArt.astro";
+import Tr from "../../../components/art/Tr.astro";
+import { posts } from "../../../data/art";
+const events = posts.filter((p) => p.kind === "Eveniment");
+const archive = posts.filter((p) => p.kind !== "Eveniment");
+---
+<ArtLayout title="Jurnal — Vizibil" current="jurnal">
+  <section class="aq-section aq-blog">
+    <div class="aq-gal-head">
+      <h1 class="aq-page-title"><Tr k="journal.title" /></h1>
+      <p class="aq-page-sub"><Tr k="journal.sub" /></p>
+    </div>
+
+    <div class="aq-shead"><h2 class="aq-stitle"><Tr k="journal.upcoming" /></h2></div>
+    <div class="aq-events-feature">
+      {events.map((p) => (
+        <a class="aq-eventbig" href="#" data-mock>
+          <span class="aq-eventbig-thumb"><WatercolorArt seed={p.seed} palette={p.palette} blobs={5} /></span>
+          <div class="aq-eventbig-body">
+            <div class="aq-post-meta"><span class="aq-tag">{p.kind}</span><time>{p.date}</time></div>
+            <h3>{p.title}</h3>
+            <p>{p.excerpt}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="aq-shead"><h2 class="aq-stitle"><Tr k="journal.past" /></h2></div>
+    <div class="aq-posts">
+      {archive.map((p) => (
+        <article class="aq-post">
+          <a class="aq-post-thumb" href="#" data-mock><WatercolorArt seed={p.seed} palette={p.palette} blobs={5} /></a>
+          <div class="aq-post-body">
+            <div class="aq-post-meta"><span class="aq-tag">{p.kind}</span><time>{p.date}</time></div>
+            <h2 class="aq-post-title"><a href="#" data-mock>{p.title}</a></h2>
+            <p class="aq-post-excerpt">{p.excerpt}</p>
+            <a class="aq-post-more" href="#" data-mock><Tr k="cta.read" /> →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</ArtLayout>

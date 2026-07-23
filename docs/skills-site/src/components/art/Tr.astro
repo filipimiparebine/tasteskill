@@ -1,0 +1,7 @@
+---
+// Inline translatable text: renders RO by default; the language switcher in
+// ArtLayout swaps [data-i18n] nodes to EN/HU on the client.
+import { tr } from "../../data/i18n";
+const { k } = Astro.props as { k: string };
+---
+<span data-i18n={k}>{tr(k)}</span>
