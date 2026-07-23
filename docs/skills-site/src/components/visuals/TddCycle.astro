@@ -1,0 +1,42 @@
+---
+// Process archetype for `tdd`: the red-green-refactor cycle as a diagram.
+---
+<div class="tdd">
+  <div class="tdd-cycle">
+    <svg viewBox="0 0 240 240" width="220" height="220" aria-hidden="true">
+      <circle cx="120" cy="120" r="86" fill="none" stroke="var(--line-strong)" stroke-width="2" stroke-dasharray="4 6" />
+      <path d="M120 34 A86 86 0 0 1 194 162" fill="none" stroke="#c0392b" stroke-width="3" marker-end="url(#a)" />
+      <path d="M194 162 A86 86 0 0 1 46 162" fill="none" stroke="#2f6f5e" stroke-width="3" marker-end="url(#a)" />
+      <path d="M46 162 A86 86 0 0 1 120 34" fill="none" stroke="#7a5cc4" stroke-width="3" marker-end="url(#a)" />
+      <defs>
+        <marker id="a" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+          <path d="M0 0 L9 4.5 L0 9 Z" fill="currentColor" />
+        </marker>
+      </defs>
+    </svg>
+    <span class="node n-red">RED</span>
+    <span class="node n-green">GREEN</span>
+    <span class="node n-refactor">REFACTOR</span>
+  </div>
+  <ol class="tdd-steps">
+    <li><b style="color:#c0392b">Red</b> — write the smallest failing test that states the next behaviour. Watch it fail.</li>
+    <li><b style="color:#2f6f5e">Green</b> — write the least code that makes it pass. No more.</li>
+    <li><b style="color:#7a5cc4">Refactor</b> — clean up with the test as a safety net, then loop.</li>
+  </ol>
+</div>
+
+<style>
+  .tdd { display: grid; grid-template-columns: 240px 1fr; gap: 8px 28px; align-items: center; padding: 26px; }
+  .tdd-cycle { position: relative; width: 240px; height: 240px; color: var(--ink-faint); }
+  .node {
+    position: absolute; font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.05em; padding: 4px 10px; border-radius: 999px; background: var(--surface);
+    border: 1px solid var(--line-strong); white-space: nowrap;
+  }
+  .n-red { top: 14px; left: 50%; transform: translateX(-50%); color: #c0392b; }
+  .n-green { bottom: 44px; right: -6px; color: #2f6f5e; }
+  .n-refactor { bottom: 44px; left: -14px; color: #7a5cc4; }
+  .tdd-steps { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 15px; line-height: 1.6; }
+  .tdd-steps li { margin-bottom: 10px; }
+  @media (max-width: 620px) { .tdd { grid-template-columns: 1fr; justify-items: center; } }
+</style>

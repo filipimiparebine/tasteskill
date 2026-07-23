@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MinimalistUiDemo from "../../components/visuals/MinimalistUiDemo.astro";
+import TddCycle from "../../components/visuals/TddCycle.astro";
+import DefaultFlow from "../../components/visuals/DefaultFlow.astro";
+import { skills, families } from "../../data/skills";
+
+export function getStaticPaths() {
+  return skills.map((skill, i) => ({
+    params: { slug: skill.slug },
+    props: {
+      skill,
+      prev: i > 0 ? skills[i - 1] : null,
+      next: i < skills.length - 1 ? skills[i + 1] : null,
+    },
+  }));
+}
+
+const { skill, prev, next } = Astro.props;
+const family = families.find((f) => f.id === skill.family)!;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const bespoke = skill.visual === "minimalist-ui" || skill.visual === "tdd";
+const caption = bespoke
+  ? "Live sample, rendered in this skill's own aesthetic."
+  : "Flow generated from the manifest — a tailored visual lands with ticket T3.";
+---
+<BaseLayout title={`${skill.name} — Skills Atlas`} current={skill.slug}>
+  <div class="wrap" style={`--fam: var(--fam-${skill.family})`}>
+    <p class="crumbs">
+      <a href={`${base}/`}>Skills Atlas</a> ·
+      <span class="fam">{family.name}</span>
+    </p>
+
+    <h1 class="title">/{skill.name}</h1>
+    <p class="lede">{skill.tagline}</p>
+
+    <div class="panel">
+      <dl>
+        <dt>What it does</dt><dd>{skill.whatItDoes}</dd>
+        <dt>When to use</dt><dd>{skill.whenToUse}</dd>
+        <dt>Inputs</dt><dd>{skill.inputs}</dd>
+        <dt>Outputs</dt><dd>{skill.outputs}</dd>
+        <dt>Mode</dt><dd>{skill.hitl ? "HITL — human in the loop" : "AFK — runs on its own"}</dd>
+        <dt>Example</dt><dd><code>{skill.example}</code></dd>
+      </dl>
+    </div>
+
+    <p class="section-label">How it looks</p>
+    <div class="stage">
+      {skill.visual === "minimalist-ui" && <MinimalistUiDemo />}
+      {skill.visual === "tdd" && <TddCycle />}
+      {!bespoke && <DefaultFlow skill={skill} />}
+    </div>
+    <p class="stage-caption">{caption}</p>
+
+    <nav class="pager">
+      {prev ? (
+        <a href={`${base}/skills/${prev.slug}/`}>← {prev.name}</a>
+      ) : (
+        <span class="nil">← start</span>
+      )}
+      {next ? (
+        <a href={`${base}/skills/${next.slug}/`}>{next.name} →</a>
+      ) : (
+        <span class="nil">end →</span>
+      )}
+    </nav>
+  </div>
+</BaseLayout>
