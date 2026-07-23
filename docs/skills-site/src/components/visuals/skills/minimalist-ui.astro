@@ -1,0 +1,75 @@
+---
+// Live in-aesthetic sample for `minimalist-ui`: warm monochrome, typographic
+// contrast, flat bento grid, muted pastels, no gradients, no heavy shadows.
+---
+<div class="mu">
+  <div class="mu-top">
+    <div>
+      <p class="mu-kicker">Thursday · 6 min read left</p>
+      <h4 class="mu-h">Good evening, Ada</h4>
+    </div>
+    <div class="mu-avatar">A</div>
+  </div>
+
+  <div class="mu-grid">
+    <div class="mu-cell mu-span2">
+      <p class="mu-label">Continue reading</p>
+      <p class="mu-title">The Shape of a Well-Made Thing</p>
+      <div class="mu-bar"><span style="width:64%"></span></div>
+      <p class="mu-meta">64% · Chapter 7 of 11</p>
+    </div>
+    <div class="mu-cell mu-pastel-a">
+      <p class="mu-stat">128</p>
+      <p class="mu-label">days streak</p>
+    </div>
+    <div class="mu-cell mu-pastel-b">
+      <p class="mu-stat">14</p>
+      <p class="mu-label">in your list</p>
+    </div>
+    <div class="mu-cell mu-span2">
+      <p class="mu-label">Up next</p>
+      <ul class="mu-list">
+        <li><span>Notes on the Synthesis of Form</span><em>Alexander</em></li>
+        <li><span>The Timeless Way of Building</span><em>Alexander</em></li>
+        <li><span>Understanding Comics</span><em>McCloud</em></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mu {
+    --paper: #f5f1e8;
+    --ink: #221f18;
+    --soft: #6a6558;
+    --line: #e2dccd;
+    --a: #dfe6dc;
+    --b: #ece0d6;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 26px 26px 28px;
+    font-family: "Newsreader", Georgia, serif;
+  }
+  .mu-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .mu-kicker { margin: 0 0 4px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); }
+  .mu-h { margin: 0; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; }
+  .mu-avatar {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper);
+    display: grid; place-items: center; font-size: 16px; font-family: "JetBrains Mono", monospace;
+  }
+  .mu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .mu-cell { background: #fffdf8; border: 1px solid var(--line); border-radius: 4px; padding: 18px; }
+  .mu-span2 { grid-column: span 2; }
+  .mu-pastel-a { background: var(--a); border-color: transparent; }
+  .mu-pastel-b { background: var(--b); border-color: transparent; }
+  .mu-label { margin: 0; font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--soft); }
+  .mu-title { margin: 8px 0 14px; font-size: 22px; font-weight: 500; }
+  .mu-stat { margin: 0 0 4px; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; }
+  .mu-bar { height: 5px; background: var(--line); border-radius: 999px; overflow: hidden; }
+  .mu-bar span { display: block; height: 100%; background: var(--ink); }
+  .mu-meta { margin: 8px 0 0; font-size: 13px; color: var(--soft); }
+  .mu-list { margin: 10px 0 0; padding: 0; list-style: none; }
+  .mu-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 9px 0; border-top: 1px solid var(--line); font-size: 16px; }
+  .mu-list li:first-child { border-top: none; }
+  .mu-list em { font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--soft); }
+</style>

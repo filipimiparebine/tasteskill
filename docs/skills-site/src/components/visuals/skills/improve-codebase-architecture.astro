@@ -1,0 +1,42 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-improve-codebase-architecture">
+  <div class="head">
+    <div class="t">Deepening opportunities</div>
+    <div class="s">3 modules · ranked by shallowness</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="name">HttpClient</span><span class="desc">14 config params leak to every caller</span></div>
+    <div class="bar"><i style="width:88%" class="hi"></i></div>
+    <div class="sev hi-t">high</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="name">DateUtils</span><span class="desc">thin pass-throughs, no abstraction earned</span></div>
+    <div class="bar"><i style="width:58%" class="md"></i></div>
+    <div class="sev md-t">medium</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="name">OrderValidator</span><span class="desc">minor: two overlapping entry points</span></div>
+    <div class="bar"><i style="width:26%" class="lo"></i></div>
+    <div class="sev lo-t">low</div>
+  </div>
+</div>
+<style>
+  .v-improve-codebase-architecture{width:780px;box-sizing:border-box;padding:26px;background:#faf9f6;color:#17150f;font-family:system-ui,sans-serif;}
+  .head{margin-bottom:20px;}
+  .head .t{font-family:"Newsreader",serif;font-size:21px;font-weight:600;}
+  .head .s{font-size:12.5px;color:#6b6559;margin-top:3px;font-family:"JetBrains Mono",monospace;}
+  .row{display:grid;grid-template-columns:260px 1fr 66px;align-items:center;gap:18px;padding:15px 0;border-top:1px solid #e5e1d8;}
+  .name{display:block;font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:600;}
+  .desc{display:block;font-size:12px;color:#6b6559;margin-top:3px;}
+  .bar{height:12px;background:#eee9df;border-radius:6px;overflow:hidden;}
+  .bar i{display:block;height:100%;border-radius:6px;}
+  .hi{background:#d64545;}
+  .md{background:#e0a020;}
+  .lo{background:#1f9d55;}
+  .sev{font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;text-align:right;}
+  .hi-t{color:#d64545;}
+  .md-t{color:#b57f10;}
+  .lo-t{color:#1f9d55;}
+</style>

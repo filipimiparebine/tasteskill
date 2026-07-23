@@ -1,0 +1,35 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-domain-modeling">
+  <div class="glossary">
+    <div class="gtitle">Glossary</div>
+    <table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Ledger</td><td>Append-only record of every balance change</td></tr>
+        <tr><td>Hold</td><td>Reserved funds not yet settled</td></tr>
+        <tr><td>Settlement</td><td>Point a hold becomes a posted entry</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="adr">
+    <div class="adrhead">ADR-0003 · Holds are immutable</div>
+    <p>A hold is never edited; releasing one writes a compensating entry. Keeps the ledger auditable.</p>
+    <div class="status"><span class="dot"></span>Status: Accepted</div>
+  </div>
+</div>
+<style>
+  .v-domain-modeling{width:780px;box-sizing:border-box;padding:26px;background:#faf9f6;color:#17150f;font-family:system-ui,sans-serif;display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start;}
+  .gtitle,.adrhead{font-family:"Newsreader",serif;font-weight:600;}
+  .gtitle{font-size:19px;margin-bottom:12px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid #e5e1d8;border-radius:8px;overflow:hidden;}
+  th{text-align:left;background:#f0ece2;padding:9px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#6b6559;}
+  td{padding:11px 12px;border-top:1px solid #eee9df;vertical-align:top;}
+  td:first-child{font-family:"JetBrains Mono",monospace;font-weight:600;white-space:nowrap;}
+  .adr{background:#17150f;color:#faf9f6;border-radius:10px;padding:20px;}
+  .adrhead{font-size:15px;margin-bottom:10px;}
+  .adr p{font-size:12.5px;line-height:1.55;color:#cfc9bd;margin:0 0 16px;}
+  .status{display:flex;align-items:center;gap:8px;font-size:12px;font-family:"JetBrains Mono",monospace;color:#8fe0aa;}
+  .dot{width:9px;height:9px;border-radius:50%;background:#1f9d55;box-shadow:0 0 0 3px rgba(31,157,85,.25);}
+</style>

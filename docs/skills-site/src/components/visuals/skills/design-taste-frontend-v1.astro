@@ -1,0 +1,58 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-design-taste-frontend-v1">
+  <span class="dtv-chip">v1 · legacy</span>
+
+  <div class="dtv-center">
+    <div class="dtv-mark">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M4 20 L12 4 L20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <line x1="8" y1="20" x2="16" y2="20" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      <span>Åberg&nbsp;Studio</span>
+    </div>
+
+    <p class="dtv-kicker">The original taste engine — preserved</p>
+    <h1 class="dtv-head">Interfaces that<br/>don't look <em>generated</em>.</h1>
+    <p class="dtv-sub">The exact behaviour teams shipped in 2019. Kept intact for projects that depend on it.</p>
+
+    <a class="dtv-btn" href="#">See the archive</a>
+    <div class="dtv-dots"><i></i><i></i><i></i></div>
+  </div>
+</div>
+
+<style>
+  .v-design-taste-frontend-v1 {
+    position: relative;
+    background: #f2efe7;
+    color: #16130d;
+    padding: 30px 40px 34px;
+    min-height: 380px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-family: "Newsreader", Georgia, serif;
+    overflow: hidden;
+  }
+  .dtv-chip {
+    position: absolute; top: 18px; right: 20px;
+    font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #7d7869; border: 1px solid #d3ccbc; border-radius: 999px; padding: 4px 11px; background: #faf8f2;
+  }
+  .dtv-center { max-width: 500px; }
+  .dtv-mark { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 22px; }
+  .dtv-mark span { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.02em; }
+  .dtv-kicker { margin: 0 0 14px; font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: #8a8578; }
+  .dtv-head { margin: 0; font-size: 46px; line-height: 1.04; font-weight: 500; letter-spacing: -0.025em; }
+  .dtv-head em { font-style: italic; font-weight: 400; }
+  .dtv-sub { margin: 18px auto 0; font-size: 16px; line-height: 1.5; color: #4a463c; max-width: 380px; }
+  .dtv-btn {
+    display: inline-block; margin-top: 26px; background: transparent; color: #16130d; text-decoration: none;
+    font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.03em;
+    padding: 12px 28px; border: 1.5px solid #16130d; border-radius: 2px;
+  }
+  .dtv-dots { display: flex; justify-content: center; gap: 6px; margin-top: 26px; }
+  .dtv-dots i { width: 5px; height: 5px; border-radius: 50%; background: #cfc8b8; }
+  .dtv-dots i:first-child { background: #16130d; }
+</style>

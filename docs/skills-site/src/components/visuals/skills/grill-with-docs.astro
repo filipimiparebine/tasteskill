@@ -1,0 +1,51 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-grill-with-docs">
+  <div class="gd-left">
+    <span class="gd-cap">Interrogation</span>
+    <div class="gd-msg gd-q"><em>Why Postgres advisory locks over Redis for the job queue?</em></div>
+    <div class="gd-msg gd-a">We already run Postgres. One less thing to operate, and locks are transactional.</div>
+    <div class="gd-msg gd-q"><em>And when a worker dies holding a lock?</em></div>
+    <div class="gd-msg gd-a">Session-scoped — the lock releases when the connection drops.</div>
+  </div>
+  <div class="gd-right">
+    <div class="gd-doctop">
+      <span class="gd-file">docs/adr/0012-job-queue.md</span>
+      <span class="gd-live"><i></i> writing</span>
+    </div>
+    <div class="gd-doc">
+      <p class="gd-h"># ADR 0012 — Job queue backend</p>
+      <p class="gd-k">## Status</p>
+      <p class="gd-t">Accepted</p>
+      <p class="gd-k">## Decision</p>
+      <p class="gd-t">Use Postgres advisory locks, not Redis. Reuses existing infra; locks are transactional.</p>
+      <p class="gd-k">## Consequences</p>
+      <p class="gd-t">Worker crash is safe: session-scoped locks release on connection drop.<span class="gd-caret"></span></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .v-grill-with-docs {
+    padding: 24px; background: #faf9f6; color: #17150f;
+    font-family: var(--font-sans, system-ui); border-radius: 10px;
+    display: grid; grid-template-columns: 1fr 1.05fr; gap: 20px;
+  }
+  .gd-cap { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; color: #8f897b; display: block; margin-bottom: 12px; }
+  .gd-msg { font-size: 13px; line-height: 1.5; padding: 10px 13px; border-radius: 11px; margin-bottom: 9px; max-width: 92%; }
+  .gd-q { background: #fff; border: 1px solid #e0a37c; color: #6a3417; }
+  .gd-q em { font-style: normal; font-weight: 500; }
+  .gd-a { background: #eae6db; color: #43402f; margin-left: auto; border-bottom-right-radius: 4px; }
+  .gd-right { display: flex; flex-direction: column; }
+  .gd-doctop { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #2b2620; border-radius: 8px 8px 0 0; }
+  .gd-file { font-family: var(--font-mono); font-size: 11px; color: #c9c2b2; }
+  .gd-live { font-family: var(--font-mono); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; color: #6fbf8f; display: inline-flex; align-items: center; gap: 5px; }
+  .gd-live i { width: 6px; height: 6px; border-radius: 50%; background: #6fbf8f; box-shadow: 0 0 0 2px rgba(111,191,143,.25); }
+  .gd-doc { background: #fff; border: 1px solid #e7e3d8; border-top: none; border-radius: 0 0 8px 8px; padding: 14px 16px; flex: 1; }
+  .gd-doc p { margin: 0 0 7px; }
+  .gd-h { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #221f18; }
+  .gd-k { font-family: var(--font-mono); font-size: 11px; color: #b4552d; margin-top: 10px; }
+  .gd-t { font-family: var(--font-serif); font-size: 13.5px; line-height: 1.5; color: #4a4638; }
+  .gd-caret { display: inline-block; width: 2px; height: 15px; background: #c0492b; margin-left: 2px; vertical-align: -3px; }
+</style>

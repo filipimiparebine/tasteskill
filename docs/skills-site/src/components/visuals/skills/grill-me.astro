@@ -1,0 +1,54 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-grill-me">
+  <div class="gm-head">
+    <span class="gm-dot"></span>
+    <span class="gm-title">Grilling: OAuth refresh flow</span>
+  </div>
+  <div class="gm-thread">
+    <div class="gm-row gm-you">
+      <p class="gm-bubble">We'll cache the access token in memory and re-use it across requests.</p>
+    </div>
+    <div class="gm-row gm-me">
+      <span class="gm-who">interviewer</span>
+      <p class="gm-bubble">For how long? Where does the expiry come from — the JWT or the token endpoint?</p>
+    </div>
+    <div class="gm-row gm-you">
+      <p class="gm-bubble">The <code>expires_in</code> field. We start a timer and refresh just before it lapses.</p>
+    </div>
+    <div class="gm-row gm-me gm-sharp">
+      <span class="gm-who">interviewer</span>
+      <p class="gm-bubble">But what happens when the token expires <em>mid-request</em> — the timer hasn't fired yet, the server returns 401, and three calls are already in flight?</p>
+    </div>
+    <div class="gm-row gm-you gm-typing">
+      <span class="gm-dots"><i></i><i></i><i></i></span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .v-grill-me {
+    padding: 26px; background: #faf9f6; color: #17150f;
+    font-family: var(--font-sans, system-ui); border-radius: 10px;
+  }
+  .gm-head { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
+  .gm-dot { width: 9px; height: 9px; border-radius: 50%; background: #c0492b; box-shadow: 0 0 0 3px rgba(192,73,43,.15); }
+  .gm-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: #8f897b; text-transform: uppercase; }
+  .gm-thread { display: flex; flex-direction: column; gap: 11px; }
+  .gm-row { display: flex; flex-direction: column; max-width: 78%; }
+  .gm-you { align-self: flex-end; align-items: flex-end; }
+  .gm-me { align-self: flex-start; align-items: flex-start; }
+  .gm-who { font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #b48a3a; margin: 0 4px 4px; }
+  .gm-bubble { margin: 0; font-size: 14px; line-height: 1.5; padding: 11px 15px; border-radius: 14px; }
+  .gm-you .gm-bubble { background: #eae6db; color: #3a362c; border-bottom-right-radius: 4px; }
+  .gm-me .gm-bubble { background: #fff; border: 1px solid #e7e3d8; color: #221f18; border-bottom-left-radius: 4px; }
+  .gm-bubble code { font-family: var(--font-mono); font-size: 12.5px; background: rgba(0,0,0,.05); padding: 1px 4px; border-radius: 4px; }
+  .gm-sharp .gm-bubble {
+    border-color: #c0492b; background: #fdf3ef; color: #4a1c10;
+    box-shadow: 0 0 0 1px #c0492b, 0 4px 16px rgba(192,73,43,.14); font-weight: 500;
+  }
+  .gm-sharp .gm-bubble em { font-style: normal; text-decoration: underline; text-decoration-color: #c0492b; text-underline-offset: 3px; }
+  .gm-dots { display: inline-flex; gap: 4px; padding: 12px 15px; background: #eae6db; border-radius: 14px; border-bottom-right-radius: 4px; }
+  .gm-dots i { width: 6px; height: 6px; border-radius: 50%; background: #b0a996; }
+</style>

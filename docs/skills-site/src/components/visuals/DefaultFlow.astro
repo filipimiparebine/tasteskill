@@ -1,0 +1,38 @@
+---
+// Fallback visual for skills without a bespoke live sample: an honest
+// inputs → skill → outputs flow built from the manifest. Ticket T3 replaces
+// these with tailored visuals where a live aesthetic sample adds value.
+import type { Skill } from "../../data/skills";
+const { skill } = Astro.props as { skill: Skill };
+---
+<div class="flow" style={`--fam: var(--fam-${skill.family})`}>
+  <div class="flow-node in">
+    <span class="flow-tag">Input</span>
+    <p>{skill.inputs}</p>
+  </div>
+  <div class="flow-arrow" aria-hidden="true">→</div>
+  <div class="flow-node skill">
+    <span class="flow-tag">{skill.hitl ? "HITL skill" : "AFK skill"}</span>
+    <p class="flow-mono">/{skill.slug}</p>
+  </div>
+  <div class="flow-arrow" aria-hidden="true">→</div>
+  <div class="flow-node out">
+    <span class="flow-tag">Output</span>
+    <p>{skill.outputs}</p>
+  </div>
+</div>
+
+<style>
+  .flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 12px; align-items: stretch; padding: 30px 26px; }
+  .flow-node { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .flow-node.skill { border-color: var(--fam); border-width: 1.5px; background: var(--surface); }
+  .flow-tag { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); }
+  .flow-node.skill .flow-tag { color: var(--fam); }
+  .flow-node p { margin: 0; font-size: 14px; color: var(--ink-soft); line-height: 1.45; }
+  .flow-mono { font-family: var(--font-mono); font-size: 15px; color: var(--ink) !important; }
+  .flow-arrow { align-self: center; color: var(--ink-faint); font-size: 20px; }
+  @media (max-width: 700px) {
+    .flow { grid-template-columns: 1fr; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>

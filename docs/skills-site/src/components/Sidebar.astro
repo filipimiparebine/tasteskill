@@ -1,0 +1,29 @@
+---
+import { families, skillsByFamily } from "../data/skills";
+const { current } = Astro.props as { current?: string };
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<aside class="sidebar">
+  <a class="brand" href={`${base}/`}>
+    <b>Skills Atlas</b>
+    <span>Claude Code skills in this repo</span>
+  </a>
+  {families.map((fam) => (
+    <div class="nav-group" style={`--fam: var(--fam-${fam.id})`}>
+      <h3>{fam.name}</h3>
+      <ul class="nav-list">
+        {skillsByFamily(fam.id).map((s) => (
+          <li>
+            <a
+              href={`${base}/skills/${s.slug}/`}
+              aria-current={current === s.slug ? "page" : undefined}
+            >
+              <span>{s.name}</span>
+              {s.hitl && <span class="hitl">HITL</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</aside>

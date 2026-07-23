@@ -1,0 +1,64 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-wayfinder">
+  <p class="wf-cap">.scratch/map.md · 5 nodes, 4 blocking edges</p>
+  <svg class="wf-svg" viewBox="0 0 720 300" width="100%" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <defs>
+      <marker id="wfarr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+        <path d="M0 0 L9 4.5 L0 9 Z" fill="#b8b2a3" />
+      </marker>
+    </defs>
+    <path d="M180 68 L296 118" stroke="#cfc9bb" stroke-width="1.6" fill="none" marker-end="url(#wfarr)" />
+    <path d="M180 92 L296 200" stroke="#cfc9bb" stroke-width="1.6" fill="none" marker-end="url(#wfarr)" />
+    <path d="M470 128 L560 128" stroke="#cfc9bb" stroke-width="1.6" fill="none" marker-end="url(#wfarr)" />
+    <path d="M470 208 L560 148" stroke="#e0c0ae" stroke-width="1.6" stroke-dasharray="4 4" fill="none" marker-end="url(#wfarr)" />
+
+    <g class="wf-node wf-map">
+      <rect x="44" y="52" width="136" height="56" rx="9" />
+      <text x="112" y="76" class="wf-t">MAP</text>
+      <text x="112" y="94" class="wf-sub">skills reference site</text>
+    </g>
+    <g class="wf-node">
+      <rect x="300" y="94" width="170" height="56" rx="9" />
+      <text x="385" y="118" class="wf-t">research</text>
+      <text x="385" y="136" class="wf-sub">#12 · content collections</text>
+    </g>
+    <g class="wf-node wf-blocked">
+      <rect x="300" y="182" width="170" height="56" rx="9" />
+      <text x="385" y="206" class="wf-t">task</text>
+      <text x="385" y="224" class="wf-sub">#14 · blocked by #12</text>
+    </g>
+    <g class="wf-node wf-frontier">
+      <rect x="564" y="100" width="140" height="56" rx="9" />
+      <text x="634" y="124" class="wf-t">prototype</text>
+      <text x="634" y="142" class="wf-sub">#13 · frontier</text>
+    </g>
+  </svg>
+  <div class="wf-legend">
+    <span><i class="d-frontier"></i>frontier</span>
+    <span><i class="d-blocked"></i>blocked</span>
+    <span><i class="d-map"></i>map root</span>
+  </div>
+</div>
+
+<style>
+  .v-wayfinder { padding: 22px 24px; background: #faf9f6; border-radius: 8px; color: #17150f; }
+  .wf-cap { margin: 0 0 6px; font-family: var(--font-mono); font-size: 11px; color: #8f897b; letter-spacing: .02em; }
+  .wf-svg { display: block; }
+  .wf-node rect { fill: #fff; stroke: #d6d1c3; stroke-width: 1.4; }
+  .wf-t { font-family: var(--font-mono); font-size: 14px; font-weight: 600; fill: #221f18; text-anchor: middle; }
+  .wf-sub { font-family: var(--font-sans, system-ui); font-size: 10.5px; fill: #8f897b; text-anchor: middle; }
+  .wf-map rect { fill: #fbf0e8; stroke: #b4552d; }
+  .wf-map .wf-t { fill: #b4552d; }
+  .wf-frontier rect { fill: #fff; stroke: #2f8f6f; stroke-width: 2; }
+  .wf-frontier .wf-t { fill: #227a5e; }
+  .wf-blocked rect { fill: #f3f1ec; stroke: #ddd8cc; stroke-dasharray: 5 4; }
+  .wf-blocked .wf-t, .wf-blocked .wf-sub { fill: #b2ac9d; }
+  .wf-legend { display: flex; gap: 18px; margin-top: 4px; font-size: 11.5px; color: #5b564a; font-family: var(--font-mono); }
+  .wf-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .wf-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .d-frontier { background: #2f8f6f; }
+  .d-blocked { background: #ddd8cc; }
+  .d-map { background: #b4552d; }
+</style>

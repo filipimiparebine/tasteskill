@@ -1,0 +1,63 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-high-end-visual-design">
+  <div class="hev-card">
+    <div class="hev-top">
+      <span class="hev-tier">Atelier</span>
+      <span class="hev-badge">Invitation only</span>
+    </div>
+    <p class="hev-lede">For studios that ship maybe six things a year — and want each one flawless.</p>
+    <div class="hev-price">
+      <span class="hev-cur">$</span>
+      <span class="hev-num">4,800</span>
+      <span class="hev-per">/ month</span>
+    </div>
+    <ul class="hev-list">
+      <li>Dedicated principal designer</li>
+      <li>Weekly craft reviews, no queue</li>
+      <li>Motion + interaction pass on every screen</li>
+      <li>Direct line — replies within the hour</li>
+    </ul>
+    <a class="hev-btn" href="#">Request an introduction</a>
+    <p class="hev-fine">Two engagements open for autumn.</p>
+  </div>
+</div>
+
+<style>
+  .v-high-end-visual-design {
+    background: #eceae4;
+    padding: 34px 40px;
+    min-height: 400px;
+    display: grid;
+    place-items: center;
+    font-family: "Newsreader", Georgia, serif;
+  }
+  .hev-card {
+    width: 400px; max-width: 100%;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfaf7 100%);
+    border: 1px solid #e6e2d8;
+    border-radius: 14px;
+    padding: 32px 34px 30px;
+    box-shadow: 0 1px 1px rgba(30,25,15,.04), 0 18px 50px -22px rgba(30,25,15,.30);
+    color: #1a1710;
+  }
+  .hev-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+  .hev-tier { font-size: 15px; letter-spacing: 0.16em; text-transform: uppercase; color: #9c8b5e; font-weight: 500; }
+  .hev-badge { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #837c6c; border: 1px solid #e0dccf; border-radius: 999px; padding: 4px 10px; }
+  .hev-lede { margin: 0 0 24px; font-size: 17px; line-height: 1.45; color: #514c40; font-style: italic; }
+  .hev-price { display: flex; align-items: baseline; gap: 3px; margin-bottom: 24px; }
+  .hev-cur { font-size: 22px; color: #9c8b5e; }
+  .hev-num { font-size: 52px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; }
+  .hev-per { font-family: "JetBrains Mono", monospace; font-size: 12px; color: #9a9282; margin-left: 4px; }
+  .hev-list { list-style: none; margin: 0 0 26px; padding: 22px 0; border-top: 1px solid #ece8dd; border-bottom: 1px solid #ece8dd; }
+  .hev-list li { position: relative; padding-left: 22px; font-size: 15.5px; line-height: 1.4; color: #35312a; margin: 12px 0; }
+  .hev-list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: #c9b678; }
+  .hev-btn {
+    display: block; text-align: center; text-decoration: none;
+    background: #1a1710; color: #fbfaf7;
+    font-family: "JetBrains Mono", monospace; font-size: 13px; letter-spacing: 0.02em;
+    padding: 15px; border-radius: 8px;
+  }
+  .hev-fine { margin: 14px 0 0; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.04em; color: #a29a89; }
+</style>

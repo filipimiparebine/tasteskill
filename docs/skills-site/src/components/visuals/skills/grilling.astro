@@ -1,0 +1,46 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-grilling">
+  <div class="gr-top">
+    <span class="gr-label">Stress-testing your plan</span>
+    <span class="gr-cadence">
+      <span class="gr-pips"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span>
+      <span class="gr-count">3 of 7</span>
+    </span>
+  </div>
+  <p class="gr-premise">You said the migration can run live, with no maintenance window.</p>
+  <div class="gr-question">
+    <span class="gr-tag">Question</span>
+    <p class="gr-q">While you're backfilling the new <code>orders_v2</code> table, a write lands on the old one. Which table is the source of truth for that row — and how does the reader know?</p>
+  </div>
+  <p class="gr-note">One question at a time. Answer this before the next.</p>
+</div>
+
+<style>
+  .v-grilling {
+    padding: 28px; background: #faf9f6; color: #17150f;
+    font-family: var(--font-sans, system-ui); border-radius: 10px;
+  }
+  .gr-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+  .gr-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: #8f897b; }
+  .gr-cadence { display: inline-flex; align-items: center; gap: 10px; }
+  .gr-pips { display: inline-flex; gap: 5px; }
+  .gr-pips i { width: 8px; height: 8px; border-radius: 50%; background: #ddd8cb; }
+  .gr-pips i.on { background: #c0492b; box-shadow: 0 0 0 3px rgba(192,73,43,.16); }
+  .gr-count { font-family: var(--font-mono); font-size: 12px; color: #b4552d; font-weight: 600; }
+  .gr-premise { margin: 0 0 16px; font-size: 13px; color: #8f897b; font-style: italic; border-left: 2px solid #ddd8cb; padding-left: 12px; }
+  .gr-question {
+    background: #fff; border: 1px solid #c0492b; border-radius: 12px;
+    padding: 22px 24px; position: relative;
+    box-shadow: 0 0 0 1px #c0492b, 0 8px 28px rgba(192,73,43,.12);
+  }
+  .gr-tag {
+    position: absolute; top: -11px; left: 20px; font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    background: #c0492b; color: #fff; padding: 3px 10px; border-radius: 999px;
+  }
+  .gr-q { margin: 0; font-family: var(--font-serif); font-size: 21px; line-height: 1.42; color: #2a170f; }
+  .gr-q code { font-family: var(--font-mono); font-size: 16px; background: #fdf3ef; color: #a53f22; padding: 1px 6px; border-radius: 5px; }
+  .gr-note { margin: 18px 4px 0; font-size: 12px; color: #a39c8b; letter-spacing: .02em; }
+</style>

@@ -1,0 +1,63 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-implement">
+  <div class="im-head">
+    <span class="im-branch">feat/skills-index</span>
+    <span class="im-stat"><em class="add">+18</em> <em class="del">−4</em> · 3 files</span>
+  </div>
+  <div class="im-body">
+    <ul class="im-files">
+      <li class="im-active"><span class="im-mark m-mod">M</span>src/pages/skills/[slug].astro</li>
+      <li><span class="im-mark m-add">A</span>src/content/config.ts</li>
+      <li><span class="im-mark m-mod">M</span>src/pages/index.astro</li>
+    </ul>
+    <pre class="im-diff"><code><span class="hunk">@@ src/pages/skills/[slug].astro @@</span>
+<span class="ctx"> const {'{'} entry {'}'} = Astro.props;</span>
+<span class="ctx"> const {'{'} Content {'}'} = await entry.render();</span>
+<span class="del">-const Visual = null;</span>
+<span class="add">+const Visual = visuals[entry.slug]</span>
+<span class="add">+  ?? DefaultFlow;</span>
+<span class="ctx"> ---</span>
+<span class="del">-&lt;article&gt;&lt;Content /&gt;&lt;/article&gt;</span>
+<span class="add">+&lt;article&gt;</span>
+<span class="add">+  &lt;Visual skill={'{'}entry.data{'}'} /&gt;</span>
+<span class="add">+  &lt;Content /&gt;</span>
+<span class="add">+&lt;/article&gt;</span></code></pre>
+  </div>
+</div>
+
+<style>
+  .v-implement {
+    background: #fffefb; border: 1px solid #e7e3d8; border-radius: 8px;
+    overflow: hidden; color: #17150f; box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  }
+  .im-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 18px; border-bottom: 1px solid #ece7db; background: #f8f5ef;
+  }
+  .im-branch { font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; color: #221f18; }
+  .im-stat { font-family: var(--font-mono); font-size: 12px; color: #8f897b; }
+  .im-stat .add { color: #227a5e; font-style: normal; }
+  .im-stat .del { color: #b4552d; font-style: normal; }
+  .im-body { display: grid; grid-template-columns: 210px 1fr; }
+  .im-files { margin: 0; padding: 12px 8px; list-style: none; border-right: 1px solid #ece7db; background: #fbfaf6; }
+  .im-files li {
+    display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 5px;
+    font-family: var(--font-mono); font-size: 11.5px; color: #5b564a; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .im-active { background: #f0ece2; color: #221f18; }
+  .im-mark { flex: none; width: 16px; height: 16px; border-radius: 3px; display: grid; place-items: center; font-size: 10px; font-weight: 700; }
+  .m-mod { background: #f3e6d3; color: #a06a1f; }
+  .m-add { background: #e0f0e7; color: #227a5e; }
+  .im-diff {
+    margin: 0; padding: 14px 16px; overflow-x: auto;
+    font-family: var(--font-mono); font-size: 12px; line-height: 1.65; background: #fff;
+  }
+  .im-diff code { display: block; }
+  .im-diff .hunk { color: #9b7fc4; display: block; margin-bottom: 4px; }
+  .im-diff .ctx { color: #6b6558; display: block; }
+  .im-diff .add { color: #1f6b52; background: #e9f5ef; display: block; }
+  .im-diff .del { color: #a8412a; background: #fbeae4; display: block; }
+  @media (max-width: 620px) { .im-body { grid-template-columns: 1fr; } .im-files { border-right: 0; border-bottom: 1px solid #ece7db; } }
+</style>
