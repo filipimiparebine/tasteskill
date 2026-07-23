@@ -1,0 +1,53 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-to-tickets">
+  <p class="tt-cap">Spec → tickets · 3 tracer bullets</p>
+  <div class="tt-row">
+    <div class="tt-card">
+      <div class="tt-top"><span class="tt-id">#11</span><span class="tt-type">setup</span></div>
+      <p class="tt-title">Content collection + schema for skills</p>
+      <p class="tt-body">Define <code>skills</code> collection, Zod frontmatter, one seed entry.</p>
+      <span class="tt-tag tt-ready">ready</span>
+    </div>
+    <div class="tt-card">
+      <div class="tt-top"><span class="tt-id">#12</span><span class="tt-type">feature</span></div>
+      <p class="tt-title">Dynamic <code>/skills/[slug]</code> route</p>
+      <p class="tt-body">Render one skill page from a collection entry, slot the visual.</p>
+      <span class="tt-tag tt-blocked">blocked by #11</span>
+    </div>
+    <div class="tt-card">
+      <div class="tt-top"><span class="tt-id">#13</span><span class="tt-type">feature</span></div>
+      <p class="tt-title">Index grid grouped by category</p>
+      <p class="tt-body">List all skills, link each card to its slug route.</p>
+      <span class="tt-tag tt-ready">ready</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .v-to-tickets { padding: 24px; background: #faf9f6; border-radius: 8px; color: #17150f; }
+  .tt-cap { margin: 0 0 14px; font-family: var(--font-mono); font-size: 11px; color: #8f897b; letter-spacing: .02em; }
+  .tt-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .tt-card {
+    display: flex; flex-direction: column; gap: 7px; padding: 14px;
+    background: #fff; border: 1px solid #e7e3d8; border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  }
+  .tt-top { display: flex; align-items: center; justify-content: space-between; }
+  .tt-id { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: #b4552d; }
+  .tt-type {
+    font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase;
+    letter-spacing: .07em; color: #8f897b; border: 1px solid #e2dccd; padding: 1px 6px; border-radius: 999px;
+  }
+  .tt-title { margin: 2px 0 0; font-family: var(--font-serif); font-size: 15.5px; line-height: 1.3; color: #221f18; }
+  .tt-body { margin: 0; font-size: 12.5px; line-height: 1.45; color: #5b564a; flex: 1; }
+  .tt-card code { font-family: var(--font-mono); font-size: .85em; color: #8a4527; }
+  .tt-tag {
+    align-self: flex-start; font-family: var(--font-mono); font-size: 10.5px;
+    padding: 3px 8px; border-radius: 5px; letter-spacing: .01em;
+  }
+  .tt-ready { background: #e6f2ec; color: #227a5e; }
+  .tt-blocked { background: #fbeee6; color: #b4552d; border: 1px dashed #e0b79f; }
+  @media (max-width: 620px) { .tt-row { grid-template-columns: 1fr; } }
+</style>

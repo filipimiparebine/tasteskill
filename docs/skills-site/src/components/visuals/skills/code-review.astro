@@ -1,0 +1,32 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-code-review">
+  <div class="col">
+    <div class="ctitle">Standards</div>
+    <div class="row ok"><span class="ic">✓</span>Error paths return typed <code>Result</code></div>
+    <div class="row warn"><span class="ic">⚠</span>3 functions exceed 40 lines</div>
+    <div class="row ok"><span class="ic">✓</span>No <code>any</code> in public API</div>
+    <div class="row bad"><span class="ic">✗</span>Mutates the input array in <code>merge()</code></div>
+  </div>
+  <div class="col">
+    <div class="ctitle">Spec</div>
+    <div class="row ok"><span class="ic">✓</span>Pagination cursor added (AC-1)</div>
+    <div class="row ok"><span class="ic">✓</span>Rate-limit headers surfaced (AC-2)</div>
+    <div class="row warn"><span class="ic">⚠</span>Empty-state copy differs from PRD</div>
+    <div class="row bad"><span class="ic">✗</span>Retry-on-429 not implemented (AC-4)</div>
+  </div>
+</div>
+<style>
+  .v-code-review{width:780px;box-sizing:border-box;padding:26px;background:#faf9f6;color:#17150f;display:grid;grid-template-columns:1fr 1fr;gap:22px;font-family:system-ui,sans-serif;}
+  .ctitle{font-family:"Newsreader",serif;font-size:19px;font-weight:600;margin-bottom:14px;padding-bottom:9px;border-bottom:2px solid #17150f;}
+  .row{display:flex;align-items:flex-start;gap:11px;padding:11px 13px;border-radius:7px;font-size:13.5px;line-height:1.4;margin-bottom:9px;background:#fff;border:1px solid #e5e1d8;}
+  .ic{flex:none;width:20px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:12px;font-weight:700;color:#fff;}
+  .ok .ic{background:#1f9d55;}
+  .warn .ic{background:#e0a020;}
+  .bad .ic{background:#d64545;}
+  .ok{border-left:3px solid #1f9d55;}
+  .warn{border-left:3px solid #e0a020;}
+  .bad{border-left:3px solid #d64545;}
+  code{font-family:"JetBrains Mono",monospace;font-size:12px;background:#f0ece2;padding:1px 5px;border-radius:4px;}
+</style>

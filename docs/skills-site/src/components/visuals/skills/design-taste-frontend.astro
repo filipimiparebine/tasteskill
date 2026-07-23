@@ -1,0 +1,53 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-design-taste-frontend">
+  <div class="dtf-mark">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+      <path d="M4 20 L12 4 L20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <line x1="8" y1="20" x2="16" y2="20" stroke="currentColor" stroke-width="1.6"/>
+    </svg>
+    <span>Åberg&nbsp;Studio</span>
+  </div>
+
+  <div class="dtf-body">
+    <p class="dtf-kicker">Independent design practice — Oslo, est. 2019</p>
+    <h1 class="dtf-head">We build interfaces<br/>worth <em>keeping</em>.</h1>
+    <p class="dtf-sub">Design systems, marketing sites, and product surfaces for companies that treat craft as a competitive advantage — not a line item.</p>
+    <div class="dtf-cta">
+      <a class="dtf-btn" href="#">Start a project</a>
+      <span class="dtf-note">Booking Q3 · two slots left</span>
+    </div>
+  </div>
+
+  <div class="dtf-rule"></div>
+</div>
+
+<style>
+  .v-design-taste-frontend {
+    position: relative;
+    background: #f7f4ee;
+    color: #16130d;
+    padding: 30px 40px 34px;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Newsreader", Georgia, serif;
+    overflow: hidden;
+  }
+  .dtf-mark { display: flex; align-items: center; gap: 9px; color: #16130d; }
+  .dtf-mark span { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.02em; }
+  .dtf-body { margin-top: auto; margin-bottom: auto; max-width: 600px; }
+  .dtf-kicker { margin: 0 0 20px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: #8a8578; }
+  .dtf-head { margin: 0; font-size: 56px; line-height: 1.0; font-weight: 500; letter-spacing: -0.025em; }
+  .dtf-head em { font-style: italic; font-weight: 400; }
+  .dtf-sub { margin: 22px 0 0; font-size: 18px; line-height: 1.5; color: #4a463c; max-width: 440px; }
+  .dtf-cta { display: flex; align-items: center; gap: 20px; margin-top: 30px; }
+  .dtf-btn {
+    display: inline-block; background: #16130d; color: #f7f4ee; text-decoration: none;
+    font-family: "JetBrains Mono", monospace; font-size: 13px; letter-spacing: 0.02em;
+    padding: 13px 26px; border-radius: 2px; transition: transform .2s ease;
+  }
+  .dtf-note { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.04em; color: #8a8578; }
+  .dtf-rule { position: absolute; left: 40px; right: 40px; bottom: 20px; height: 1px; background: #ddd7c8; }
+</style>

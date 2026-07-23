@@ -1,0 +1,69 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-imagegen-frontend-web">
+  <div class="fw-head">
+    <p class="fw-kicker">Section reference set</p>
+    <span class="fw-rule">one image per section · 4 of 4</span>
+  </div>
+  <div class="fw-strip">
+    <div class="fw-frame">
+      <span class="fw-tag">01 · Hero</span>
+      <div class="fw-canvas fw-hero">
+        <div class="fw-hline fw-w70"></div>
+        <div class="fw-hline fw-w45"></div>
+        <div class="fw-pill"></div>
+      </div>
+    </div>
+    <div class="fw-frame">
+      <span class="fw-tag">02 · Features</span>
+      <div class="fw-canvas fw-feat">
+        <div class="fw-card"></div>
+        <div class="fw-card"></div>
+        <div class="fw-card"></div>
+      </div>
+    </div>
+    <div class="fw-frame">
+      <span class="fw-tag">03 · Showcase</span>
+      <div class="fw-canvas fw-show">
+        <div class="fw-shot"></div>
+        <div class="fw-copy"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    <div class="fw-frame">
+      <span class="fw-tag">04 · CTA</span>
+      <div class="fw-canvas fw-cta">
+        <div class="fw-ctatext"></div>
+        <div class="fw-ctabtn">Start free</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .v-imagegen-frontend-web {
+    background: #f7f5ef; color: #17150f; padding: 24px 26px;
+    font-family: "Newsreader", Georgia, serif; border: 1px solid #e7e3d8; border-radius: 8px;
+  }
+  .fw-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+  .fw-kicker { margin: 0; font-size: 18px; font-weight: 600; }
+  .fw-rule { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .04em; color: #9a927f; }
+  .fw-strip { display: flex; flex-direction: column; gap: 10px; }
+  .fw-frame { position: relative; border: 1px solid #ddd8c9; border-radius: 6px; overflow: hidden; background: #fff; }
+  .fw-tag { position: absolute; top: 8px; left: 10px; z-index: 2; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: #6d6656; background: rgba(255,255,255,.82); padding: 2px 6px; border-radius: 4px; }
+  .fw-canvas { height: 74px; display: flex; align-items: center; gap: 12px; padding: 0 20px; }
+  .fw-hero { background: linear-gradient(115deg,#2a2f3a,#4a5568); flex-direction: column; align-items: flex-start; justify-content: center; gap: 7px; padding-left: 22px; }
+  .fw-hline { height: 9px; border-radius: 3px; background: rgba(255,255,255,.85); }
+  .fw-w70 { width: 58%; } .fw-w45 { width: 38%; opacity: .55; }
+  .fw-pill { width: 74px; height: 16px; border-radius: 999px; background: #c9a24a; margin-top: 3px; }
+  .fw-feat { background: #eef0ea; }
+  .fw-card { flex: 1; height: 44px; border-radius: 5px; background: linear-gradient(160deg,#dfe4dd,#c7d0c4); }
+  .fw-show { background: #f0ece2; }
+  .fw-shot { width: 130px; height: 50px; border-radius: 5px; background: linear-gradient(120deg,#6b8f7d,#8fae9f); }
+  .fw-copy { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .fw-copy span { height: 7px; border-radius: 3px; background: #cfc9b8; }
+  .fw-copy span:nth-child(2){ width: 80%; } .fw-copy span:nth-child(3){ width: 55%; }
+  .fw-cta { background: linear-gradient(100deg,#14130f,#3a352a); justify-content: space-between; }
+  .fw-ctatext { width: 44%; height: 12px; border-radius: 3px; background: rgba(255,255,255,.8); }
+  .fw-ctabtn { font-family: "JetBrains Mono", monospace; font-size: 11px; color: #14130f; background: #c9a24a; padding: 7px 14px; border-radius: 5px; }
+</style>

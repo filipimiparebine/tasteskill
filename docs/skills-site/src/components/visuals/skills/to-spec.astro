@@ -1,0 +1,53 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-to-spec">
+  <div class="ts-head">
+    <span class="ts-kind">spec</span>
+    <span class="ts-status">draft · rev 2</span>
+  </div>
+  <h3 class="ts-title">Spec: Skills reference site</h3>
+  <p class="ts-intent">A static Astro site that renders every Claude Code skill as a card with a live "how it looks" visual, browsable and search-linkable.</p>
+  <div class="ts-ac">
+    <p class="ts-ac-h">Acceptance criteria</p>
+    <ul>
+      <li><span class="ts-box">✓</span> Each skill has a route <code>/skills/[slug]</code> generated from the content collection.</li>
+      <li><span class="ts-box">✓</span> Every card embeds a self-contained visual — no external assets, legible on light.</li>
+      <li><span class="ts-box">✓</span> The index lists all skills grouped by category and builds with zero warnings.</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .v-to-spec {
+    padding: 26px 28px; background: #fffefb; border: 1px solid #e7e3d8;
+    border-radius: 8px; color: #17150f; box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  }
+  .ts-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .ts-kind {
+    font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase;
+    letter-spacing: .09em; color: #fff; background: #b4552d; padding: 3px 9px; border-radius: 4px;
+  }
+  .ts-status { font-family: var(--font-mono); font-size: 11px; color: #8f897b; }
+  .ts-title { margin: 0 0 8px; font-family: var(--font-serif); font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
+  .ts-intent { margin: 0 0 20px; font-size: 15px; line-height: 1.55; color: #5b564a; }
+  .ts-ac { border-top: 1px solid #ece7db; padding-top: 16px; }
+  .ts-ac-h {
+    margin: 0 0 12px; font-family: var(--font-mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: .08em; color: #8f897b;
+  }
+  .ts-ac ul { margin: 0; padding: 0; list-style: none; }
+  .ts-ac li {
+    display: flex; gap: 11px; align-items: flex-start; margin-bottom: 11px;
+    font-size: 14.5px; line-height: 1.5; color: #2b281f;
+  }
+  .ts-box {
+    flex: none; width: 20px; height: 20px; border-radius: 5px; margin-top: 1px;
+    background: #e6f2ec; color: #227a5e; font-size: 12px; font-weight: 700;
+    display: grid; place-items: center; border: 1px solid #bfe0d1;
+  }
+  .ts-ac code {
+    font-family: var(--font-mono); font-size: .85em; background: #f4f1ea;
+    padding: 1px 5px; border-radius: 4px; color: #8a4527;
+  }
+</style>

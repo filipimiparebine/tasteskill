@@ -1,0 +1,69 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-imagegen-frontend-mobile">
+  <div class="fm-stage">
+    <div class="fm-phone">
+      <div class="fm-notch"></div>
+      <div class="fm-status"><span>9:41</span><span class="fm-dots">••• ▾ ▮</span></div>
+      <div class="fm-screen">
+        <div class="fm-topbar">
+          <div>
+            <p class="fm-hello">Good morning</p>
+            <p class="fm-user">Mara</p>
+          </div>
+          <div class="fm-ava"></div>
+        </div>
+        <div class="fm-hero">
+          <p class="fm-hlabel">Today's focus</p>
+          <p class="fm-hnum">2 of 5 rituals</p>
+          <div class="fm-ring"><span></span></div>
+        </div>
+        <div class="fm-cards">
+          <div class="fm-card"><span class="fm-ic fm-a"></span><div><p>Morning walk</p><em>20 min · outdoors</em></div></div>
+          <div class="fm-card"><span class="fm-ic fm-b"></span><div><p>Deep work</p><em>90 min · focus</em></div></div>
+        </div>
+        <div class="fm-tabs">
+          <span class="fm-tab fm-on">◆</span><span class="fm-tab">◷</span><span class="fm-tab">✦</span><span class="fm-tab">☰</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="fm-caption">Home screen concept — Ritual, a daily habits app</p>
+</div>
+
+<style>
+  .v-imagegen-frontend-mobile {
+    background: #eceae3; padding: 24px; border: 1px solid #e0dccf; border-radius: 8px;
+    font-family: "Newsreader", Georgia, serif; color: #17150f;
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+  }
+  .fm-stage { display: grid; place-items: center; }
+  .fm-phone {
+    width: 200px; background: #0e0d0a; border-radius: 34px; padding: 10px;
+    position: relative; box-shadow: 0 14px 34px rgba(0,0,0,.22), inset 0 0 0 2px #2a281f;
+  }
+  .fm-notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 62px; height: 15px; background: #0e0d0a; border-radius: 0 0 12px 12px; z-index: 3; }
+  .fm-status { position: absolute; top: 14px; left: 20px; right: 20px; display: flex; justify-content: space-between; z-index: 4; font-family: "JetBrains Mono", monospace; font-size: 8.5px; color: #fff; }
+  .fm-dots { letter-spacing: -1px; }
+  .fm-screen { background: #f6f3ec; border-radius: 26px; padding: 30px 14px 12px; overflow: hidden; }
+  .fm-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .fm-hello { margin: 0; font-family: "JetBrains Mono", monospace; font-size: 8.5px; text-transform: uppercase; letter-spacing: .1em; color: #9a927f; }
+  .fm-user { margin: 1px 0 0; font-size: 19px; font-weight: 600; }
+  .fm-ava { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg,#c9a24a,#e0c47e); }
+  .fm-hero { background: #14130f; color: #f6f3ec; border-radius: 16px; padding: 14px; position: relative; margin-bottom: 12px; }
+  .fm-hlabel { margin: 0; font-family: "JetBrains Mono", monospace; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; color: #a49b84; }
+  .fm-hnum { margin: 4px 0 0; font-size: 17px; font-weight: 500; }
+  .fm-ring { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; background: conic-gradient(#c9a24a 144deg, #37342a 0); display: grid; place-items: center; }
+  .fm-ring span { width: 22px; height: 22px; border-radius: 50%; background: #14130f; }
+  .fm-cards { display: flex; flex-direction: column; gap: 8px; }
+  .fm-card { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #eae5d8; border-radius: 12px; padding: 9px 11px; }
+  .fm-ic { width: 26px; height: 26px; border-radius: 8px; flex: none; }
+  .fm-a { background: #6b8f7d; } .fm-b { background: #c9a24a; }
+  .fm-card p { margin: 0; font-size: 13px; font-weight: 600; }
+  .fm-card em { font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 9px; color: #9a927f; }
+  .fm-tabs { display: flex; justify-content: space-around; margin-top: 14px; padding-top: 8px; border-top: 1px solid #e6e1d4; }
+  .fm-tab { font-size: 13px; color: #bdb6a4; }
+  .fm-on { color: #14130f; }
+  .fm-caption { margin: 0; font-family: "JetBrains Mono", monospace; font-size: 11px; color: #837c6c; }
+</style>

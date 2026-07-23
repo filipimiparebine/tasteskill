@@ -1,9 +1,17 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import MinimalistUiDemo from "../../components/visuals/MinimalistUiDemo.astro";
-import TddCycle from "../../components/visuals/TddCycle.astro";
 import DefaultFlow from "../../components/visuals/DefaultFlow.astro";
 import { skills, families } from "../../data/skills";
+
+// Auto-registry: every `visuals/skills/<slug>.astro` wires itself up here.
+const visualModules = import.meta.glob("../../components/visuals/skills/*.astro", {
+  eager: true,
+});
+const visuals: Record<string, any> = {};
+for (const [path, mod] of Object.entries(visualModules)) {
+  const slug = path.split("/").pop()!.replace(".astro", "");
+  visuals[slug] = (mod as any).default;
+}
 
 export function getStaticPaths() {
   return skills.map((skill, i) => ({
@@ -19,10 +27,10 @@ export function getStaticPaths() {
 const { skill, prev, next } = Astro.props;
 const family = families.find((f) => f.id === skill.family)!;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const bespoke = skill.visual === "minimalist-ui" || skill.visual === "tdd";
-const caption = bespoke
-  ? "Live sample, rendered in this skill's own aesthetic."
-  : "Flow generated from the manifest — a tailored visual lands with ticket T3.";
+const Visual = visuals[skill.slug] ?? null;
+const caption = Visual
+  ? "Live sample, hand-built to show this skill's character."
+  : "Flow generated from the manifest.";
 ---
 <BaseLayout title={`${skill.name} — Skills Atlas`} current={skill.slug}>
   <div class="wrap" style={`--fam: var(--fam-${skill.family})`}>
@@ -47,9 +55,7 @@ const caption = bespoke
 
     <p class="section-label">How it looks</p>
     <div class="stage">
-      {skill.visual === "minimalist-ui" && <MinimalistUiDemo />}
-      {skill.visual === "tdd" && <TddCycle />}
-      {!bespoke && <DefaultFlow skill={skill} />}
+      {Visual ? <Visual skill={skill} /> : <DefaultFlow skill={skill} />}
     </div>
     <p class="stage-caption">{caption}</p>
 

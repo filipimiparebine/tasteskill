@@ -1,0 +1,73 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-stitch-design-taste">
+  <div class="sdt-head">
+    <span class="sdt-file">DESIGN.md</span>
+    <span class="sdt-ver">tokens · v2.3</span>
+  </div>
+
+  <div class="sdt-cols">
+    <section class="sdt-type">
+      <p class="sdt-lbl">Type scale</p>
+      <div class="sdt-spec"><span class="sdt-s1">Display</span><em>48 / 1.0</em></div>
+      <div class="sdt-spec"><span class="sdt-s2">Heading</span><em>28 / 1.1</em></div>
+      <div class="sdt-spec"><span class="sdt-s3">Body</span><em>16 / 1.5</em></div>
+      <div class="sdt-spec"><span class="sdt-s4">Caption</span><em>12 / 1.4</em></div>
+    </section>
+
+    <section class="sdt-right">
+      <div>
+        <p class="sdt-lbl">Color</p>
+        <ul class="sdt-swatches">
+          <li><span class="sw" style="background:#17150f"></span><b>ink</b><em>#17150F</em></li>
+          <li><span class="sw" style="background:#c9b678"></span><b>brass</b><em>#C9B678</em></li>
+          <li><span class="sw" style="background:#6a6558"></span><b>muted</b><em>#6A6558</em></li>
+          <li><span class="sw" style="background:#faf9f6;border:1px solid #e2dccd"></span><b>paper</b><em>#FAF9F6</em></li>
+        </ul>
+      </div>
+      <div>
+        <p class="sdt-lbl">Spacing · 4pt base</p>
+        <div class="sdt-scale">
+          <span style="width:4px"></span><em>4</em>
+          <span style="width:8px"></span><em>8</em>
+          <span style="width:16px"></span><em>16</em>
+          <span style="width:24px"></span><em>24</em>
+          <span style="width:40px"></span><em>40</em>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  .v-stitch-design-taste {
+    background: #faf9f6;
+    color: #17150f;
+    padding: 24px 28px;
+    min-height: 380px;
+    font-family: "JetBrains Mono", monospace;
+    display: flex; flex-direction: column;
+  }
+  .sdt-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; border-bottom: 1px solid #e6e0d1; margin-bottom: 22px; }
+  .sdt-file { font-size: 13px; letter-spacing: 0.02em; }
+  .sdt-ver { font-size: 10px; letter-spacing: 0.08em; color: #948d7c; }
+  .sdt-lbl { margin: 0 0 14px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #948d7c; }
+  .sdt-cols { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .sdt-spec { display: flex; align-items: baseline; justify-content: space-between; padding: 8px 0; border-bottom: 1px dotted #e2dccd; }
+  .sdt-spec span { font-family: "Newsreader", Georgia, serif; color: #17150f; letter-spacing: -0.01em; }
+  .sdt-spec em { font-style: normal; font-size: 10.5px; color: #948d7c; }
+  .sdt-s1 { font-size: 34px; line-height: 1; font-weight: 500; }
+  .sdt-s2 { font-size: 24px; font-weight: 500; }
+  .sdt-s3 { font-size: 17px; }
+  .sdt-s4 { font-size: 13px; }
+  .sdt-right { display: flex; flex-direction: column; gap: 26px; }
+  .sdt-swatches { list-style: none; margin: 0; padding: 0; }
+  .sdt-swatches li { display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 11px; }
+  .sw { width: 16px; height: 16px; border-radius: 3px; flex: none; }
+  .sdt-swatches b { font-weight: 500; width: 52px; }
+  .sdt-swatches em { font-style: normal; color: #948d7c; letter-spacing: 0.02em; }
+  .sdt-scale { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 6px 10px; }
+  .sdt-scale span { display: block; height: 12px; background: #17150f; border-radius: 2px; }
+  .sdt-scale em { font-style: normal; font-size: 10px; color: #948d7c; }
+</style>

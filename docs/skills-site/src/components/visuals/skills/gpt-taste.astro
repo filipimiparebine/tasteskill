@@ -1,0 +1,62 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-gpt-taste">
+  <div class="gt-grid">
+    <div class="gt-cell gt-hero">
+      <p class="gt-eyebrow">Issue 07 — Motion</p>
+      <h1 class="gt-head">Scroll<br/>as a<br/><em>medium.</em></h1>
+    </div>
+    <div class="gt-cell gt-img" aria-hidden="true">
+      <svg viewBox="0 0 120 120" width="100%" height="100%" preserveAspectRatio="none">
+        <rect width="120" height="120" fill="#e9e3d6"/>
+        <circle cx="72" cy="46" r="30" fill="#d8c9a8"/>
+        <path d="M0 120 L44 60 L74 90 L100 66 L120 92 L120 120 Z" fill="#c7b78f"/>
+      </svg>
+    </div>
+    <div class="gt-cell gt-stat">
+      <span class="gt-num">01</span>
+      <span class="gt-lbl">Pinned sections</span>
+    </div>
+    <div class="gt-cell gt-note">
+      <p>Scrub-linked timelines, stacked reveals, and inertia that reads as intent — not decoration.</p>
+    </div>
+    <div class="gt-cell gt-tag"><span>GSAP · ScrollTrigger</span></div>
+  </div>
+
+  <div class="gt-scrub">
+    <span class="gt-scrub-lbl">scrub</span>
+    <span class="gt-track"><i></i></span>
+    <span class="gt-scrub-pct">0.42</span>
+  </div>
+</div>
+
+<style>
+  .v-gpt-taste {
+    background: #f4f1e9;
+    color: #17140d;
+    padding: 24px 26px;
+    min-height: 410px;
+    display: flex; flex-direction: column;
+    font-family: "Newsreader", Georgia, serif;
+  }
+  .gt-grid { flex: 1; display: grid; grid-template-columns: 1.5fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0; border: 1px solid #ded7c6; }
+  .gt-cell { border: 1px solid #ded7c6; margin: -0.5px; padding: 18px; display: flex; flex-direction: column; }
+  .gt-hero { grid-row: span 2; justify-content: space-between; }
+  .gt-eyebrow { margin: 0; font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #948d7c; }
+  .gt-head { margin: 0; font-size: 60px; line-height: 0.9; font-weight: 500; letter-spacing: -0.035em; }
+  .gt-head em { font-style: italic; font-weight: 400; }
+  .gt-img { grid-row: span 2; padding: 0; overflow: hidden; }
+  .gt-img svg { display: block; }
+  .gt-stat { justify-content: flex-end; background: #17140d; color: #f4f1e9; }
+  .gt-num { font-size: 40px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; }
+  .gt-lbl { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #a49d8c; margin-top: 6px; }
+  .gt-note p { margin: 0; font-size: 14px; line-height: 1.45; color: #4c473c; }
+  .gt-tag { justify-content: center; }
+  .gt-tag span { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.05em; color: #17140d; }
+  .gt-scrub { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #948d7c; }
+  .gt-track { flex: 1; height: 2px; background: #ded7c6; position: relative; }
+  .gt-track i { position: absolute; left: 0; top: -3px; width: 42%; height: 8px; background: #17140d; }
+  .gt-track i::after { content: ""; position: absolute; right: -3px; top: -2px; width: 12px; height: 12px; border-radius: 50%; background: #17140d; }
+  .gt-scrub-pct { color: #17140d; }
+</style>

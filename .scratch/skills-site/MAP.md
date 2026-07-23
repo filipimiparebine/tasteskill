@@ -52,7 +52,12 @@ page following the agreed template.
   image assets required. (user choice)
 - [Menu = grouped by family](#) — browse by purpose, since the site's job is skill
   selection. (user choice)
-- [Page template](#T1) — resolved by prototype; see ticket T1.
+- [Page template](#T1) — resolved by prototype; info panel + themed visual + grouped nav.
+- [Every skill gets a bespoke visual](#T3) — not just design/image-gen; all 35 authored by
+  hand in `visuals/skills/<slug>.astro`, auto-registered by the `[slug]` route. (user choice)
+- [Hosting = GitHub Pages via Actions](#T5) — `.github/workflows/deploy-skills-site.yml`
+  builds `docs/skills-site/` with `SITE_BASE=/tasteskill` and deploys. Repo setting
+  Pages → Source → "GitHub Actions" must be enabled once by hand. (user choice)
 
 ## Tickets
 

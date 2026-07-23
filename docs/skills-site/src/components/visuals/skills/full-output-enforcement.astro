@@ -1,0 +1,41 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-full-output-enforcement">
+  <div class="fe-bar">
+    <span class="fe-file">auth/session.ts</span>
+    <span class="fe-badge">no placeholders · complete</span>
+  </div>
+  <pre class="fe-code"><code><span class="fe-ln" data-n="14"><span class="fe-k">export function</span> <span class="fe-fn">refreshSession</span>(token: <span class="fe-ty">string</span>) &#123;</span>
+<span class="fe-ln" data-n="15">  <span class="fe-k">const</span> claims = verify(token, SECRET);</span>
+<span class="fe-ln" data-n="16">  <span class="fe-k">if</span> (claims.exp &lt; now()) &#123;</span>
+<span class="fe-ln" data-n="17">    <span class="fe-k">throw new</span> <span class="fe-ty">SessionExpired</span>(claims.sub);</span>
+<span class="fe-ln" data-n="18">  &#125;</span>
+<span class="fe-ln fe-bad" data-n="19"><span class="fe-x">✗</span>  <span class="fe-strike">// ... rest of the function unchanged</span></span>
+<span class="fe-ln" data-n="19">  <span class="fe-k">const</span> next = sign(&#123; sub: claims.sub, exp: now() + TTL &#125;);</span>
+<span class="fe-ln" data-n="20">  store.rotate(claims.jti, next.jti);</span>
+<span class="fe-ln" data-n="21">  <span class="fe-k">return</span> &#123; token: next.value, expiresIn: TTL &#125;;</span>
+<span class="fe-ln" data-n="22">&#125;</span></code></pre>
+  <p class="fe-note">Placeholder line rewritten with the real body — every branch emitted in full.</p>
+</div>
+
+<style>
+  .v-full-output-enforcement {
+    background: #14130f; color: #e4dfd2; padding: 20px 22px; border-radius: 8px;
+    font-family: "JetBrains Mono", monospace;
+  }
+  .fe-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .fe-file { font-size: 12px; color: #b7b0a0; letter-spacing: .02em; }
+  .fe-badge { font-size: 10px; text-transform: uppercase; letter-spacing: .09em; color: #0e0d0a; background: #6b8f7d; padding: 4px 9px; border-radius: 999px; }
+  .fe-code { margin: 0; font-size: 12.5px; line-height: 1.72; overflow-x: auto; }
+  .fe-ln { display: block; padding-left: 40px; position: relative; }
+  .fe-ln::before { content: attr(data-n); position: absolute; left: 0; width: 26px; text-align: right; color: #55503f; font-size: 11px; }
+  .fe-bad { background: rgba(180,45,45,.16); border-left: 2px solid #c0413a; margin-left: -22px; padding-left: 60px; }
+  .fe-bad::before { left: 22px; color: #c0413a; }
+  .fe-x { color: #e0574e; margin-right: 6px; font-weight: 700; }
+  .fe-strike { text-decoration: line-through; color: #a86f6a; }
+  .fe-k { color: #c9a24a; }
+  .fe-fn { color: #7db3d9; }
+  .fe-ty { color: #6b8f7d; }
+  .fe-note { margin: 14px 0 0; font-size: 11px; color: #8f897b; font-family: "Newsreader", Georgia, serif; font-style: italic; letter-spacing: .01em; }
+</style>

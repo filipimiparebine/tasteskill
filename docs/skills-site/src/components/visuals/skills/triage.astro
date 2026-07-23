@@ -1,0 +1,41 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-triage">
+  <div class="issue">#482 · "Export button hangs on large CSV"</div>
+  <div class="flow">
+    <div class="chip c1">needs-triage</div>
+    <div class="arr">→</div>
+    <div class="chip c2">needs-info</div>
+    <div class="arr">→</div>
+    <div class="chip c3 active">ready-for-agent<span class="here">here</span></div>
+    <div class="arr">→</div>
+    <div class="chip c4 pending">ready-for-human</div>
+  </div>
+  <div class="log">
+    <div class="le"><span class="d done">✓</span>Triaged: reproduced on a 40MB file</div>
+    <div class="le"><span class="d done">✓</span>Info gathered: browser tab, row count, timings</div>
+    <div class="le"><span class="d now">●</span>Assigned to agent for a fix</div>
+    <div class="le"><span class="d wait">○</span>Awaiting human review of the PR</div>
+  </div>
+</div>
+<style>
+  .v-triage{width:780px;box-sizing:border-box;padding:26px;background:#faf9f6;color:#17150f;font-family:system-ui,sans-serif;}
+  .issue{font-family:"JetBrains Mono",monospace;font-size:13px;background:#fff;border:1px solid #e5e1d8;border-left:3px solid #17150f;border-radius:6px;padding:11px 14px;margin-bottom:20px;}
+  .flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:22px;}
+  .chip{position:relative;font-family:"JetBrains Mono",monospace;font-size:12px;padding:7px 13px;border-radius:20px;font-weight:600;}
+  .c1{background:#f0ece2;color:#6b6559;}
+  .c2{background:#e6eef7;color:#3a6ea5;}
+  .c3{background:#e6f5eb;color:#1f7a45;}
+  .c4{background:#f3ecf7;color:#7a4a9a;}
+  .chip.active{outline:2px solid #1f9d55;outline-offset:2px;}
+  .chip.pending{opacity:.5;}
+  .here{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#1f9d55;}
+  .arr{color:#b0aa9c;font-size:15px;}
+  .log{border-top:1px solid #e5e1d8;padding-top:14px;}
+  .le{display:flex;align-items:center;gap:11px;font-size:13px;padding:6px 0;}
+  .d{width:18px;height:18px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:11px;}
+  .done{background:#1f9d55;color:#fff;}
+  .now{background:#e6f5eb;color:#1f9d55;font-size:9px;}
+  .wait{border:1.5px solid #c9c3b5;color:#c9c3b5;font-size:9px;}
+</style>

@@ -1,0 +1,50 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-handoff">
+  <div class="hf-top">
+    <span class="hf-kicker">Handoff</span>
+    <h3 class="hf-title">Checkout latency spike — investigation</h3>
+    <span class="hf-meta">session 4 · 2026-07-23 · ready for next agent</span>
+  </div>
+  <div class="hf-body">
+    <section class="hf-sec">
+      <span class="hf-h">State</span>
+      <p>Repro confirmed on <code>staging</code>. p95 jumped 340ms → 1.2s after the Jul-19 deploy. Traced to the tax service — every cart item makes a separate rate lookup.</p>
+    </section>
+    <section class="hf-sec">
+      <span class="hf-h">Decisions</span>
+      <ul>
+        <li>Batch the lookups — one call per cart, not per line.</li>
+        <li>Cache rates by <code>zip+sku_class</code>, 24h TTL. Reviewed with Priya.</li>
+        <li>Rejected: moving tax calc client-side (compliance risk).</li>
+      </ul>
+    </section>
+    <section class="hf-sec">
+      <span class="hf-h">Next steps</span>
+      <ol>
+        <li>Add <code>TaxClient.batchLookup()</code> — stub is in <code>tax/batch.ts</code>.</li>
+        <li>Wire cache; invalidate on rate-table publish.</li>
+        <li>Load-test at 200 rps before re-deploy.</li>
+      </ol>
+    </section>
+  </div>
+</div>
+
+<style>
+  .v-handoff {
+    padding: 26px; background: #faf9f6; color: #17150f;
+    font-family: var(--font-sans, system-ui); border-radius: 10px;
+  }
+  .hf-top { border-bottom: 1px solid #e7e3d8; padding-bottom: 14px; margin-bottom: 16px; }
+  .hf-kicker { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #fff; background: #4a6b52; padding: 3px 9px; border-radius: 4px; }
+  .hf-title { margin: 10px 0 5px; font-family: var(--font-serif); font-size: 20px; color: #201d16; }
+  .hf-meta { font-family: var(--font-mono); font-size: 11px; color: #a39c8b; }
+  .hf-body { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 22px; }
+  .hf-sec:first-child { grid-column: 1 / -1; }
+  .hf-h { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #b4552d; display: block; margin-bottom: 7px; }
+  .hf-sec p { margin: 0; font-size: 13.5px; line-height: 1.55; color: #4a4638; }
+  .hf-sec ul, .hf-sec ol { margin: 0; padding-left: 17px; }
+  .hf-sec li { font-size: 13px; line-height: 1.5; color: #4a4638; margin-bottom: 5px; }
+  .hf-sec code { font-family: var(--font-mono); font-size: 12px; background: #efece3; color: #7a4a2e; padding: 1px 5px; border-radius: 4px; }
+</style>

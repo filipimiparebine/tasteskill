@@ -1,0 +1,36 @@
+---
+const { skill } = Astro.props;
+---
+<div class="v-diagnosing-bugs">
+  <div class="console">
+    <div class="ln dim">at Cache.get (src/cache/lru.ts:44:19)</div>
+    <div class="ln dim">at resolveUser (src/user/service.ts:112:8)</div>
+    <div class="ln err">TypeError: Cannot read properties of undefined (reading 'ttl')</div>
+    <div class="ln dim">at evict (src/cache/lru.ts:71:23)</div>
+  </div>
+  <div class="hyps">
+    <div class="htitle">Hypotheses</div>
+    <div class="h"><span class="box">✗</span><span>Race between eviction and write</span><span class="tag ruled">ruled out</span></div>
+    <div class="h"><span class="box">?</span><span>Clock skew on TTL comparison</span><span class="tag open">untested</span></div>
+    <div class="h confirmed"><span class="box ok">✓</span><span>Evicting a node already removed by <code>clear()</code></span><span class="tag root">confirmed root cause</span></div>
+  </div>
+</div>
+<style>
+  .v-diagnosing-bugs{width:780px;box-sizing:border-box;padding:26px;background:#faf9f6;color:#17150f;font-family:"JetBrains Mono",monospace;}
+  .console{background:#1c1a16;border-radius:8px;padding:16px 18px;font-size:12.5px;line-height:1.9;}
+  .ln{white-space:pre;}
+  .dim{color:#8a857a;}
+  .err{color:#ff6b5e;font-weight:600;}
+  .hyps{margin-top:20px;}
+  .htitle{font-family:"Newsreader",serif;font-size:18px;font-weight:600;margin-bottom:12px;}
+  .h{display:flex;align-items:center;gap:12px;padding:11px 14px;border:1px solid #e5e1d8;border-radius:7px;margin-bottom:8px;font-size:13px;background:#fff;}
+  .h.confirmed{border-color:#1f9d55;background:#f2fbf5;box-shadow:0 1px 0 #d6f0de;}
+  .box{width:20px;height:20px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:5px;background:#eee9df;color:#8a857a;font-size:12px;}
+  .box.ok{background:#1f9d55;color:#fff;}
+  .h span:nth-child(2){flex:1;}
+  code{background:#f0ece2;padding:1px 5px;border-radius:4px;}
+  .tag{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border-radius:20px;}
+  .ruled{background:#f0ece2;color:#8a857a;}
+  .open{background:#fdf3df;color:#9a7818;}
+  .root{background:#1f9d55;color:#fff;font-weight:600;}
+</style>

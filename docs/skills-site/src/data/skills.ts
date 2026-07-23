@@ -27,8 +27,8 @@ export interface Skill {
   example: string;
   /** true = human-in-the-loop, false/undefined = can run AFK */
   hitl?: boolean;
-  /** key to a bespoke live visual component; falls back to a family flow diagram */
-  visual?: "minimalist-ui" | "tdd";
+  /** slug key to a bespoke live visual component; falls back to a family flow diagram */
+  visual?: string;
 }
 
 export const families: Family[] = [
@@ -356,6 +356,7 @@ export const skills: Skill[] = [
     outputs: "A designed, non-templated interface.",
     example: "/design-taste-frontend A portfolio for a type designer.",
     hitl: true,
+    visual: "design-taste-frontend",
   },
   {
     slug: "design-taste-frontend-v1",
@@ -369,6 +370,7 @@ export const skills: Skill[] = [
     outputs: "A designed interface (v1 behaviour).",
     example: "/design-taste-frontend-v1 A landing page.",
     hitl: true,
+    visual: "design-taste-frontend-v1",
   },
   {
     slug: "high-end-visual-design",
@@ -382,6 +384,7 @@ export const skills: Skill[] = [
     outputs: "A premium visual treatment with explicit rules.",
     example: "/high-end-visual-design Make this pricing section feel premium.",
     hitl: true,
+    visual: "high-end-visual-design",
   },
   {
     slug: "minimalist-ui",
