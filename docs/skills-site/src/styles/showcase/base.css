@@ -1,0 +1,20 @@
+/* Structural reset for the showcase page — intentionally style-neutral.
+   All look-and-feel lives in the per-theme files (theme-<id>.css), each
+   scoped under `.theme-<id>`. Switching that wrapper class re-skins the page. */
+
+.showcase * { box-sizing: border-box; }
+.showcase { width: 100%; }
+.showcase img,
+.showcase svg { max-width: 100%; }
+.showcase a { text-decoration: none; color: inherit; }
+.showcase ul { list-style: none; margin: 0; padding: 0; }
+.showcase h1, .showcase h2, .showcase h3, .showcase h4, .showcase p { margin: 0; }
+.showcase .sc-btn { cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Sections stack full-width; inner content is width-limited by each theme. */
+.showcase .sc-nav,
+.showcase .sc-hero,
+.showcase .sc-logos,
+.showcase .sc-features,
+.showcase .sc-cta,
+.showcase .sc-footer { width: 100%; }

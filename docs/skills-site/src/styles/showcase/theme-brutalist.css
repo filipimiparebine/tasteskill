@@ -1,0 +1,139 @@
+/* THEME: brutalist — industrial-brutalist-ui. Tactical telemetry / CRT terminal:
+   near-black substrate, off-white phosphor text, single amber utility accent,
+   JetBrains Mono throughout, square corners, hard 1px borders, gapless grids.
+   Scoped under .theme-brutalist. Styles exactly the showcase contract classes. */
+
+.theme-brutalist {
+  --bg: #0d0d0d;
+  --panel: #131313;
+  --panel-2: #1a1a1a;
+  --ink: #eaeaea;
+  --soft: #a0a0a0;
+  --faint: #6f6f6f;
+  --line: #2a2a2a;
+  --line-2: #383838;
+  --accent: #ffb000;
+  --accent-ink: #0d0d0d;
+  --ok: #4af626;
+  --wrap: 1120px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  line-height: 1.5;
+  /* faint scanline texture over the whole skin */
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.012) 3px, rgba(255,255,255,.012) 4px);
+}
+
+/* ---- buttons ---- */
+.theme-brutalist .sc-btn { font: inherit; font-weight: 700; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; padding: 10px 18px; border-radius: 0; border: 1px solid var(--line-2); background: transparent; color: var(--ink); transition: background .1s, color .1s, border-color .1s; }
+.theme-brutalist .sc-btn-lg { padding: 14px 26px; font-size: 13px; }
+.theme-brutalist .sc-btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.theme-brutalist .sc-btn-primary:hover { background: var(--accent-ink); color: var(--accent); }
+.theme-brutalist .sc-btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-2); }
+.theme-brutalist .sc-btn-ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* ---- nav ---- */
+.theme-brutalist .sc-nav { max-width: var(--wrap); margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; gap: 32px; border-bottom: 1px solid var(--line); }
+.theme-brutalist .sc-brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; }
+.theme-brutalist .sc-brand-mark { width: 22px; height: 22px; color: var(--accent); }
+.theme-brutalist .sc-navlinks { display: flex; gap: 26px; margin-right: auto; }
+.theme-brutalist .sc-navlinks a { color: var(--soft); font-size: 11.5px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+.theme-brutalist .sc-navlinks a:hover { color: var(--accent); }
+.theme-brutalist .sc-navcta { display: flex; align-items: center; gap: 14px; }
+.theme-brutalist .sc-link { color: var(--soft); font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+
+/* ---- hero ---- */
+.theme-brutalist .sc-hero { max-width: var(--wrap); margin: 0 auto; padding: 64px 32px 48px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.theme-brutalist .sc-hero-copy { position: relative; }
+.theme-brutalist .sc-eyebrow { display: inline-block; text-transform: uppercase; letter-spacing: .18em; font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 20px; padding: 4px 8px; border: 1px solid var(--accent); }
+.theme-brutalist .sc-hero-title { font-family: "Inter", "Space Grotesk", system-ui, sans-serif; font-size: clamp(44px, 6.6vw, 88px); line-height: .9; letter-spacing: -0.04em; font-weight: 800; text-transform: uppercase; }
+.theme-brutalist .sc-hero-sub { margin-top: 22px; font-size: 14px; color: var(--soft); max-width: 42ch; line-height: 1.6; }
+.theme-brutalist .sc-hero-actions { margin-top: 32px; display: flex; gap: 12px; }
+.theme-brutalist .sc-hero-note { margin-top: 18px; font-size: 11px; color: var(--faint); letter-spacing: .08em; text-transform: uppercase; }
+
+/* ---- hero app mock (telemetry readout) ---- */
+.theme-brutalist .sc-app { border: 1px solid var(--line-2); border-radius: 0; background: var(--panel); }
+.theme-brutalist .sc-app-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--panel-2); border-bottom: 1px solid var(--line-2); }
+.theme-brutalist .sc-app-bar span { width: 8px; height: 8px; border-radius: 0; background: var(--faint); }
+.theme-brutalist .sc-app-bar em { margin-left: 12px; font-style: normal; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.theme-brutalist .sc-app-body { display: grid; grid-template-columns: 128px 1fr; background: var(--line-2); gap: 1px; }
+.theme-brutalist .sc-app-side { padding: 12px; background: var(--panel); display: flex; flex-direction: column; gap: 2px; }
+.theme-brutalist .sc-app-side b { font-weight: 500; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); padding: 7px 8px; border-left: 2px solid transparent; }
+.theme-brutalist .sc-app-side b.on { background: var(--panel-2); color: var(--accent); border-left-color: var(--accent); font-weight: 700; }
+.theme-brutalist .sc-app-main { padding: 16px; background: var(--panel); display: flex; flex-direction: column; gap: 16px; }
+.theme-brutalist .sc-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--line-2); gap: 1px; border: 1px solid var(--line-2); }
+.theme-brutalist .sc-stat { background: var(--panel); padding: 12px; }
+.theme-brutalist .sc-stat span { font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.theme-brutalist .sc-stat strong { display: block; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.theme-brutalist .sc-chart { height: 96px; color: var(--accent); border: 1px solid var(--line-2); padding: 6px; }
+.theme-brutalist .sc-chart svg { width: 100%; height: 100%; }
+.theme-brutalist .sc-chart-fill { fill: rgba(255,176,0,.12); stroke: none; }
+.theme-brutalist .sc-run-list { display: flex; flex-direction: column; }
+.theme-brutalist .sc-run-list li { display: flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; padding: 9px 4px; border-top: 1px solid var(--line); }
+.theme-brutalist .sc-run-list em { font-style: normal; color: var(--soft); }
+.theme-brutalist .sc-run-list time { margin-left: auto; color: var(--faint); font-variant-numeric: tabular-nums; letter-spacing: 0; }
+.theme-brutalist .sc-dot { width: 7px; height: 7px; border-radius: 0; background: var(--faint); }
+.theme-brutalist .sc-dot.ok { background: var(--ok); }
+.theme-brutalist .sc-dot.run { background: var(--accent); }
+
+/* ---- used-by ---- */
+.theme-brutalist .sc-logos { max-width: var(--wrap); margin: 0 auto; padding: 40px 32px; text-align: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.theme-brutalist .sc-logos-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: .2em; color: var(--faint); margin-bottom: 24px; }
+.theme-brutalist .sc-logos-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+.theme-brutalist .sc-logo { display: inline-flex; align-items: center; gap: 8px; color: var(--soft); font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; }
+.theme-brutalist .sc-logo svg { width: 20px; height: 20px; }
+
+/* ---- features ---- */
+.theme-brutalist .sc-features { max-width: var(--wrap); margin: 0 auto; padding: 72px 32px; }
+.theme-brutalist .sc-section-head { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+.theme-brutalist .sc-section-title { font-family: "Inter", "Space Grotesk", system-ui, sans-serif; font-size: clamp(28px, 4vw, 48px); letter-spacing: -0.03em; font-weight: 800; text-transform: uppercase; line-height: .95; margin-top: 12px; }
+.theme-brutalist .sc-section-sub { margin-top: 16px; color: var(--soft); font-size: 13px; letter-spacing: .02em; line-height: 1.6; }
+.theme-brutalist .sc-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--line); gap: 1px; border: 1px solid var(--line); }
+.theme-brutalist .sc-feature { border: 0; border-radius: 0; padding: 28px 24px; background: var(--bg); transition: background .12s; }
+.theme-brutalist .sc-feature:hover { background: var(--panel); }
+.theme-brutalist .sc-feature-icon { width: 40px; height: 40px; border-radius: 0; border: 1px solid var(--line-2); background: var(--panel-2); color: var(--accent); display: grid; place-items: center; margin-bottom: 18px; }
+.theme-brutalist .sc-feature-icon svg { width: 20px; height: 20px; }
+.theme-brutalist .sc-feature-title { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.theme-brutalist .sc-feature-text { margin-top: 10px; color: var(--soft); font-size: 12.5px; line-height: 1.6; }
+
+/* ---- CTA ---- */
+.theme-brutalist .sc-cta { padding: 32px 32px 72px; }
+.theme-brutalist .sc-cta-inner { max-width: var(--wrap); margin: 0 auto; background: var(--accent); color: var(--accent-ink); border-radius: 0; border: 1px solid var(--accent); padding: 60px 40px; text-align: center; }
+.theme-brutalist .sc-cta-title { font-family: "Inter", "Space Grotesk", system-ui, sans-serif; font-size: clamp(30px, 4.4vw, 52px); letter-spacing: -0.03em; font-weight: 800; text-transform: uppercase; line-height: .95; }
+.theme-brutalist .sc-cta-sub { margin-top: 16px; color: #3a2a00; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+.theme-brutalist .sc-cta-actions { margin-top: 30px; display: flex; gap: 12px; justify-content: center; }
+.theme-brutalist .sc-cta .sc-btn-primary { background: var(--accent-ink); color: var(--accent); border-color: var(--accent-ink); }
+.theme-brutalist .sc-cta .sc-btn-primary:hover { background: transparent; color: var(--accent-ink); border-color: var(--accent-ink); }
+.theme-brutalist .sc-cta .sc-btn-ghost { color: var(--accent-ink); border-color: var(--accent-ink); }
+.theme-brutalist .sc-cta .sc-btn-ghost:hover { background: var(--accent-ink); color: var(--accent); }
+
+/* ---- footer ---- */
+.theme-brutalist .sc-footer { border-top: 1px solid var(--line-2); background: var(--panel); }
+.theme-brutalist .sc-footer-top { max-width: var(--wrap); margin: 0 auto; padding: 56px 32px 36px; display: grid; grid-template-columns: 1.2fr 2fr; gap: 40px; }
+.theme-brutalist .sc-footer-brand p { margin-top: 14px; color: var(--soft); font-size: 12px; line-height: 1.6; max-width: 30ch; }
+.theme-brutalist .sc-footer-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.theme-brutalist .sc-footer-col h4 { font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.theme-brutalist .sc-footer-col li { margin-bottom: 10px; }
+.theme-brutalist .sc-footer-col a { color: var(--soft); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.theme-brutalist .sc-footer-col a:hover { color: var(--accent); }
+.theme-brutalist .sc-footer-bottom { max-width: var(--wrap); margin: 0 auto; padding: 20px 32px 40px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+.theme-brutalist .sc-footer-bottom p { color: var(--faint); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; }
+.theme-brutalist .sc-socials { display: flex; gap: 8px; }
+.theme-brutalist .sc-socials a { width: 34px; height: 34px; border: 1px solid var(--line-2); border-radius: 0; display: grid; place-items: center; color: var(--soft); transition: color .1s, border-color .1s; }
+.theme-brutalist .sc-socials a:hover { color: var(--accent); border-color: var(--accent); }
+.theme-brutalist .sc-socials svg { width: 16px; height: 16px; }
+
+/* ---- responsive ---- */
+@media (max-width: 900px) {
+  .theme-brutalist .sc-hero { grid-template-columns: 1fr; padding-top: 40px; gap: 36px; }
+  .theme-brutalist .sc-navlinks { display: none; }
+  .theme-brutalist .sc-feature-grid { grid-template-columns: 1fr 1fr; }
+  .theme-brutalist .sc-footer-top { grid-template-columns: 1fr; }
+  .theme-brutalist .sc-footer-cols { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .theme-brutalist .sc-feature-grid { grid-template-columns: 1fr; }
+  .theme-brutalist .sc-footer-cols { grid-template-columns: 1fr; }
+  .theme-brutalist .sc-hero-actions, .theme-brutalist .sc-cta-actions { flex-direction: column; }
+  .theme-brutalist .sc-footer-bottom { flex-direction: column; gap: 16px; align-items: flex-start; }
+}
