@@ -26,6 +26,14 @@ jobs:
         working-directory: docs/skills-site
     steps:
       - uses: actions/checkout@v4
+      # Auto-enables Pages (build type: GitHub Actions) on first run, so no
+      # manual Settings → Pages toggle is needed. Its base_path output is the
+      # correct subpath for a project site (e.g. /tasteskill).
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -35,8 +43,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Project Pages serve at https://<user>.github.io/<repo>/
-          SITE_BASE: /tasteskill
+          SITE_BASE: ${{ steps.pages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs/skills-site/dist
