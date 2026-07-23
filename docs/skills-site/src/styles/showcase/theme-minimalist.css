@@ -1,0 +1,137 @@
+/* THEME: minimalist — clean editorial. Warm monochrome paper, serif headings,
+   flat bento panels, hairline borders, muted sage/clay accents. No gradients,
+   no heavy shadows. Scoped under .theme-minimalist. */
+
+.theme-minimalist {
+  --paper: #f5f1e8;
+  --panel: #fbf9f3;
+  --ink: #1c1a17;
+  --soft: #56514a;
+  --faint: #8f8879;
+  --line: #ddd6c7;
+  --line-strong: #c7bfad;
+  --sage: #8a9a83;
+  --clay: #b98a72;
+  --accent: #6f7a68;
+  --wrap: 1120px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- buttons ---- */
+.theme-minimalist .sc-btn { font: inherit; font-weight: 500; font-size: 14px; padding: 9px 18px; border-radius: 2px; border: 1px solid transparent; letter-spacing: .01em; transition: background .15s, color .15s, border-color .15s; }
+.theme-minimalist .sc-btn-lg { padding: 12px 24px; font-size: 15px; }
+.theme-minimalist .sc-btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.theme-minimalist .sc-btn-primary:hover { background: #35322c; border-color: #35322c; }
+.theme-minimalist .sc-btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.theme-minimalist .sc-btn-ghost:hover { background: var(--panel); border-color: var(--ink); }
+
+/* ---- nav ---- */
+.theme-minimalist .sc-nav { max-width: var(--wrap); margin: 0 auto; padding: 24px 32px; display: flex; align-items: center; gap: 32px; }
+.theme-minimalist .sc-brand { display: inline-flex; align-items: center; gap: 10px; font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
+.theme-minimalist .sc-brand-mark { width: 24px; height: 24px; color: var(--accent); }
+.theme-minimalist .sc-navlinks { display: flex; gap: 28px; margin-right: auto; }
+.theme-minimalist .sc-navlinks a { color: var(--soft); font-size: 14px; font-weight: 500; }
+.theme-minimalist .sc-navlinks a:hover { color: var(--ink); }
+.theme-minimalist .sc-navcta { display: flex; align-items: center; gap: 16px; }
+.theme-minimalist .sc-link { color: var(--soft); font-size: 14px; font-weight: 500; }
+.theme-minimalist .sc-link:hover { color: var(--ink); }
+
+/* ---- hero ---- */
+.theme-minimalist .sc-hero { max-width: var(--wrap); margin: 0 auto; padding: 64px 32px 48px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.theme-minimalist .sc-hero-copy { max-width: 34ch; }
+.theme-minimalist .sc-eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: 11px; font-weight: 600; color: var(--clay); margin-bottom: 18px; }
+.theme-minimalist .sc-hero-title { font-family: "Newsreader", Georgia, serif; font-size: clamp(38px, 5vw, 60px); line-height: 1.04; letter-spacing: -0.02em; font-weight: 500; }
+.theme-minimalist .sc-hero-sub { margin-top: 20px; font-size: 18px; color: var(--soft); max-width: 38ch; }
+.theme-minimalist .sc-hero-actions { margin-top: 30px; display: flex; gap: 12px; }
+.theme-minimalist .sc-hero-note { margin-top: 18px; font-size: 13px; color: var(--faint); }
+.theme-minimalist .sc-hero-media { min-width: 0; }
+
+/* ---- hero app mock (flat paper panels) ---- */
+.theme-minimalist .sc-app { border: 1px solid var(--line-strong); border-radius: 4px; background: var(--panel); overflow: hidden; }
+.theme-minimalist .sc-app-bar { display: flex; align-items: center; gap: 6px; padding: 11px 14px; background: var(--paper); border-bottom: 1px solid var(--line); }
+.theme-minimalist .sc-app-bar span { width: 8px; height: 8px; border-radius: 50%; background: transparent; border: 1px solid var(--line-strong); }
+.theme-minimalist .sc-app-bar em { margin-left: 10px; font-style: normal; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .02em; color: var(--faint); }
+.theme-minimalist .sc-app-body { display: grid; grid-template-columns: 120px 1fr; }
+.theme-minimalist .sc-app-side { padding: 14px 12px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 3px; }
+.theme-minimalist .sc-app-side b { font-weight: 500; font-size: 12.5px; color: var(--faint); padding: 6px 8px; border-radius: 2px; }
+.theme-minimalist .sc-app-side b.on { background: var(--paper); color: var(--ink); font-weight: 600; box-shadow: inset 2px 0 0 var(--sage); }
+.theme-minimalist .sc-app-main { padding: 18px; display: flex; flex-direction: column; gap: 16px; }
+.theme-minimalist .sc-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.theme-minimalist .sc-stat { background: var(--paper); border: 1px solid var(--line); border-radius: 2px; padding: 12px; }
+.theme-minimalist .sc-stat span { font-size: 10px; text-transform: uppercase; letter-spacing: .09em; color: var(--faint); }
+.theme-minimalist .sc-stat strong { display: block; font-family: "Newsreader", Georgia, serif; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; margin-top: 4px; }
+.theme-minimalist .sc-chart { height: 96px; color: var(--sage); }
+.theme-minimalist .sc-chart svg { width: 100%; height: 100%; }
+.theme-minimalist .sc-chart-fill { fill: color-mix(in srgb, var(--sage) 16%, transparent); stroke: none; }
+.theme-minimalist .sc-run-list { display: flex; flex-direction: column; gap: 0; }
+.theme-minimalist .sc-run-list li { display: flex; align-items: center; gap: 10px; font-size: 12.5px; padding: 8px 2px; border-top: 1px solid var(--line); }
+.theme-minimalist .sc-run-list em { font-style: normal; color: var(--soft); }
+.theme-minimalist .sc-run-list time { margin-left: auto; font-family: "JetBrains Mono", ui-monospace, monospace; color: var(--faint); font-variant-numeric: tabular-nums; font-size: 11.5px; }
+.theme-minimalist .sc-dot { width: 7px; height: 7px; border-radius: 50%; }
+.theme-minimalist .sc-dot.ok { background: var(--sage); }
+.theme-minimalist .sc-dot.run { background: var(--clay); }
+
+/* ---- used-by ---- */
+.theme-minimalist .sc-logos { max-width: var(--wrap); margin: 0 auto; padding: 40px 32px; text-align: center; }
+.theme-minimalist .sc-logos-label { font-size: 11px; text-transform: uppercase; letter-spacing: .16em; color: var(--faint); margin-bottom: 24px; }
+.theme-minimalist .sc-logos-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+.theme-minimalist .sc-logo { display: inline-flex; align-items: center; gap: 8px; color: var(--soft); font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: 18px; letter-spacing: -0.01em; opacity: .8; }
+.theme-minimalist .sc-logo svg { width: 20px; height: 20px; }
+
+/* ---- features ---- */
+.theme-minimalist .sc-features { max-width: var(--wrap); margin: 0 auto; padding: 64px 32px; }
+.theme-minimalist .sc-section-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+.theme-minimalist .sc-section-title { font-family: "Newsreader", Georgia, serif; font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -0.02em; font-weight: 500; margin-top: 12px; }
+.theme-minimalist .sc-section-sub { margin-top: 14px; color: var(--soft); font-size: 17px; }
+.theme-minimalist .sc-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.theme-minimalist .sc-feature { padding: 28px 26px; background: var(--panel); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .15s; }
+.theme-minimalist .sc-feature:hover { background: var(--paper); }
+.theme-minimalist .sc-feature-icon { width: 38px; height: 38px; border-radius: 2px; background: var(--paper); border: 1px solid var(--line); color: var(--accent); display: grid; place-items: center; margin-bottom: 16px; }
+.theme-minimalist .sc-feature-icon svg { width: 20px; height: 20px; }
+.theme-minimalist .sc-feature-title { font-family: "Newsreader", Georgia, serif; font-size: 19px; font-weight: 500; }
+.theme-minimalist .sc-feature-text { margin-top: 8px; color: var(--soft); font-size: 14.5px; }
+
+/* ---- CTA ---- */
+.theme-minimalist .sc-cta { padding: 32px 32px 72px; }
+.theme-minimalist .sc-cta-inner { max-width: var(--wrap); margin: 0 auto; background: var(--ink); color: var(--paper); border-radius: 4px; padding: 60px 40px; text-align: center; }
+.theme-minimalist .sc-cta-title { font-family: "Newsreader", Georgia, serif; font-size: clamp(28px, 3.6vw, 42px); letter-spacing: -0.02em; font-weight: 500; }
+.theme-minimalist .sc-cta-sub { margin-top: 14px; color: #c9c2b3; font-size: 17px; }
+.theme-minimalist .sc-cta-actions { margin-top: 28px; display: flex; gap: 12px; justify-content: center; }
+.theme-minimalist .sc-cta .sc-btn-primary { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.theme-minimalist .sc-cta .sc-btn-primary:hover { background: #eae4d6; border-color: #eae4d6; }
+.theme-minimalist .sc-cta .sc-btn-ghost { color: var(--paper); border-color: rgba(245,241,232,.3); }
+.theme-minimalist .sc-cta .sc-btn-ghost:hover { background: rgba(245,241,232,.08); border-color: var(--paper); }
+
+/* ---- footer ---- */
+.theme-minimalist .sc-footer { border-top: 1px solid var(--line); background: var(--panel); }
+.theme-minimalist .sc-footer-top { max-width: var(--wrap); margin: 0 auto; padding: 52px 32px 36px; display: grid; grid-template-columns: 1.2fr 2fr; gap: 40px; }
+.theme-minimalist .sc-footer-brand { font-family: "Newsreader", Georgia, serif; }
+.theme-minimalist .sc-footer-brand p { margin-top: 14px; color: var(--soft); font-size: 14px; max-width: 28ch; font-family: "Inter", sans-serif; }
+.theme-minimalist .sc-footer-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.theme-minimalist .sc-footer-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; color: var(--faint); margin-bottom: 14px; }
+.theme-minimalist .sc-footer-col li { margin-bottom: 10px; }
+.theme-minimalist .sc-footer-col a { color: var(--soft); font-size: 14px; }
+.theme-minimalist .sc-footer-col a:hover { color: var(--ink); }
+.theme-minimalist .sc-footer-bottom { max-width: var(--wrap); margin: 0 auto; padding: 22px 32px 44px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+.theme-minimalist .sc-footer-bottom p { color: var(--faint); font-size: 12.5px; }
+.theme-minimalist .sc-socials { display: flex; gap: 10px; }
+.theme-minimalist .sc-socials a { width: 34px; height: 34px; border: 1px solid var(--line-strong); border-radius: 2px; display: grid; place-items: center; color: var(--soft); }
+.theme-minimalist .sc-socials a:hover { color: var(--ink); border-color: var(--ink); }
+.theme-minimalist .sc-socials svg { width: 16px; height: 16px; }
+
+/* ---- responsive ---- */
+@media (max-width: 900px) {
+  .theme-minimalist .sc-hero { grid-template-columns: 1fr; padding-top: 40px; gap: 40px; }
+  .theme-minimalist .sc-navlinks { display: none; }
+  .theme-minimalist .sc-feature-grid { grid-template-columns: 1fr 1fr; }
+  .theme-minimalist .sc-footer-top { grid-template-columns: 1fr; }
+  .theme-minimalist .sc-footer-cols { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .theme-minimalist .sc-feature-grid { grid-template-columns: 1fr; }
+  .theme-minimalist .sc-hero-actions, .theme-minimalist .sc-cta-actions { flex-direction: column; }
+}

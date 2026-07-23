@@ -1,0 +1,129 @@
+/* THEME: default — clean modern SaaS. Neutral baseline every other skin
+   contrasts against. Scoped under .theme-default. This file's selector list
+   IS the contract: every theme styles exactly these classes. */
+
+.theme-default {
+  --ink: #0f172a;
+  --soft: #475569;
+  --faint: #94a3b8;
+  --line: #e2e8f0;
+  --bg: #ffffff;
+  --panel: #f8fafc;
+  --accent: #4f46e5;
+  --accent-ink: #ffffff;
+  --radius: 12px;
+  --wrap: 1120px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.55;
+}
+
+/* ---- buttons ---- */
+.theme-default .sc-btn { font: inherit; font-weight: 600; font-size: 14px; padding: 9px 16px; border-radius: 8px; border: 1px solid transparent; transition: transform .12s, box-shadow .12s, background .12s; }
+.theme-default .sc-btn-lg { padding: 13px 22px; font-size: 15px; }
+.theme-default .sc-btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 18px -8px var(--accent); }
+.theme-default .sc-btn-primary:hover { transform: translateY(-1px); }
+.theme-default .sc-btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.theme-default .sc-btn-ghost:hover { background: var(--panel); }
+
+/* ---- nav ---- */
+.theme-default .sc-nav { max-width: var(--wrap); margin: 0 auto; padding: 20px 32px; display: flex; align-items: center; gap: 32px; }
+.theme-default .sc-brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+.theme-default .sc-brand-mark { width: 24px; height: 24px; color: var(--accent); }
+.theme-default .sc-navlinks { display: flex; gap: 26px; margin-right: auto; }
+.theme-default .sc-navlinks a { color: var(--soft); font-size: 14.5px; font-weight: 500; }
+.theme-default .sc-navlinks a:hover { color: var(--ink); }
+.theme-default .sc-navcta { display: flex; align-items: center; gap: 14px; }
+.theme-default .sc-link { color: var(--soft); font-size: 14.5px; font-weight: 500; }
+
+/* ---- hero ---- */
+.theme-default .sc-hero { max-width: var(--wrap); margin: 0 auto; padding: 56px 32px 40px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.theme-default .sc-eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
+.theme-default .sc-hero-title { font-size: clamp(34px, 4.6vw, 54px); line-height: 1.05; letter-spacing: -0.025em; font-weight: 800; }
+.theme-default .sc-hero-sub { margin-top: 18px; font-size: 18px; color: var(--soft); max-width: 34ch; }
+.theme-default .sc-hero-actions { margin-top: 28px; display: flex; gap: 12px; }
+.theme-default .sc-hero-note { margin-top: 16px; font-size: 13px; color: var(--faint); }
+
+/* ---- hero app mock ---- */
+.theme-default .sc-app { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); box-shadow: 0 30px 60px -30px rgba(15,23,42,.35); overflow: hidden; }
+.theme-default .sc-app-bar { display: flex; align-items: center; gap: 6px; padding: 11px 14px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.theme-default .sc-app-bar span { width: 9px; height: 9px; border-radius: 50%; background: #cbd5e1; }
+.theme-default .sc-app-bar em { margin-left: 10px; font-style: normal; font-size: 12px; color: var(--faint); }
+.theme-default .sc-app-body { display: grid; grid-template-columns: 120px 1fr; }
+.theme-default .sc-app-side { padding: 14px 12px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+.theme-default .sc-app-side b { font-weight: 500; font-size: 12.5px; color: var(--faint); padding: 6px 8px; border-radius: 6px; }
+.theme-default .sc-app-side b.on { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-weight: 600; }
+.theme-default .sc-app-main { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.theme-default .sc-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.theme-default .sc-stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.theme-default .sc-stat span { font-size: 11px; color: var(--faint); }
+.theme-default .sc-stat strong { display: block; font-size: 18px; letter-spacing: -0.02em; margin-top: 2px; }
+.theme-default .sc-chart { height: 96px; color: var(--accent); }
+.theme-default .sc-chart svg { width: 100%; height: 100%; }
+.theme-default .sc-chart-fill { fill: color-mix(in srgb, var(--accent) 14%, transparent); stroke: none; }
+.theme-default .sc-run-list { display: flex; flex-direction: column; gap: 2px; }
+.theme-default .sc-run-list li { display: flex; align-items: center; gap: 8px; font-size: 12.5px; padding: 7px 4px; border-top: 1px solid var(--line); }
+.theme-default .sc-run-list em { font-style: normal; color: var(--faint); }
+.theme-default .sc-run-list time { margin-left: auto; color: var(--faint); font-variant-numeric: tabular-nums; }
+.theme-default .sc-dot { width: 8px; height: 8px; border-radius: 50%; }
+.theme-default .sc-dot.ok { background: #16a34a; }
+.theme-default .sc-dot.run { background: #f59e0b; }
+
+/* ---- used-by ---- */
+.theme-default .sc-logos { max-width: var(--wrap); margin: 0 auto; padding: 34px 32px; text-align: center; }
+.theme-default .sc-logos-label { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--faint); margin-bottom: 20px; }
+.theme-default .sc-logos-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 34px; }
+.theme-default .sc-logo { display: inline-flex; align-items: center; gap: 8px; color: var(--faint); font-weight: 700; font-size: 17px; letter-spacing: -0.01em; opacity: .85; }
+.theme-default .sc-logo svg { width: 22px; height: 22px; }
+
+/* ---- features ---- */
+.theme-default .sc-features { max-width: var(--wrap); margin: 0 auto; padding: 56px 32px; }
+.theme-default .sc-section-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+.theme-default .sc-section-title { font-size: clamp(26px, 3.2vw, 36px); letter-spacing: -0.02em; font-weight: 800; margin-top: 12px; }
+.theme-default .sc-section-sub { margin-top: 12px; color: var(--soft); font-size: 17px; }
+.theme-default .sc-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.theme-default .sc-feature { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--bg); transition: box-shadow .15s, transform .15s; }
+.theme-default .sc-feature:hover { box-shadow: 0 16px 40px -24px rgba(15,23,42,.4); transform: translateY(-2px); }
+.theme-default .sc-feature-icon { width: 40px; height: 40px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); display: grid; place-items: center; margin-bottom: 14px; }
+.theme-default .sc-feature-icon svg { width: 21px; height: 21px; }
+.theme-default .sc-feature-title { font-size: 17px; font-weight: 700; }
+.theme-default .sc-feature-text { margin-top: 7px; color: var(--soft); font-size: 14.5px; }
+
+/* ---- CTA ---- */
+.theme-default .sc-cta { padding: 24px 32px 64px; }
+.theme-default .sc-cta-inner { max-width: var(--wrap); margin: 0 auto; background: var(--ink); color: #fff; border-radius: 20px; padding: 56px 40px; text-align: center; }
+.theme-default .sc-cta-title { font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -0.02em; font-weight: 800; }
+.theme-default .sc-cta-sub { margin-top: 12px; color: #cbd5e1; font-size: 17px; }
+.theme-default .sc-cta-actions { margin-top: 26px; display: flex; gap: 12px; justify-content: center; }
+.theme-default .sc-cta .sc-btn-ghost { color: #fff; border-color: rgba(255,255,255,.28); }
+.theme-default .sc-cta .sc-btn-ghost:hover { background: rgba(255,255,255,.1); }
+
+/* ---- footer ---- */
+.theme-default .sc-footer { border-top: 1px solid var(--line); background: var(--panel); }
+.theme-default .sc-footer-top { max-width: var(--wrap); margin: 0 auto; padding: 48px 32px 32px; display: grid; grid-template-columns: 1.2fr 2fr; gap: 40px; }
+.theme-default .sc-footer-brand p { margin-top: 12px; color: var(--soft); font-size: 14px; max-width: 26ch; }
+.theme-default .sc-footer-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.theme-default .sc-footer-col h4 { font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+.theme-default .sc-footer-col li { margin-bottom: 9px; }
+.theme-default .sc-footer-col a { color: var(--soft); font-size: 14px; }
+.theme-default .sc-footer-col a:hover { color: var(--ink); }
+.theme-default .sc-footer-bottom { max-width: var(--wrap); margin: 0 auto; padding: 20px 32px 40px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+.theme-default .sc-footer-bottom p { color: var(--faint); font-size: 13px; }
+.theme-default .sc-socials { display: flex; gap: 10px; }
+.theme-default .sc-socials a { width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 8px; display: grid; place-items: center; color: var(--soft); }
+.theme-default .sc-socials a:hover { color: var(--ink); border-color: var(--faint); }
+.theme-default .sc-socials svg { width: 17px; height: 17px; }
+
+/* ---- responsive ---- */
+@media (max-width: 900px) {
+  .theme-default .sc-hero { grid-template-columns: 1fr; padding-top: 36px; }
+  .theme-default .sc-navlinks { display: none; }
+  .theme-default .sc-feature-grid { grid-template-columns: 1fr 1fr; }
+  .theme-default .sc-footer-top { grid-template-columns: 1fr; }
+  .theme-default .sc-footer-cols { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .theme-default .sc-feature-grid { grid-template-columns: 1fr; }
+  .theme-default .sc-hero-actions, .theme-default .sc-cta-actions { flex-direction: column; }
+}

@@ -1,0 +1,75 @@
+---
+import "../../styles/showcase/base.css";
+import "../../styles/showcase/theme-default.css";
+import "../../styles/showcase/theme-minimalist.css";
+import "../../styles/showcase/theme-brutalist.css";
+import "../../styles/showcase/theme-highend.css";
+import "../../styles/showcase/theme-editorial.css";
+import Showcase from "../../components/showcase/Showcase.astro";
+import { themes } from "../../data/saas";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Showcase — one SaaS page, every skill's look · Skills Atlas</title>
+    <meta name="description" content="A single SaaS landing page re-skinned live by different design skills." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root { color-scheme: light; }
+      body { margin: 0; background: #0b0b0f; }
+      .sw-bar { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+        padding: 10px 18px; background: rgba(12,12,16,.9); backdrop-filter: blur(8px); border-bottom: 1px solid #26262e; color: #e7e7ea;
+        font-family: "JetBrains Mono", ui-monospace, monospace; }
+      .sw-bar a.sw-home { color: #a9a9b4; font-size: 13px; text-decoration: none; }
+      .sw-bar a.sw-home:hover { color: #fff; }
+      .sw-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: #6f6f7c; margin-left: 6px; }
+      .sw-themes { display: flex; gap: 6px; flex-wrap: wrap; }
+      .sw-themes button { font: inherit; font-size: 12.5px; padding: 5px 11px; border-radius: 999px; cursor: pointer;
+        background: transparent; color: #c7c7d1; border: 1px solid #33333d; }
+      .sw-themes button:hover { border-color: #55555f; color: #fff; }
+      .sw-themes button[aria-pressed="true"] { background: #fff; color: #0b0b0f; border-color: #fff; font-weight: 600; }
+      .sw-hint { margin-left: auto; font-size: 11.5px; color: #6f6f7c; }
+      .sw-stage { background: #fff; }
+      @media (max-width: 620px) { .sw-hint { display: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="sw-bar">
+      <a class="sw-home" href={`${base}/`}>← Skills Atlas</a>
+      <span class="sw-label">Skin</span>
+      <div class="sw-themes" id="sw-themes">
+        {themes.map((t, i) => (
+          <button data-theme={t.id} aria-pressed={i === 0 ? "true" : "false"} title={t.blurb}>{t.name}</button>
+        ))}
+      </div>
+      <span class="sw-hint" id="sw-hint">{themes[0].blurb}</span>
+    </div>
+
+    <div class="sw-stage">
+      <div class="showcase theme-default" id="sw-page">
+        <Showcase />
+      </div>
+    </div>
+
+    <script is:inline define:vars={{ themes }}>
+      const page = document.getElementById("sw-page");
+      const hint = document.getElementById("sw-hint");
+      const btns = [...document.querySelectorAll("#sw-themes button")];
+      const blurbs = Object.fromEntries(themes.map((t) => [t.id, t.blurb]));
+      function apply(id) {
+        page.className = "showcase theme-" + id;
+        btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.theme === id)));
+        if (hint) hint.textContent = blurbs[id] || "";
+        try { localStorage.setItem("sw-theme", id); } catch (e) {}
+      }
+      btns.forEach((b) => b.addEventListener("click", () => apply(b.dataset.theme)));
+      let saved = null;
+      try { saved = localStorage.getItem("sw-theme"); } catch (e) {}
+      if (saved && blurbs[saved]) apply(saved);
+    </script>
+  </body>
+</html>

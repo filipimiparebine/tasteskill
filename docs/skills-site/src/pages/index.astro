@@ -14,6 +14,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       </p>
     </section>
 
+    <a class="showcase-cta" href={`${base}/showcase/`}>
+      <div>
+        <p class="showcase-cta-k">Featured</p>
+        <h2>See the skills on a real page →</h2>
+        <p class="showcase-cta-sub">One SaaS landing page — nav, hero, logos, features, CTA, footer — re-skinned live by the design skills. Flip between looks to compare.</p>
+      </div>
+      <span class="showcase-cta-go">Open showcase</span>
+    </a>
+
     {families.map((fam) => (
       <section class="fam-block" style={`--fam: var(--fam-${fam.id})`}>
         <div class="fam-head">

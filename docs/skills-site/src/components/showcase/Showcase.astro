@@ -1,0 +1,162 @@
+---
+import { brand, nav, hero, logos, features, cta, footer } from "../../data/saas";
+
+// Feature icons (inherit color via currentColor). Keyed by feature.icon.
+const icons: Record<string, string> = {
+  flow: '<path d="M4 6h6M4 12h10M4 18h6" /><circle cx="17" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M14 12h4"/>',
+  bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/>',
+  scope: '<circle cx="12" cy="12" r="8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="2.5"/>',
+  shield: '<path d="M12 3 5 6v5c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6l-7-3z"/><path d="m9 12 2 2 4-4"/>',
+  plug: '<path d="M9 2v6M15 2v6M7 8h10v3a5 5 0 0 1-10 0V8zM12 16v6"/>',
+  scale: '<path d="M4 20V9M10 20V4M16 20v-8M22 20V7"/>',
+};
+
+// Company marks — a distinct geometric glyph per logo, plus the wordmark text.
+const marks: string[] = [
+  '<circle cx="12" cy="12" r="9"/><path d="M12 3v18"/>',
+  '<path d="M3 20 12 4l9 16z"/>',
+  '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/>',
+  '<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8"/>',
+  '<path d="M12 3 3 12l9 9 9-9z"/>',
+  '<circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/>',
+];
+
+const brandMark = '<path d="M4 8h16M6 14h14M8 20h12" stroke-linecap="round"/>';
+const socials: Record<string, string> = {
+  x: '<path d="M4 4l16 16M20 4 4 20"/>',
+  github: '<path d="M12 3a9 9 0 0 0-3 17.5c.5.1.5-.2.5-.5v-2c-2.5.5-3-1-3-1-.5-1-1-1.3-1-1.3-.8-.5 0-.5 0-.5 1 0 1.5 1 1.5 1 .8 1.5 2.3 1 3 .8 0-.6.3-1 .5-1.3-2-.2-4-1-4-4.5 0-1 .4-1.8 1-2.5 0-.3-.5-1.3 0-2.5 0 0 .8 0 2 1.5a7 7 0 0 1 4 0C16 5 16.8 5 16.8 5c.5 1.2 0 2.2 0 2.5.6.7 1 1.5 1 2.5 0 3.5-2 4.3-4 4.5.3.3.6.8.6 1.7v2.5c0 .3 0 .6.5.5A9 9 0 0 0 12 3z"/>',
+  linkedin: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 11v6"/>',
+};
+---
+<div class="showcase">
+  <!-- NAV -->
+  <header class="sc-nav">
+    <a href="#" class="sc-brand">
+      <svg class="sc-brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" set:html={brandMark}></svg>
+      <span>{brand.name}</span>
+    </a>
+    <nav class="sc-navlinks">
+      {nav.links.map((l) => <a href="#">{l}</a>)}
+    </nav>
+    <div class="sc-navcta">
+      <a href="#" class="sc-link">{nav.signIn}</a>
+      <a href="#" class="sc-btn sc-btn-primary">{nav.cta}</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="sc-hero">
+    <div class="sc-hero-copy">
+      <p class="sc-eyebrow">{hero.eyebrow}</p>
+      <h1 class="sc-hero-title">{hero.title}</h1>
+      <p class="sc-hero-sub">{hero.sub}</p>
+      <div class="sc-hero-actions">
+        <a href="#" class="sc-btn sc-btn-primary sc-btn-lg">{hero.primary}</a>
+        <a href="#" class="sc-btn sc-btn-ghost sc-btn-lg">{hero.secondary}</a>
+      </div>
+      <p class="sc-hero-note">{hero.note}</p>
+    </div>
+    <div class="sc-hero-media">
+      <div class="sc-app">
+        <div class="sc-app-bar"><span></span><span></span><span></span><em>cascade · flows</em></div>
+        <div class="sc-app-body">
+          <aside class="sc-app-side">
+            <b>Overview</b><b class="on">Flows</b><b>Runs</b><b>Logs</b><b>Settings</b>
+          </aside>
+          <div class="sc-app-main">
+            <div class="sc-stat-row">
+              <div class="sc-stat"><span>Runs today</span><strong>12,480</strong></div>
+              <div class="sc-stat"><span>Success</span><strong>99.7%</strong></div>
+              <div class="sc-stat"><span>p95 latency</span><strong>240ms</strong></div>
+            </div>
+            <div class="sc-chart">
+              <svg viewBox="0 0 320 96" preserveAspectRatio="none" fill="none">
+                <polyline class="sc-chart-line" points="0,74 40,60 80,66 120,40 160,48 200,26 240,32 280,14 320,20" stroke="currentColor" stroke-width="2.5"/>
+                <polygon class="sc-chart-fill" points="0,74 40,60 80,66 120,40 160,48 200,26 240,32 280,14 320,20 320,96 0,96"/>
+              </svg>
+            </div>
+            <ul class="sc-run-list">
+              <li><span class="sc-dot ok"></span>invoice-sync <em>succeeded</em><time>2s</time></li>
+              <li><span class="sc-dot run"></span>lead-router <em>running</em><time>—</time></li>
+              <li><span class="sc-dot ok"></span>nightly-export <em>succeeded</em><time>1m</time></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USED BY -->
+  <section class="sc-logos">
+    <p class="sc-logos-label">{logos.label}</p>
+    <ul class="sc-logos-row">
+      {logos.companies.map((c, i) => (
+        <li class="sc-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" set:html={marks[i % marks.length]}></svg>
+          <span>{c}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="sc-features">
+    <div class="sc-section-head">
+      <p class="sc-eyebrow">{features.eyebrow}</p>
+      <h2 class="sc-section-title">{features.title}</h2>
+      <p class="sc-section-sub">{features.sub}</p>
+    </div>
+    <ul class="sc-feature-grid">
+      {features.items.map((f) => (
+        <li class="sc-feature">
+          <div class="sc-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" set:html={icons[f.icon]}></svg>
+          </div>
+          <h3 class="sc-feature-title">{f.title}</h3>
+          <p class="sc-feature-text">{f.text}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <section class="sc-cta">
+    <div class="sc-cta-inner">
+      <h2 class="sc-cta-title">{cta.title}</h2>
+      <p class="sc-cta-sub">{cta.sub}</p>
+      <div class="sc-cta-actions">
+        <a href="#" class="sc-btn sc-btn-primary sc-btn-lg">{cta.primary}</a>
+        <a href="#" class="sc-btn sc-btn-ghost sc-btn-lg">{cta.secondary}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="sc-footer">
+    <div class="sc-footer-top">
+      <div class="sc-footer-brand">
+        <a href="#" class="sc-brand">
+          <svg class="sc-brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" set:html={brandMark}></svg>
+          <span>{brand.name}</span>
+        </a>
+        <p>{brand.tagline}</p>
+      </div>
+      <div class="sc-footer-cols">
+        {footer.cols.map((col) => (
+          <div class="sc-footer-col">
+            <h4>{col.head}</h4>
+            <ul>{col.links.map((l) => <li><a href="#">{l}</a></li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="sc-footer-bottom">
+      <p>{footer.copyright}</p>
+      <div class="sc-socials">
+        {Object.entries(socials).map(([k, d]) => (
+          <a href="#" aria-label={k}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" set:html={d}></svg></a>
+        ))}
+      </div>
+    </div>
+  </footer>
+</div>
