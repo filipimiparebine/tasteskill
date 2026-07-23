@@ -14,6 +14,7 @@ export const themes: Theme[] = [
   { id: "brutalist", name: "industrial-brutalist-ui", blurb: "Swiss print × terminal, rigid grid, amber accent." },
   { id: "highend", name: "high-end-visual-design", blurb: "Agency-grade: serif display, soft shadow, expensive spacing." },
   { id: "editorial", name: "gpt-taste", blurb: "Giant editorial type, gapless bento, motion energy." },
+  { id: "designtaste", name: "design-taste-frontend", blurb: "Crafted modern landing — Space Grotesk, emerald signature, tactile." },
 ];
 
 export const brand = {

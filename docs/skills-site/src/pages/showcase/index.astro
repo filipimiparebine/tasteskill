@@ -5,6 +5,7 @@ import "../../styles/showcase/theme-minimalist.css";
 import "../../styles/showcase/theme-brutalist.css";
 import "../../styles/showcase/theme-highend.css";
 import "../../styles/showcase/theme-editorial.css";
+import "../../styles/showcase/theme-designtaste.css";
 import Showcase from "../../components/showcase/Showcase.astro";
 import { themes } from "../../data/saas";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -60,16 +61,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       const hint = document.getElementById("sw-hint");
       const btns = [...document.querySelectorAll("#sw-themes button")];
       const blurbs = Object.fromEntries(themes.map((t) => [t.id, t.blurb]));
-      function apply(id) {
+      function apply(id, updateUrl) {
         page.className = "showcase theme-" + id;
         btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.theme === id)));
         if (hint) hint.textContent = blurbs[id] || "";
         try { localStorage.setItem("sw-theme", id); } catch (e) {}
+        if (updateUrl) {
+          const url = new URL(location.href);
+          url.searchParams.set("skin", id);
+          history.replaceState(null, "", url);
+        }
       }
-      btns.forEach((b) => b.addEventListener("click", () => apply(b.dataset.theme)));
-      let saved = null;
-      try { saved = localStorage.getItem("sw-theme"); } catch (e) {}
-      if (saved && blurbs[saved]) apply(saved);
+      btns.forEach((b) => b.addEventListener("click", () => apply(b.dataset.theme, true)));
+      // Precedence: ?skin= in the URL (shareable deep link) > last saved > default.
+      let initial = null;
+      try { initial = new URLSearchParams(location.search).get("skin"); } catch (e) {}
+      if (!blurbs[initial]) { try { initial = localStorage.getItem("sw-theme"); } catch (e) {} }
+      if (blurbs[initial]) apply(initial, false);
     </script>
   </body>
 </html>
