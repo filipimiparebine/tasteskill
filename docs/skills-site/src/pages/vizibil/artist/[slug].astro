@@ -1,0 +1,43 @@
+---
+import ArtLayout from "../../../layouts/ArtLayout.astro";
+import ArtCard from "../../../components/art/ArtCard.astro";
+import Avatar from "../../../components/art/Avatar.astro";
+import Tr from "../../../components/art/Tr.astro";
+import { artists, worksByArtist } from "../../../data/art";
+export function getStaticPaths() {
+  return artists.map((a) => ({ params: { slug: a.slug }, props: { artist: a } }));
+}
+const { artist } = Astro.props;
+const works = worksByArtist(artist.slug);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<ArtLayout title={`${artist.name} — Vizibil`} current="artisti">
+  <section class="aq-section">
+    <a class="aq-back" href={`${base}/vizibil/artists/`}><Tr k="nav.artists" /></a>
+    <div class="aq-artist-banner">
+      <Avatar initials={artist.initials} palette={artist.palette} seed={7} size={64} />
+      <div>
+        <h1 class="aq-artist-name">{artist.name}</h1>
+        <p class="aq-artist-alias">„{artist.alias}” · {artist.city}</p>
+      </div>
+    </div>
+    <div class="aq-shead"><h2 class="aq-stitle"><Tr k="artist.works" /></h2><span class="aq-slink">{works.length}</span></div>
+    <div class="aq-rows">{works.map((w) => <ArtCard work={w} />)}</div>
+  </section>
+
+  <section class="aq-section aq-artist-about">
+    <div class="aq-artist-about-inner">
+      <div>
+        <h2 class="aq-stitle"><Tr k="artist.about" /></h2>
+        <div class="aq-chips">{artist.media.map((m) => <span class="aq-tag">{m}</span>)}</div>
+        <p class="aq-artist-bio">{artist.bio}</p>
+      </div>
+      <div class="aq-support">
+        <h3><Tr k="artist.support_title" /> {artist.alias}</h3>
+        <a class="aq-btn aq-btn-primary aq-buy" href="#" data-mock><Tr k="cta.buy_now" /></a>
+        <a class="aq-btn aq-btn-ghost" href="#" data-mock><Tr k="cta.support_artist" /></a>
+        <a class="aq-btn aq-btn-ghost" href="#" data-mock><Tr k="cta.commission" /></a>
+      </div>
+    </div>
+  </section>
+</ArtLayout>

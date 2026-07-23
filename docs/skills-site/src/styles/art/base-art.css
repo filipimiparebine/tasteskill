@@ -1,23 +1,44 @@
-/* Structural base for the Aquarelă showcase — style-neutral. Look-and-feel is
-   entirely in the per-skin files (theme-<id>.css), each scoped under .theme-<id>. */
+/* Structural base for the Vizibil showcase — style-neutral. Look-and-feel lives
+   in the per-skin files (theme-<id>.css), scoped under .theme-<id>. This file only
+   owns layout mechanics that must behave identically in every skin. */
 
 .aquarela * { box-sizing: border-box; }
 .aquarela a { text-decoration: none; color: inherit; }
 .aquarela ul { list-style: none; margin: 0; padding: 0; }
 .aquarela h1, .aquarela h2, .aquarela h3, .aquarela h4, .aquarela p { margin: 0; }
 .aquarela img, .aquarela svg { max-width: 100%; }
-.aquarela .aq-btn { cursor: pointer; display: inline-flex; align-items: center; justify-content: center; border: none; font: inherit; }
-
-/* generated-art element fills its container; the container sets aspect-ratio */
+.aquarela .aq-btn { cursor: pointer; display: inline-flex; align-items: center; justify-content: center; border: none; font: inherit; text-align: center; }
 .aquarela .wc-art { display: block; width: 100%; height: 100%; }
 
-/* avatar structure (paint + initials overlay); colour handled by theme */
+/* avatar: paint bloom + initials overlay */
 .aquarela .aq-avatar { position: relative; display: inline-grid; place-items: center; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
 .aquarela .aq-avatar svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .aquarela .aq-avatar em { position: relative; font-style: normal; font-weight: 600; }
 
-/* card art keeps a portrait aspect box for the generated painting */
-.aquarela .aq-card-art { display: block; position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
-.aquarela .aq-hero-piece { display: block; position: relative; overflow: hidden; }
-.aquarela .aq-event-thumb, .aquarela .aq-post-thumb { display: block; position: relative; overflow: hidden; }
+/* minimal card: image only; title/price/artist revealed on hover or keyboard focus */
+.aquarela .aq-card { position: relative; }
+.aquarela .aq-card-art { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+.aquarela .aq-card-hit { display: block; width: 100%; height: 100%; }
+.aquarela .aq-card-hover { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 4px; opacity: 0; transform: translateY(6px); transition: opacity .18s ease, transform .18s ease; pointer-events: none; }
+.aquarela .aq-card:hover .aq-card-hover,
+.aquarela .aq-card:focus-within .aq-card-hover { opacity: 1; transform: none; pointer-events: auto; }
+.aquarela .aq-card-artist { display: inline-flex; align-items: center; gap: 7px; }
+.aquarela .aq-card-sold { position: absolute; top: 10px; right: 10px; z-index: 2; }
+
+/* generated-art aspect boxes */
+.aquarela .aq-hero-piece,
+.aquarela .aq-spot-art,
+.aquarela .aq-eventbig-thumb,
+.aquarela .aq-post-thumb,
+.aquarela .aq-about-mark,
+.aquarela .aq-about-hero .aq-about-mark,
+.aquarela .aq-donate-mark { display: block; position: relative; overflow: hidden; }
 .aquarela .aq-art-canvas { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+.aquarela .aq-art-sold { position: absolute; top: 14px; left: 14px; z-index: 2; }
+
+/* mocked-action toast (chrome — not themed) */
+.vz-toast { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 12px); z-index: 90;
+  background: #16130f; color: #f4ecdf; border: 1px solid #4a4235; padding: 11px 18px; border-radius: 999px;
+  font-family: "Inter", system-ui, sans-serif; font-size: 14px; box-shadow: 0 14px 40px -14px rgba(0,0,0,.6);
+  opacity: 0; transition: opacity .2s ease, transform .2s ease; }
+.vz-toast.on { opacity: 1; transform: translate(-50%, 0); }

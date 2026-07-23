@@ -48,3 +48,13 @@ redesign-existing-projects. Each re-skins the SAME agreed site in its own aesthe
 - Do the 8 skins each go **fully native** to their skill (a brutalist gallery, a
   high-end gallery, a minimalist gallery…), or should all 8 stay within the
   watercolour/pastel family? → asked next.
+
+## Enriched spec (from the real project brief) — decisions
+- Scope: static design prototype; Buy/Donate/tickets MOCKED (toast), no Supabase/payments/admin.
+- Brand: real **Vizibil** / vizibil.art. Pages: Home, Gallery, Artists, Artist, Artwork, Blog, About, Donate.
+- Home order: Hero(mission+collage) → Spotlight → Impact numbers → About strip → simple footer.
+- Gallery: editorial rows, minimal hover cards, 4 filters (artist·category·technique·availability), "Vândut" badge only for sold.
+- Artist: works-first, then bio + support (Buy/Donate/Commission). Artwork: immersive + overlay, Buy+Support+Donate.
+- Blog: events-forward. About: mission & who we help. Donate: monthly/one-time (mocked).
+- i18n: RO default / EN / HU switcher (persist + ?lang=). Currency: lei. WCAG AA markup.
+- 8 skins = the 8 design/UI skills (fully native): dtf (default) · dtf1 · highend · minimal · brutalist · gpt · stitch · redesign. Persist + ?skin=.

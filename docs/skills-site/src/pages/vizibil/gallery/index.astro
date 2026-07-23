@@ -1,0 +1,76 @@
+---
+import ArtLayout from "../../../layouts/ArtLayout.astro";
+import ArtCard from "../../../components/art/ArtCard.astro";
+import Tr from "../../../components/art/Tr.astro";
+import { artworks, artists, mediums, themeTags } from "../../../data/art";
+import { tr } from "../../../data/i18n";
+---
+<ArtLayout title="Galerie — Vizibil" current="galerie">
+  <section class="aq-section aq-gallery">
+    <div class="aq-gal-head">
+      <h1 class="aq-page-title"><Tr k="gallery.title" /></h1>
+      <p class="aq-page-sub">{artworks.length} <Tr k="gallery.sub" /></p>
+    </div>
+
+    <div class="aq-filters">
+      <div class="aq-filter-group" data-axis="artist">
+        <span class="aq-filter-label"><Tr k="filter.artist" /></span>
+        <button class="aq-filter is-on" data-val="__all"><Tr k="filter.all" /></button>
+        {artists.map((a) => <button class="aq-filter" data-val={a.slug}>{a.alias}</button>)}
+      </div>
+      <div class="aq-filter-group" data-axis="category">
+        <span class="aq-filter-label"><Tr k="filter.category" /></span>
+        <button class="aq-filter is-on" data-val="__all"><Tr k="filter.all" /></button>
+        {themeTags.map((t) => <button class="aq-filter" data-val={t}>{t}</button>)}
+      </div>
+      <div class="aq-filter-group" data-axis="technique">
+        <span class="aq-filter-label"><Tr k="filter.technique" /></span>
+        <button class="aq-filter is-on" data-val="__all"><Tr k="filter.all" /></button>
+        {mediums.map((m) => <button class="aq-filter" data-val={m}>{m}</button>)}
+      </div>
+      <div class="aq-filter-group" data-axis="availability">
+        <span class="aq-filter-label"><Tr k="filter.availability" /></span>
+        <button class="aq-filter is-on" data-val="__all"><Tr k="filter.all" /></button>
+        <button class="aq-filter" data-val="available"><Tr k="filter.available" /></button>
+      </div>
+    </div>
+
+    <div class="aq-rows" id="aq-gal-grid">
+      {artworks.map((w) => <ArtCard work={w} />)}
+    </div>
+    <p class="aq-empty" id="aq-empty" hidden><Tr k="gallery.empty" /></p>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const state = { artist: "__all", category: "__all", technique: "__all", availability: "__all" };
+      const cells = [...document.querySelectorAll("#aq-gal-grid .aq-card")];
+      const empty = document.getElementById("aq-empty");
+      function refresh() {
+        let shown = 0;
+        cells.forEach((c) => {
+          const cats = (c.getAttribute("data-category") || "").split("|");
+          const ok =
+            (state.artist === "__all" || c.getAttribute("data-artist") === state.artist) &&
+            (state.category === "__all" || cats.includes(state.category)) &&
+            (state.technique === "__all" || c.getAttribute("data-technique") === state.technique) &&
+            (state.availability === "__all" || c.getAttribute("data-status") === "available");
+          c.hidden = !ok;
+          if (ok) shown++;
+        });
+        if (empty) empty.hidden = shown !== 0;
+      }
+      document.querySelectorAll(".aq-filter-group").forEach((group) => {
+        const axis = group.getAttribute("data-axis");
+        group.querySelectorAll(".aq-filter").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            group.querySelectorAll(".aq-filter").forEach((b) => b.classList.remove("is-on"));
+            btn.classList.add("is-on");
+            state[axis] = btn.getAttribute("data-val");
+            refresh();
+          });
+        });
+      });
+    })();
+  </script>
+</ArtLayout>

@@ -2,21 +2,36 @@
 // artists; all artwork is generated (see WatercolorArt.astro), never scraped.
 
 export interface Skin { id: string; name: string; blurb: string; }
+// The 8 builds — one per design-system/UI skill, each fully native to its aesthetic.
 export const skins: Skin[] = [
-  { id: "watercolor", name: "watercolour", blurb: "Soft wet pastels, paper grain, bleeding edges." },
-  { id: "gouache", name: "gouache", blurb: "Opaque matte pastel blocks, flat and poster-like." },
-  { id: "inkwash", name: "ink-wash", blurb: "Near-monochrome sumi-e; colour only as an accent." },
-  { id: "riso", name: "risograph", blurb: "Grainy duotone pastel print, slight mis-registration." },
+  { id: "dtf", name: "design-taste-frontend", blurb: "Anti-slop crafted modern gallery." },
+  { id: "dtf1", name: "design-taste-frontend-v1", blurb: "The v1 taste look, warmer and softer." },
+  { id: "highend", name: "high-end-visual-design", blurb: "Agency-grade: serif display, soft shadow, expensive space." },
+  { id: "minimal", name: "minimalist-ui", blurb: "Warm monochrome, flat bento, editorial restraint." },
+  { id: "brutalist", name: "industrial-brutalist-ui", blurb: "Swiss print × terminal, rigid grid, utility accent." },
+  { id: "gpt", name: "gpt-taste", blurb: "Giant editorial type, gapless bento, motion." },
+  { id: "stitch", name: "stitch-design-taste", blurb: "Semantic tokens, calibrated colour, asymmetric." },
+  { id: "redesign", name: "redesign-existing-projects", blurb: "Premium upgrade of a generic layout." },
 ];
 
 export const org = {
-  name: "Aquarelă",
+  name: "Vizibil",
   kicker: "Colectiv de artă · Cluj-Napoca",
   tagline: "Facem vizibili artiștii din jurul nostru.",
   tagline_en: "We make the artists around us visible.",
   about:
-    "Aquarelă sprijină artiști vizuali din Cluj care se confruntă cu excluziune, dizabilitate sau izolare — expunându-le lucrările, poveștile și vocea.",
+    "Vizibil sprijină artiști vizuali din Cluj care se confruntă cu excluziune, dizabilitate sau izolare — expunându-le lucrările, poveștile și vocea.",
 };
+
+export const impact = [
+  { key: "impact.artists", value: "24" },
+  { key: "impact.works", value: "180+" },
+  { key: "impact.events", value: "12" },
+  { key: "impact.raised", value: "68.000" },
+];
+
+// Homepage spotlight (a featured artist + one of their works).
+export const spotlight = { artist: "ana-boghean", work: "privire-directa" };
 
 export interface Artist {
   slug: string; name: string; alias: string; initials: string;
@@ -38,7 +53,7 @@ export const artists: Artist[] = [
 export interface Artwork {
   slug: string; title: string; artist: string; // artist slug
   medium: string; themes: string[]; year: number; priceRON: number;
-  palette: string[]; seed: number;
+  palette: string[]; seed: number; status?: "available" | "sold";
 }
 
 export const mediums = ["Acuarelă", "Guașă", "Tuș", "Tehnică mixtă", "Acrilic", "Colaj"];
@@ -62,6 +77,18 @@ export const artworks: Artwork[] = [
   { slug: "noapte-lila", title: "Noapte lila", artist: "felician-baciu", medium: "Tuș", themes: ["Abstract", "Oraș"], year: 2024, priceRON: 450, palette: ["#8f7fb0", "#b8a6d0", "#6f7fb0"], seed: 146 },
   { slug: "strada-repictata", title: "Strada repictată", artist: "sorina-l", medium: "Tehnică mixtă", themes: ["Oraș"], year: 2024, priceRON: 840, palette: ["#c3b3e0", "#a7c0e0", "#eaa79b"], seed: 159 },
 ];
+
+// Mark a few works as sold (only "sold" carries a badge, per spec).
+const soldSlugs = new Set(["doi-luptatori", "drum-spre-feleac", "portret-in-ocru", "noapte-lila"]);
+artworks.forEach((w) => (w.status = soldSlugs.has(w.slug) ? "sold" : "available"));
+
+// price brackets for the gallery filter
+export const priceBands = [
+  { id: "lo", label: "sub 600 lei", test: (p: number) => p < 600 },
+  { id: "mid", label: "600–800 lei", test: (p: number) => p >= 600 && p <= 800 },
+  { id: "hi", label: "peste 800 lei", test: (p: number) => p > 800 },
+];
+export const priceBandOf = (p: number) => priceBands.find((b) => b.test(p))?.id ?? "mid";
 
 export interface Post { slug: string; kind: "Eveniment" | "Interviu"; title: string; date: string; excerpt: string; palette: string[]; seed: number; }
 export const posts: Post[] = [

@@ -1,0 +1,25 @@
+---
+import ArtLayout from "../../../layouts/ArtLayout.astro";
+import Avatar from "../../../components/art/Avatar.astro";
+import Tr from "../../../components/art/Tr.astro";
+import { artists, worksByArtist } from "../../../data/art";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<ArtLayout title="Artiști — Vizibil" current="artisti">
+  <section class="aq-section">
+    <div class="aq-gal-head">
+      <h1 class="aq-page-title"><Tr k="artists.title" /></h1>
+    </div>
+    <div class="aq-artist-grid">
+      {artists.map((a, i) => (
+        <a class="aq-artist-card" href={`${base}/vizibil/artist/${a.slug}/`}>
+          <Avatar initials={a.initials} palette={a.palette} seed={i * 13 + 2} size={96} />
+          <b>{a.name}</b>
+          <span class="aq-artist-card-alias">„{a.alias}”</span>
+          <span class="aq-artist-card-media">{a.media.join(" · ")}</span>
+          <span class="aq-artist-card-count">{worksByArtist(a.slug).length} <Tr k="artist.works" /></span>
+        </a>
+      ))}
+    </div>
+  </section>
+</ArtLayout>

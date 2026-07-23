@@ -1,0 +1,48 @@
+---
+import ArtLayout from "../../../layouts/ArtLayout.astro";
+import WatercolorArt from "../../../components/art/WatercolorArt.astro";
+import Tr from "../../../components/art/Tr.astro";
+import { org, impact } from "../../../data/art";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const steps = [
+  { n: "01", t: "Descoperim", d: "Găsim artiști vizuali trecuți cu vederea — prin ateliere, recomandări și colaborări locale." },
+  { n: "02", t: "Expunem", d: "Le producem lucrările pentru expunere: vernisaje, galerie online, catalog și context." },
+  { n: "03", t: "Susținem", d: "Fiecare vânzare și donație merge direct către artist și către următoarea expoziție." },
+];
+---
+<ArtLayout title="Despre — Vizibil" current="despre">
+  <section class="aq-section aq-about-hero">
+    <div class="aq-about-hero-copy">
+      <p class="aq-kicker">{org.kicker}</p>
+      <h1 class="aq-page-title"><Tr k="about.title" /></h1>
+      <p class="aq-about-lead"><Tr k="hero.sub" /></p>
+    </div>
+    <div class="aq-about-mark" aria-hidden="true"><WatercolorArt seed={888} palette={["#c98a5a", "#8695c4", "#a9c5a0"]} blobs={6} /></div>
+  </section>
+
+  <section class="aq-section">
+    <div class="aq-shead"><h2 class="aq-stitle"><Tr k="about.cta" /></h2></div>
+    <div class="aq-steps">
+      {steps.map((s) => (
+        <div class="aq-step">
+          <span class="aq-step-n">{s.n}</span>
+          <h3>{s.t}</h3>
+          <p>{s.d}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="aq-section aq-impact">
+    <h2 class="aq-stitle aq-impact-title"><Tr k="impact.title" /></h2>
+    <div class="aq-impact-row">
+      {impact.map((s) => (
+        <div class="aq-impact-item"><strong>{s.value}</strong><span><Tr k={s.key} /></span></div>
+      ))}
+    </div>
+    <div class="aq-about-cta">
+      <a class="aq-btn aq-btn-primary" href={`${base}/vizibil/donate/`}><Tr k="cta.support_org" /></a>
+      <a class="aq-btn aq-btn-ghost" href="#" data-mock><Tr k="cta.become_partner" /></a>
+    </div>
+  </section>
+</ArtLayout>
