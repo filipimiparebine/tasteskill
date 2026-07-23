@@ -1,0 +1,48 @@
+---
+import ArtLayout from "../../../layouts/ArtLayout.astro";
+import ArtCard from "../../../components/art/ArtCard.astro";
+import Avatar from "../../../components/art/Avatar.astro";
+import WatercolorArt from "../../../components/art/WatercolorArt.astro";
+import { artworks, getArtist, worksByArtist } from "../../../data/art";
+export function getStaticPaths() {
+  return artworks.map((w) => ({ params: { slug: w.slug }, props: { work: w } }));
+}
+const { work } = Astro.props;
+const artist = getArtist(work.artist);
+const more = worksByArtist(artist.slug).filter((w) => w.slug !== work.slug).slice(0, 3);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<ArtLayout title={`${work.title} — ${artist.name}`} current="galerie">
+  <section class="aq-section aq-art-page">
+    <a class="aq-back" href={`${base}/aquarela/gallery/`}>← Galerie</a>
+    <div class="aq-art-full">
+      <div class="aq-art-canvas"><WatercolorArt seed={work.seed} palette={work.palette} blobs={7} /></div>
+      <aside class="aq-art-info">
+        <p class="aq-kicker">{work.medium} · {work.year}</p>
+        <h1 class="aq-art-title">{work.title}</h1>
+        <a class="aq-art-artist" href={`${base}/aquarela/artist/${artist.slug}/`}>
+          <Avatar initials={artist.initials} palette={artist.palette} seed={work.seed} size={40} />
+          <span><b>{artist.name}</b><em>{artist.city}</em></span>
+        </a>
+        <dl class="aq-art-specs">
+          <div><dt>Mediu</dt><dd>{work.medium}</dd></div>
+          <div><dt>Temă</dt><dd>{work.themes.join(", ")}</dd></div>
+          <div><dt>Dimensiune</dt><dd>40 × 50 cm</dd></div>
+          <div><dt>An</dt><dd>{work.year}</dd></div>
+        </dl>
+        <div class="aq-art-buy">
+          <span class="aq-art-price">{work.priceRON} lei</span>
+          <a class="aq-btn aq-btn-primary aq-buy" href="#">Cumpără lucrarea</a>
+          <p class="aq-art-note">Originalul include certificat semnat. Livrare în Cluj gratuită.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {more.length > 0 && (
+    <section class="aq-section">
+      <div class="aq-shead"><h2 class="aq-stitle">Alte lucrări de {artist.alias}</h2></div>
+      <div class="aq-grid">{more.map((w) => <ArtCard work={w} />)}</div>
+    </section>
+  )}
+</ArtLayout>

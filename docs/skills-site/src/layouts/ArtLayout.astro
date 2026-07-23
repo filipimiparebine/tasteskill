@@ -1,0 +1,102 @@
+---
+import "../styles/art/base-art.css";
+import "../styles/art/theme-watercolor.css";
+import "../styles/art/theme-gouache.css";
+import "../styles/art/theme-inkwash.css";
+import "../styles/art/theme-riso.css";
+import { skins, org } from "../data/art";
+const { title, current } = Astro.props as { title: string; current?: string };
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const nav = [
+  { id: "acasa", label: "Acasă", href: `${base}/aquarela/` },
+  { id: "galerie", label: "Galerie", href: `${base}/aquarela/gallery/` },
+  { id: "jurnal", label: "Jurnal", href: `${base}/aquarela/blog/` },
+];
+---
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content="Aquarelă — colectiv de artă din Cluj-Napoca. Lucrări generate, showcase re-skinabil." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      body { margin: 0; background: #14110d; }
+      .aqbar { position: sticky; top: 0; z-index: 60; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+        padding: 9px 18px; background: rgba(20,17,13,.92); backdrop-filter: blur(8px); border-bottom: 1px solid #342f27; color: #efe7db; font-family: "Inter", sans-serif; }
+      .aqbar a.aqbar-home { color: #b7ab99; font-size: 13px; text-decoration: none; }
+      .aqbar a.aqbar-home:hover { color: #fff; }
+      .aqbar .aqbar-label { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: #7d7261; }
+      .aqbar-skins { display: flex; gap: 6px; flex-wrap: wrap; }
+      .aqbar-skins button { font: inherit; font-size: 12.5px; padding: 5px 12px; border-radius: 999px; cursor: pointer; background: transparent; color: #d8cdbb; border: 1px solid #453f34; }
+      .aqbar-skins button:hover { border-color: #6b6151; color: #fff; }
+      .aqbar-skins button[aria-pressed="true"] { background: #efe7db; color: #14110d; border-color: #efe7db; font-weight: 600; }
+      .aqbar-hint { margin-left: auto; font-size: 11.5px; color: #7d7261; font-style: italic; }
+      @media (max-width: 680px) { .aqbar-hint { display: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="aqbar">
+      <a class="aqbar-home" href={`${base}/`}>← Skills Atlas</a>
+      <span class="aqbar-label">Stil</span>
+      <div class="aqbar-skins" id="aqbar-skins">
+        {skins.map((s, i) => <button data-skin={s.id} aria-pressed={i === 0 ? "true" : "false"} title={s.blurb}>{s.name}</button>)}
+      </div>
+      <span class="aqbar-hint" id="aqbar-hint">{skins[0].blurb}</span>
+    </div>
+
+    <div class="aquarela theme-watercolor" id="aq-root">
+      <header class="aq-nav">
+        <a class="aq-brand" href={`${base}/aquarela/`}>
+          <span class="aq-brand-mark" aria-hidden="true"></span>
+          <span class="aq-brand-name">{org.name}</span>
+        </a>
+        <nav class="aq-navlinks">
+          {nav.map((n) => <a href={n.href} aria-current={current === n.id ? "page" : undefined}>{n.label}</a>)}
+        </nav>
+        <a class="aq-btn aq-btn-primary aq-navcta" href={`${base}/aquarela/gallery/`}>Susține un artist</a>
+      </header>
+
+      <slot />
+
+      <footer class="aq-footer">
+        <div class="aq-footer-top">
+          <div class="aq-footer-brand">
+            <span class="aq-brand-name">{org.name}</span>
+            <p>{org.about}</p>
+          </div>
+          <div class="aq-footer-cols">
+            <div><h4>Explorează</h4><ul><li><a href={`${base}/aquarela/gallery/`}>Galerie</a></li><li><a href={`${base}/aquarela/blog/`}>Jurnal</a></li><li><a href={`${base}/aquarela/`}>Artiști</a></li></ul></div>
+            <div><h4>Colectiv</h4><ul><li><a href="#">Despre noi</a></li><li><a href="#">Devino membru</a></li><li><a href="#">Voluntariat</a></li></ul></div>
+            <div><h4>Contact</h4><ul><li><a href="#">hello@aquarela.ro</a></li><li><a href="#">Cluj-Napoca</a></li><li><a href="#">Instagram</a></li></ul></div>
+          </div>
+        </div>
+        <div class="aq-footer-bottom">
+          <p>© 2026 {org.name} · colectiv fictiv pentru demonstrație</p>
+          <p class="aq-footer-tag">{org.tagline}</p>
+        </div>
+      </footer>
+    </div>
+
+    <script is:inline define:vars={{ skins }}>
+      const root = document.getElementById("aq-root");
+      const hint = document.getElementById("aqbar-hint");
+      const btns = [...document.querySelectorAll("#aqbar-skins button")];
+      const blurbs = Object.fromEntries(skins.map((s) => [s.id, s.blurb]));
+      function apply(id, updateUrl) {
+        root.className = "aquarela theme-" + id;
+        btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.skin === id)));
+        if (hint) hint.textContent = blurbs[id] || "";
+        try { localStorage.setItem("aq-skin", id); } catch (e) {}
+        if (updateUrl) { const u = new URL(location.href); u.searchParams.set("skin", id); history.replaceState(null, "", u); }
+      }
+      btns.forEach((b) => b.addEventListener("click", () => apply(b.dataset.skin, true)));
+      let initial = null;
+      try { initial = new URLSearchParams(location.search).get("skin"); } catch (e) {}
+      if (!blurbs[initial]) { try { initial = localStorage.getItem("aq-skin"); } catch (e) {} }
+      if (blurbs[initial]) apply(initial, false);
+    </script>
+  </body>
+</html>

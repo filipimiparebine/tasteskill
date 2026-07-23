@@ -1,0 +1,26 @@
+---
+import ArtLayout from "../../../layouts/ArtLayout.astro";
+import WatercolorArt from "../../../components/art/WatercolorArt.astro";
+import { posts } from "../../../data/art";
+---
+<ArtLayout title="Jurnal — Aquarelă" current="jurnal">
+  <section class="aq-section aq-blog">
+    <div class="aq-gal-head">
+      <h1 class="aq-page-title">Jurnal</h1>
+      <p class="aq-page-sub">Evenimente, vernisaje și interviuri cu artiștii colectivului.</p>
+    </div>
+    <div class="aq-posts">
+      {posts.map((p) => (
+        <article class="aq-post">
+          <a class="aq-post-thumb" href="#"><WatercolorArt seed={p.seed} palette={p.palette} blobs={5} /></a>
+          <div class="aq-post-body">
+            <div class="aq-post-meta"><span class="aq-tag">{p.kind}</span><time>{p.date}</time></div>
+            <h2 class="aq-post-title"><a href="#">{p.title}</a></h2>
+            <p class="aq-post-excerpt">{p.excerpt}</p>
+            <a class="aq-post-more" href="#">Citește →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</ArtLayout>

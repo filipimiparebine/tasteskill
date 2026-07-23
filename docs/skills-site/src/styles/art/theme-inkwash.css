@@ -1,0 +1,176 @@
+/* SKIN: ink-wash (sumi-e). Near-monochrome sumi ink on warm rice paper, one quiet
+   cinnabar seal-red used sparingly. Generous negative space, brush-hairline rules.
+   Scoped under .theme-inkwash. Mirrors the watercolour selector contract. */
+
+.theme-inkwash {
+  --paper: #f3efe6;
+  --card: #f8f5ee;
+  --ink: #1f1c18;
+  --soft: #4a453d;
+  --faint: #8a8377;
+  --line: #d8d1c2;
+  --accent: #b13328;          /* cinnabar / seal-red */
+  --accent-deep: #8f271e;
+  --accent-soft: #ecd9d4;
+  --wc-paper: #f4efe3;        /* pale rice-paper tone (required) */
+  --wrap: 1160px;
+  --disp: "Fraunces", Georgia, serif;
+  --hand: "Caveat", "Segoe Script", cursive;
+  --body: "Inter", system-ui, sans-serif;
+  background:
+    radial-gradient(140% 100% at 8% -8%, color-mix(in srgb, var(--ink) 5%, transparent), transparent 52%),
+    radial-gradient(120% 80% at 102% 4%, color-mix(in srgb, var(--ink) 4%, transparent), transparent 46%),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.65;
+}
+
+/* buttons */
+.theme-inkwash .aq-btn { font-weight: 600; font-size: 14.5px; padding: 11px 22px; border-radius: 2px; transition: transform .14s, box-shadow .14s, background .14s, color .14s; }
+.theme-inkwash .aq-btn-primary { background: var(--accent); color: #fbf6ef; box-shadow: 0 8px 20px -14px var(--accent); }
+.theme-inkwash .aq-btn-primary:hover { background: var(--accent-deep); transform: translateY(-2px); }
+.theme-inkwash .aq-btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.theme-inkwash .aq-btn-ghost:hover { box-shadow: inset 0 0 0 1px var(--accent); color: var(--accent-deep); }
+
+/* nav */
+.theme-inkwash .aq-nav { max-width: var(--wrap); margin: 0 auto; padding: 26px 30px; display: flex; align-items: center; gap: 26px; }
+.theme-inkwash .aq-brand { display: inline-flex; align-items: center; gap: 12px; margin-right: auto; }
+.theme-inkwash .aq-brand-mark { width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 38% 32%, #4a453d, #1f1c18 72%); box-shadow: inset 0 0 6px rgba(0,0,0,.35); }
+.theme-inkwash .aq-brand-name { font-family: var(--hand); font-size: 30px; font-weight: 700; line-height: 1; color: var(--ink); }
+.theme-inkwash .aq-navlinks { display: flex; gap: 26px; }
+.theme-inkwash .aq-navlinks a { font-size: 15px; color: var(--soft); font-weight: 500; }
+.theme-inkwash .aq-navlinks a:hover, .theme-inkwash .aq-navlinks a[aria-current="page"] { color: var(--accent-deep); }
+.theme-inkwash .aq-navcta { padding: 9px 18px; font-size: 14px; }
+
+/* section scaffold */
+.theme-inkwash .aq-section { max-width: var(--wrap); margin: 0 auto; padding: 38px 30px 24px; }
+.theme-inkwash .aq-shead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 26px 0 24px; }
+.theme-inkwash .aq-stitle { font-family: var(--disp); font-weight: 400; font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.01em; }
+.theme-inkwash .aq-slink { color: var(--accent-deep); font-size: 14px; font-weight: 600; }
+.theme-inkwash .aq-kicker { font-family: var(--body); text-transform: uppercase; letter-spacing: .22em; font-size: 12px; font-weight: 600; color: var(--faint); }
+
+/* hero */
+.theme-inkwash .aq-hero { max-width: var(--wrap); margin: 0 auto; padding: 52px 30px 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+.theme-inkwash .aq-hero-title { font-family: var(--disp); font-weight: 400; font-size: clamp(38px, 5.4vw, 64px); line-height: 1.03; letter-spacing: -0.02em; margin: 14px 0 0; }
+.theme-inkwash .aq-hero-sub { margin-top: 20px; font-size: 17px; color: var(--soft); max-width: 42ch; }
+.theme-inkwash .aq-hero-actions { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+.theme-inkwash .aq-hero-collage { position: relative; min-height: 380px; }
+.theme-inkwash .aq-hero-piece { position: absolute; width: 54%; border-radius: 2px; box-shadow: 0 22px 44px -22px rgba(20,18,15,.55); border: 1px solid var(--line); background: #fff; }
+.theme-inkwash .aq-hero-piece.p0 { top: 0; left: 4%; transform: rotate(-3deg); aspect-ratio: 4/5; z-index: 2; }
+.theme-inkwash .aq-hero-piece.p1 { top: 18%; right: 2%; transform: rotate(4deg); width: 46%; aspect-ratio: 4/5; z-index: 1; }
+.theme-inkwash .aq-hero-piece.p2 { bottom: 0; left: 26%; transform: rotate(-1deg); width: 42%; aspect-ratio: 1/1; z-index: 3; }
+
+/* grid + card */
+.theme-inkwash .aq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 26px; }
+.theme-inkwash .aq-card { background: var(--card); border-radius: 3px; overflow: hidden; box-shadow: none; border: 1px solid var(--line); transition: transform .15s, box-shadow .15s, border-color .15s; }
+.theme-inkwash .aq-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -26px rgba(20,18,15,.5); border-color: var(--faint); }
+.theme-inkwash .aq-card-art { border-bottom: 1px solid var(--line); }
+.theme-inkwash .aq-card-medium { position: absolute; left: 10px; bottom: 10px; background: rgba(248,245,238,.9); color: var(--soft); font-size: 11px; padding: 3px 9px; border-radius: 2px; backdrop-filter: blur(2px); }
+.theme-inkwash .aq-card-meta { padding: 14px 15px 15px; }
+.theme-inkwash .aq-card-lines { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.theme-inkwash .aq-card-title { font-family: var(--disp); font-size: 17px; font-weight: 400; }
+.theme-inkwash .aq-card-title:hover { color: var(--accent-deep); }
+.theme-inkwash .aq-card-price { font-size: 13px; color: var(--soft); white-space: nowrap; }
+.theme-inkwash .aq-card-artist { display: inline-flex; align-items: center; gap: 8px; margin-top: 11px; }
+.theme-inkwash .aq-card-artist span { font-family: var(--hand); font-size: 19px; color: var(--soft); line-height: 1; }
+.theme-inkwash .aq-card-artist:hover span { color: var(--accent-deep); }
+
+/* avatar tint */
+.theme-inkwash .aq-avatar em { color: var(--ink); font-size: .8em; }
+
+/* artists row */
+.theme-inkwash .aq-artist-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 20px; }
+.theme-inkwash .aq-artist-chip { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 16px 8px; border-radius: 3px; transition: background .15s; }
+.theme-inkwash .aq-artist-chip:hover { background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.theme-inkwash .aq-artist-chip b { font-family: var(--hand); font-size: 22px; font-weight: 700; }
+.theme-inkwash .aq-artist-chip span { font-size: 12px; color: var(--faint); }
+
+/* events / posts teaser */
+.theme-inkwash .aq-events { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.theme-inkwash .aq-event { display: grid; grid-template-columns: 128px 1fr; gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; padding: 15px; align-items: start; transition: transform .15s, border-color .15s; }
+.theme-inkwash .aq-event:hover { transform: translateY(-3px); border-color: var(--faint); }
+.theme-inkwash .aq-event-thumb { aspect-ratio: 1/1; border-radius: 2px; }
+.theme-inkwash .aq-event h3 { font-family: var(--disp); font-size: 18px; font-weight: 400; margin: 8px 0 6px; }
+.theme-inkwash .aq-event p { font-size: 13.5px; color: var(--soft); }
+.theme-inkwash .aq-event time { font-size: 12px; color: var(--faint); display: block; margin-top: 8px; }
+.theme-inkwash .aq-tag { display: inline-block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--soft); background: transparent; padding: 3px 9px; border-radius: 2px; font-weight: 600; box-shadow: inset 0 0 0 1px var(--line); }
+
+/* gallery */
+.theme-inkwash .aq-gal-head { padding-top: 20px; }
+.theme-inkwash .aq-page-title { font-family: var(--disp); font-weight: 400; font-size: clamp(32px, 4.4vw, 48px); letter-spacing: -0.02em; }
+.theme-inkwash .aq-page-sub { color: var(--soft); margin-top: 10px; }
+.theme-inkwash .aq-filters { display: flex; flex-direction: column; gap: 12px; margin: 28px 0 30px; }
+.theme-inkwash .aq-filter-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.theme-inkwash .aq-filter-label { font-size: 11px; text-transform: uppercase; letter-spacing: .16em; color: var(--faint); width: 54px; }
+.theme-inkwash .aq-filter { font: inherit; font-size: 13.5px; padding: 6px 15px; border-radius: 2px; cursor: pointer; background: transparent; color: var(--soft); border: 1px solid var(--line); transition: all .13s; }
+.theme-inkwash .aq-filter:hover { border-color: var(--ink); color: var(--ink); }
+.theme-inkwash .aq-filter.is-on { background: var(--accent); color: #fbf6ef; border-color: var(--accent); }
+.theme-inkwash .aq-empty { text-align: center; color: var(--faint); padding: 44px 0; font-style: italic; }
+.theme-inkwash .aq-back { display: inline-block; color: var(--soft); font-size: 14px; margin-bottom: 18px; }
+.theme-inkwash .aq-back:hover { color: var(--accent-deep); }
+
+/* artist page */
+.theme-inkwash .aq-artist-head { display: grid; grid-template-columns: 150px 1fr; gap: 32px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 30px; }
+.theme-inkwash .aq-artist-portrait { justify-self: center; }
+.theme-inkwash .aq-artist-name { font-family: var(--disp); font-weight: 400; font-size: clamp(28px, 3.6vw, 40px); margin-top: 6px; }
+.theme-inkwash .aq-artist-alias { font-family: var(--hand); font-size: 26px; color: var(--accent-deep); }
+.theme-inkwash .aq-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+.theme-inkwash .aq-artist-bio { color: var(--soft); max-width: 60ch; margin-top: 8px; }
+
+/* artwork page */
+.theme-inkwash .aq-art-full { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: start; }
+.theme-inkwash .aq-art-canvas { border-radius: 2px; border: 1px solid var(--line); box-shadow: 0 34px 66px -34px rgba(20,18,15,.5); background: #fff; padding: 10px; }
+.theme-inkwash .aq-art-info { position: sticky; top: 70px; }
+.theme-inkwash .aq-art-title { font-family: var(--disp); font-weight: 400; font-size: clamp(28px, 3.6vw, 42px); letter-spacing: -0.02em; margin: 8px 0 14px; }
+.theme-inkwash .aq-art-artist { display: inline-flex; align-items: center; gap: 10px; padding: 8px 0; }
+.theme-inkwash .aq-art-artist b { font-weight: 600; }
+.theme-inkwash .aq-art-artist em { display: block; font-style: normal; font-size: 13px; color: var(--faint); }
+.theme-inkwash .aq-art-artist:hover b { color: var(--accent-deep); }
+.theme-inkwash .aq-art-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; margin: 22px 0; }
+.theme-inkwash .aq-art-specs div { background: var(--card); padding: 12px 14px; }
+.theme-inkwash .aq-art-specs dt { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--faint); }
+.theme-inkwash .aq-art-specs dd { margin: 3px 0 0; font-size: 14.5px; }
+.theme-inkwash .aq-art-buy { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 22px; }
+.theme-inkwash .aq-art-price { display: block; font-family: var(--disp); font-size: 30px; font-weight: 400; margin-bottom: 14px; }
+.theme-inkwash .aq-buy { width: 100%; font-size: 16px; padding: 14px; }
+.theme-inkwash .aq-art-note { font-size: 12.5px; color: var(--faint); margin-top: 12px; text-align: center; }
+
+/* blog */
+.theme-inkwash .aq-posts { display: flex; flex-direction: column; gap: 22px; margin-top: 26px; }
+.theme-inkwash .aq-post { display: grid; grid-template-columns: 220px 1fr; gap: 26px; background: var(--card); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; padding: 20px; align-items: center; transition: transform .15s, border-color .15s; }
+.theme-inkwash .aq-post:hover { transform: translateY(-3px); border-color: var(--faint); }
+.theme-inkwash .aq-post-thumb { aspect-ratio: 3/2; border-radius: 2px; }
+.theme-inkwash .aq-post-meta { display: flex; align-items: center; gap: 12px; }
+.theme-inkwash .aq-post-meta time { font-size: 12.5px; color: var(--faint); }
+.theme-inkwash .aq-post-title { font-family: var(--disp); font-weight: 400; font-size: 23px; margin: 10px 0 8px; }
+.theme-inkwash .aq-post-title a:hover { color: var(--accent-deep); }
+.theme-inkwash .aq-post-excerpt { color: var(--soft); font-size: 14.5px; }
+.theme-inkwash .aq-post-more { display: inline-block; margin-top: 10px; color: var(--accent-deep); font-weight: 600; font-size: 14px; }
+
+/* footer */
+.theme-inkwash .aq-footer { margin-top: 48px; border-top: 1px solid var(--ink); background: color-mix(in srgb, var(--ink) 3%, var(--paper)); }
+.theme-inkwash .aq-footer-top { max-width: var(--wrap); margin: 0 auto; padding: 44px 30px 28px; display: grid; grid-template-columns: 1.3fr 2fr; gap: 40px; }
+.theme-inkwash .aq-footer-brand .aq-brand-name { font-family: var(--hand); font-size: 30px; }
+.theme-inkwash .aq-footer-brand p { margin-top: 10px; color: var(--soft); font-size: 14px; max-width: 40ch; }
+.theme-inkwash .aq-footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.theme-inkwash .aq-footer-cols h4 { font-family: var(--disp); font-size: 15px; font-weight: 400; margin-bottom: 10px; }
+.theme-inkwash .aq-footer-cols li { margin-bottom: 8px; }
+.theme-inkwash .aq-footer-cols a { color: var(--soft); font-size: 14px; }
+.theme-inkwash .aq-footer-cols a:hover { color: var(--accent-deep); }
+.theme-inkwash .aq-footer-bottom { max-width: var(--wrap); margin: 0 auto; padding: 18px 30px 44px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.theme-inkwash .aq-footer-bottom p { font-size: 13px; color: var(--faint); }
+.theme-inkwash .aq-footer-tag { font-family: var(--hand); font-size: 20px; color: var(--accent-deep) !important; }
+
+/* responsive */
+@media (max-width: 860px) {
+  .theme-inkwash .aq-hero { grid-template-columns: 1fr; }
+  .theme-inkwash .aq-hero-collage { min-height: 320px; }
+  .theme-inkwash .aq-navlinks { display: none; }
+  .theme-inkwash .aq-art-full { grid-template-columns: 1fr; }
+  .theme-inkwash .aq-art-info { position: static; }
+  .theme-inkwash .aq-events { grid-template-columns: 1fr; }
+  .theme-inkwash .aq-artist-head { grid-template-columns: 1fr; text-align: center; }
+  .theme-inkwash .aq-footer-top { grid-template-columns: 1fr; }
+  .theme-inkwash .aq-post { grid-template-columns: 1fr; }
+}

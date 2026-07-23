@@ -1,0 +1,38 @@
+---
+import ArtLayout from "../../../layouts/ArtLayout.astro";
+import ArtCard from "../../../components/art/ArtCard.astro";
+import Avatar from "../../../components/art/Avatar.astro";
+import { artists, worksByArtist } from "../../../data/art";
+export function getStaticPaths() {
+  return artists.map((a) => ({ params: { slug: a.slug }, props: { artist: a } }));
+}
+const { artist } = Astro.props;
+const works = worksByArtist(artist.slug);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<ArtLayout title={`${artist.name} — Aquarelă`} current="galerie">
+  <section class="aq-section">
+    <a class="aq-back" href={`${base}/aquarela/gallery/`}>← Galerie</a>
+    <div class="aq-artist-head">
+      <div class="aq-artist-portrait"><Avatar initials={artist.initials} palette={artist.palette} seed={7} size={132} /></div>
+      <div class="aq-artist-info">
+        <p class="aq-kicker">{artist.city}</p>
+        <h1 class="aq-artist-name">{artist.name}</h1>
+        <p class="aq-artist-alias">„{artist.alias}”</p>
+        <div class="aq-chips">{artist.media.map((m) => <span class="aq-tag">{m}</span>)}</div>
+        <p class="aq-artist-bio">{artist.bio}</p>
+        <div class="aq-hero-actions">
+          <a class="aq-btn aq-btn-primary" href="#">Susține pe {artist.alias}</a>
+          <a class="aq-btn aq-btn-ghost" href="#">Comandă un portret</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aq-section">
+    <div class="aq-shead"><h2 class="aq-stitle">Lucrări de {artist.alias}</h2><span class="aq-slink">{works.length} piese</span></div>
+    <div class="aq-grid">
+      {works.map((w) => <ArtCard work={w} />)}
+    </div>
+  </section>
+</ArtLayout>

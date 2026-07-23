@@ -1,0 +1,182 @@
+/* SKIN: risograph. Grainy duotone pastel print — warm newsprint ground, two punchy
+   riso spot colours, hard edges, chunky borders, mis-registration offset shadows.
+   Scoped under .theme-riso. Mirrors the watercolour selector contract. */
+
+.theme-riso {
+  --paper: #f3ecd9;
+  --card: #fbf6e8;
+  --ink: #1d1a2b;
+  --soft: #4a4560;
+  --faint: #8a8398;
+  --line: #1d1a2b;
+  --pink: #ff5a8a;
+  --pink-deep: #e63f72;
+  --blue: #3a5bd0;
+  --blue-deep: #2b46a8;
+  --accent: var(--pink);
+  --accent-deep: var(--pink-deep);
+  --accent-soft: #ffd6e2;
+  --wc-paper: #f3ecd9;
+  --wrap: 1160px;
+  --disp: "Fraunces", Georgia, serif;
+  --hand: "Caveat", "Segoe Script", cursive;
+  --body: "Inter", system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--pink) 32%, transparent) 1px, transparent 1.6px),
+    radial-gradient(circle at 5px 5px, color-mix(in srgb, var(--blue) 26%, transparent) 1px, transparent 1.6px),
+    var(--paper);
+  background-size: 8px 8px, 8px 8px, auto;
+  background-position: 0 0, 4px 4px, 0 0;
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.55;
+}
+
+/* buttons */
+.theme-riso .aq-btn { font-weight: 700; font-size: 14.5px; padding: 11px 20px; border-radius: 3px; border: 2px solid var(--ink); transition: transform .1s, box-shadow .1s, background .1s; }
+.theme-riso .aq-btn-primary { background: var(--pink); color: #fff; box-shadow: 3px 3px 0 0 var(--blue); }
+.theme-riso .aq-btn-primary:hover { background: var(--pink-deep); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 0 var(--blue); }
+.theme-riso .aq-btn-ghost { background: var(--paper); color: var(--ink); box-shadow: 3px 3px 0 0 var(--pink); }
+.theme-riso .aq-btn-ghost:hover { box-shadow: 4px 4px 0 0 var(--pink); transform: translate(-1px, -1px); color: var(--pink-deep); }
+
+/* nav */
+.theme-riso .aq-nav { max-width: var(--wrap); margin: 0 auto; padding: 22px 30px; display: flex; align-items: center; gap: 26px; }
+.theme-riso .aq-brand { display: inline-flex; align-items: center; gap: 11px; margin-right: auto; }
+.theme-riso .aq-brand-mark { width: 30px; height: 30px; border-radius: 3px; border: 2px solid var(--ink); background: var(--pink); box-shadow: 2px 2px 0 0 var(--blue); }
+.theme-riso .aq-brand-name { font-family: var(--disp); font-size: 26px; font-weight: 700; line-height: 1; letter-spacing: -0.01em; color: var(--ink); }
+.theme-riso .aq-navlinks { display: flex; gap: 24px; }
+.theme-riso .aq-navlinks a { font-size: 15px; color: var(--soft); font-weight: 600; }
+.theme-riso .aq-navlinks a:hover, .theme-riso .aq-navlinks a[aria-current="page"] { color: var(--blue); }
+.theme-riso .aq-navcta { padding: 9px 18px; font-size: 14px; }
+
+/* section scaffold */
+.theme-riso .aq-section { max-width: var(--wrap); margin: 0 auto; padding: 30px 30px 20px; }
+.theme-riso .aq-shead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 22px 0 20px; }
+.theme-riso .aq-stitle { font-family: var(--disp); font-weight: 700; font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.02em; }
+.theme-riso .aq-slink { color: var(--blue); font-size: 14px; font-weight: 700; }
+.theme-riso .aq-kicker { font-family: var(--body); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 800; color: var(--pink-deep); }
+
+/* hero */
+.theme-riso .aq-hero { max-width: var(--wrap); margin: 0 auto; padding: 40px 30px 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+.theme-riso .aq-hero-title { font-family: var(--disp); font-weight: 700; font-size: clamp(38px, 5.4vw, 62px); line-height: 1; letter-spacing: -0.03em; margin: 14px 0 0; }
+.theme-riso .aq-hero-sub { margin-top: 18px; font-size: 17px; color: var(--soft); max-width: 42ch; }
+.theme-riso .aq-hero-actions { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
+.theme-riso .aq-hero-collage { position: relative; min-height: 380px; }
+.theme-riso .aq-hero-piece { position: absolute; width: 54%; border-radius: 3px; box-shadow: 6px 6px 0 0 var(--blue); border: 3px solid var(--ink); }
+.theme-riso .aq-hero-piece.p0 { top: 0; left: 4%; transform: rotate(-4deg); aspect-ratio: 4/5; z-index: 2; box-shadow: 6px 6px 0 0 var(--pink); }
+.theme-riso .aq-hero-piece.p1 { top: 18%; right: 2%; transform: rotate(5deg); width: 46%; aspect-ratio: 4/5; z-index: 1; box-shadow: 6px 6px 0 0 var(--blue); }
+.theme-riso .aq-hero-piece.p2 { bottom: 0; left: 26%; transform: rotate(-1deg); width: 42%; aspect-ratio: 1/1; z-index: 3; box-shadow: 6px 6px 0 0 var(--pink); }
+
+/* grid + card */
+.theme-riso .aq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 22px; }
+.theme-riso .aq-card { background: var(--card); border-radius: 4px; overflow: hidden; box-shadow: 4px 4px 0 0 var(--blue); border: 2px solid var(--ink); transition: transform .12s, box-shadow .12s; }
+.theme-riso .aq-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 0 var(--pink); }
+.theme-riso .aq-card-art { border-bottom: 2px solid var(--ink); }
+.theme-riso .aq-card-medium { position: absolute; left: 10px; bottom: 10px; background: var(--paper); color: var(--ink); font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 2px; border: 1.5px solid var(--ink); }
+.theme-riso .aq-card-meta { padding: 13px 14px 14px; }
+.theme-riso .aq-card-lines { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.theme-riso .aq-card-title { font-family: var(--disp); font-size: 17px; font-weight: 700; }
+.theme-riso .aq-card-title:hover { color: var(--pink-deep); }
+.theme-riso .aq-card-price { font-size: 13px; color: var(--soft); font-weight: 600; white-space: nowrap; }
+.theme-riso .aq-card-artist { display: inline-flex; align-items: center; gap: 8px; margin-top: 11px; }
+.theme-riso .aq-card-artist span { font-family: var(--hand); font-size: 21px; color: var(--blue); line-height: 1; }
+.theme-riso .aq-card-artist:hover span { color: var(--pink-deep); }
+
+/* avatar tint */
+.theme-riso .aq-avatar em { color: var(--ink); font-size: .8em; }
+
+/* artists row */
+.theme-riso .aq-artist-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 18px; }
+.theme-riso .aq-artist-chip { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 14px 8px; border-radius: 4px; border: 2px solid transparent; transition: background .12s, border-color .12s; }
+.theme-riso .aq-artist-chip:hover { background: var(--accent-soft); border-color: var(--ink); }
+.theme-riso .aq-artist-chip b { font-family: var(--hand); font-size: 24px; font-weight: 700; color: var(--blue); }
+.theme-riso .aq-artist-chip span { font-size: 12px; color: var(--faint); }
+
+/* events / posts teaser */
+.theme-riso .aq-events { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.theme-riso .aq-event { display: grid; grid-template-columns: 128px 1fr; gap: 16px; background: var(--card); border: 2px solid var(--ink); border-radius: 4px; overflow: hidden; padding: 14px; align-items: start; box-shadow: 4px 4px 0 0 var(--pink); transition: transform .12s, box-shadow .12s; }
+.theme-riso .aq-event:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 0 var(--blue); }
+.theme-riso .aq-event-thumb { aspect-ratio: 1/1; border-radius: 3px; border: 2px solid var(--ink); }
+.theme-riso .aq-event h3 { font-family: var(--disp); font-size: 18px; font-weight: 700; margin: 8px 0 6px; }
+.theme-riso .aq-event p { font-size: 13.5px; color: var(--soft); }
+.theme-riso .aq-event time { font-size: 12px; color: var(--faint); font-weight: 600; display: block; margin-top: 8px; }
+.theme-riso .aq-tag { display: inline-block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--blue); padding: 3px 9px; border-radius: 2px; border: 1.5px solid var(--ink); font-weight: 700; }
+
+/* gallery */
+.theme-riso .aq-gal-head { padding-top: 16px; }
+.theme-riso .aq-page-title { font-family: var(--disp); font-weight: 700; font-size: clamp(32px, 4.4vw, 46px); letter-spacing: -0.03em; }
+.theme-riso .aq-page-sub { color: var(--soft); margin-top: 8px; }
+.theme-riso .aq-filters { display: flex; flex-direction: column; gap: 12px; margin: 24px 0 26px; }
+.theme-riso .aq-filter-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.theme-riso .aq-filter-label { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; color: var(--faint); width: 54px; }
+.theme-riso .aq-filter { font: inherit; font-size: 13.5px; font-weight: 600; padding: 6px 14px; border-radius: 3px; cursor: pointer; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); transition: all .1s; }
+.theme-riso .aq-filter:hover { background: var(--accent-soft); box-shadow: 2px 2px 0 0 var(--pink); }
+.theme-riso .aq-filter.is-on { background: var(--blue); color: #fff; border-color: var(--ink); box-shadow: 2px 2px 0 0 var(--pink); }
+.theme-riso .aq-empty { text-align: center; color: var(--faint); padding: 40px 0; font-style: italic; }
+.theme-riso .aq-back { display: inline-block; color: var(--blue); font-size: 14px; font-weight: 600; margin-bottom: 18px; }
+.theme-riso .aq-back:hover { color: var(--pink-deep); }
+
+/* artist page */
+.theme-riso .aq-artist-head { display: grid; grid-template-columns: 150px 1fr; gap: 30px; align-items: center; background: var(--card); border: 2px solid var(--ink); border-radius: 4px; padding: 28px; box-shadow: 5px 5px 0 0 var(--blue); }
+.theme-riso .aq-artist-portrait { justify-self: center; }
+.theme-riso .aq-artist-name { font-family: var(--disp); font-weight: 700; font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -0.02em; margin-top: 6px; }
+.theme-riso .aq-artist-alias { font-family: var(--hand); font-size: 28px; color: var(--pink-deep); }
+.theme-riso .aq-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+.theme-riso .aq-artist-bio { color: var(--soft); max-width: 60ch; margin-top: 6px; }
+
+/* artwork page */
+.theme-riso .aq-art-full { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: start; }
+.theme-riso .aq-art-canvas { border-radius: 4px; border: 3px solid var(--ink); box-shadow: 8px 8px 0 0 var(--pink); }
+.theme-riso .aq-art-info { position: sticky; top: 70px; }
+.theme-riso .aq-art-title { font-family: var(--disp); font-weight: 700; font-size: clamp(28px, 3.6vw, 42px); letter-spacing: -0.03em; margin: 8px 0 14px; }
+.theme-riso .aq-art-artist { display: inline-flex; align-items: center; gap: 10px; padding: 8px 0; }
+.theme-riso .aq-art-artist b { font-weight: 700; }
+.theme-riso .aq-art-artist em { display: block; font-style: normal; font-size: 13px; color: var(--faint); }
+.theme-riso .aq-art-artist:hover b { color: var(--blue); }
+.theme-riso .aq-art-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--ink); border: 2px solid var(--ink); border-radius: 4px; overflow: hidden; margin: 20px 0; }
+.theme-riso .aq-art-specs div { background: var(--card); padding: 12px 14px; }
+.theme-riso .aq-art-specs dt { font-size: 11px; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; color: var(--faint); }
+.theme-riso .aq-art-specs dd { margin: 3px 0 0; font-size: 14.5px; }
+.theme-riso .aq-art-buy { background: var(--card); border: 2px solid var(--ink); border-radius: 4px; padding: 20px; box-shadow: 5px 5px 0 0 var(--blue); }
+.theme-riso .aq-art-price { display: block; font-family: var(--disp); font-size: 30px; font-weight: 700; margin-bottom: 14px; }
+.theme-riso .aq-buy { width: 100%; font-size: 16px; padding: 14px; }
+.theme-riso .aq-art-note { font-size: 12.5px; color: var(--faint); margin-top: 12px; text-align: center; }
+
+/* blog */
+.theme-riso .aq-posts { display: flex; flex-direction: column; gap: 20px; margin-top: 24px; }
+.theme-riso .aq-post { display: grid; grid-template-columns: 220px 1fr; gap: 24px; background: var(--card); border: 2px solid var(--ink); border-radius: 4px; overflow: hidden; padding: 18px; align-items: center; box-shadow: 4px 4px 0 0 var(--pink); transition: transform .12s, box-shadow .12s; }
+.theme-riso .aq-post:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 0 var(--blue); }
+.theme-riso .aq-post-thumb { aspect-ratio: 3/2; border-radius: 3px; border: 2px solid var(--ink); }
+.theme-riso .aq-post-meta { display: flex; align-items: center; gap: 12px; }
+.theme-riso .aq-post-meta time { font-size: 12.5px; color: var(--faint); font-weight: 600; }
+.theme-riso .aq-post-title { font-family: var(--disp); font-weight: 700; font-size: 23px; margin: 10px 0 8px; }
+.theme-riso .aq-post-title a:hover { color: var(--pink-deep); }
+.theme-riso .aq-post-excerpt { color: var(--soft); font-size: 14.5px; }
+.theme-riso .aq-post-more { display: inline-block; margin-top: 10px; color: var(--blue); font-weight: 700; font-size: 14px; }
+
+/* footer */
+.theme-riso .aq-footer { margin-top: 40px; border-top: 3px solid var(--ink); background: var(--blue); color: var(--paper); }
+.theme-riso .aq-footer-top { max-width: var(--wrap); margin: 0 auto; padding: 40px 30px 26px; display: grid; grid-template-columns: 1.3fr 2fr; gap: 36px; }
+.theme-riso .aq-footer-brand .aq-brand-name { font-family: var(--disp); font-size: 26px; color: var(--paper); }
+.theme-riso .aq-footer-brand p { margin-top: 10px; color: color-mix(in srgb, var(--paper) 80%, var(--blue)); font-size: 14px; max-width: 40ch; }
+.theme-riso .aq-footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.theme-riso .aq-footer-cols h4 { font-family: var(--disp); font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--paper); }
+.theme-riso .aq-footer-cols li { margin-bottom: 8px; }
+.theme-riso .aq-footer-cols a { color: color-mix(in srgb, var(--paper) 82%, var(--blue)); font-size: 14px; }
+.theme-riso .aq-footer-cols a:hover { color: var(--pink); }
+.theme-riso .aq-footer-bottom { max-width: var(--wrap); margin: 0 auto; padding: 18px 30px 40px; border-top: 1.5px solid color-mix(in srgb, var(--paper) 40%, var(--blue)); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.theme-riso .aq-footer-bottom p { font-size: 13px; color: color-mix(in srgb, var(--paper) 70%, var(--blue)); }
+.theme-riso .aq-footer-tag { font-family: var(--hand); font-size: 22px; color: var(--pink) !important; }
+
+/* responsive */
+@media (max-width: 860px) {
+  .theme-riso .aq-hero { grid-template-columns: 1fr; }
+  .theme-riso .aq-hero-collage { min-height: 320px; }
+  .theme-riso .aq-navlinks { display: none; }
+  .theme-riso .aq-art-full { grid-template-columns: 1fr; }
+  .theme-riso .aq-art-info { position: static; }
+  .theme-riso .aq-events { grid-template-columns: 1fr; }
+  .theme-riso .aq-artist-head { grid-template-columns: 1fr; text-align: center; }
+  .theme-riso .aq-footer-top { grid-template-columns: 1fr; }
+  .theme-riso .aq-post { grid-template-columns: 1fr; }
+}
